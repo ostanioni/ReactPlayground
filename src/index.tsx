@@ -1,16 +1,23 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 // import "./css/main.css";
+import SearchPanel from './components/SearchPanel';
 import * as THREE from 'three';
 
 import {run} from "./lo.js";
 
 import {f} from './components/preloader';
-import styled from 'styled-components'
+import styled from 'styled-components';
 f();
 export interface HelloProps { compiler: string; framework: string; }
 
-export const Hello = (props: HelloProps) => <h1>Hello from {props.compiler} and {props.framework}!</h1>;
+export const Hello = (props: HelloProps, el:any) => (
+<>
+	{ SearchPanel }
+	<h1>Hello from {props.compiler} and {props.framework}!</h1>
+</>
+)
+;
 
 ReactDOM.render(
   <Hello compiler="TypeScript" framework="React" />,

@@ -1,4 +1,6 @@
 /*****************************__COMMON_LOADERS__*****************************************/
+/***___BABEL_LOADER___ ***/
+const BABEL = { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" };
 /***___TSX_LOADER___***/
 const TSX = { test: /\.tsx?$/, loader: "awesome-typescript-loader" };
 /***___IMAGES_LOADER___***/
@@ -23,14 +25,15 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/index.tsx'
+    //app: './src/index.tsx'
+    app: './src/index.js'
   },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, '../dist')
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js', '.json' ],
+    extensions: [ '.jsx', '.js', '.json' ],
     alias: {
       Utilities: path.resolve(__dirname, 'src/utilities/'),
       Templates: path.resolve(__dirname, 'src/templates/'),
@@ -39,7 +42,7 @@ module.exports = {
     },
   },
   module: {
-    rules: [ TSX, IMAGES, CSS, WORKER_LOADER]
+    rules: [ BABEL, IMAGES, CSS, WORKER_LOADER]
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
