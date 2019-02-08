@@ -2,60 +2,33 @@ import React from "react";
 // import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
-// import SearchResultItem from './SearchResultItem';
-
-//import './App.css';
-let InputStyled = styled.input`
-  size: 15; 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: lightblue;
+`;
+const InputStyled = styled.input`
+  size: 15;
   text-align: center;
+  border-radius: 7px;
+  border: 3px solid lightgray;
   margin: 0 .25rem;
-  font-size: 3vw;
-  /* min-width: 125px; */
-  border-radius: 3px;
-  border: 2px solid palevioletred;
-  transition: border-color .5s ease-out;
   padding: 0.25em 1em;
-  @media screen and (max-width: 576px){
-    width: auto;
-    height: 19px;
-    font-size: 7vw;
-  }
-  @media screen and (max-width: 1200px){
-    width: auto;
-    height: 40px;
+  transition: border-color 0.5s ease-out;
+  &:focus {
+    border-color: lightskyblue;
   }
 `;
 const ButtonStyled = styled.input`
-  background: transparent;
-  border-radius: 3px;
-  border: 2px solid palevioletred;
-  color: palevioletred;
-  margin: 0 1em;
+  border-radius: 7px;
+  border: 3px solid gray;
+  color: gray;
+  /*margin: 0 1em; */
   padding: 0.25em 1em;
-  @media screen and (max-width: 576px){
-    font-size: 12px;
-    width: 50px;
-    height: 19px;
-    padding: 10px;
-    margin: 10px;
-  }
-  @media screen and (max-width: 768px){
-    font-size: 12px;
-    width: 50px;
-    height: 19px;
-    padding: 10px;
-  }
-  @media screen and (max-width: 992px){
-    font-size: 12px;
-    width: 50px;
-    height: 19px;
-    padding: 10px;
-  }
-  @media screen and (max-width: 1200px){
-    width: 300px;
-    height: 40px;
-    font-size: 22px;
-  }
 `;
 class SearchForm extends React.Component {
   constructor(props) {
@@ -68,10 +41,18 @@ class SearchForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     // this.handleSuccess = this.handleSuccess.bind(this);
     this.validateIPv4Address = this.validateIPv4Address.bind(this);
-    this.getIPv4Info = this.getIPv4Info.bind(this);    
+    this.getIPv4Info = this.getIPv4Info.bind(this);
   }
-
+  setPreviosSearchValue(){
+    if ( localStorage.getItem('previosSearchValue') ) {
+      this.setState( { 'value': localStorage.getItem('previosSearchValue') } )
+    }
+  }
   handleChange(event) {
+
+    event.preventDefault();
+    event.stopPropagation();
+
     localStorage.setItem('previosSearchValue', event.target.value);
     this.setState({value: event.target.value});
     console.log( localStorage.getItem('previosSearchValue') )
@@ -90,6 +71,12 @@ class SearchForm extends React.Component {
       //alert('Notttt' + this.state.value);
     }
   }
+  validateIPv4Address(ipAddress) {  
+    if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipAddress)) {  
+      return (true); 
+    }  
+    return (false);
+  }
   getIPv4Info(ipAddress){
     fetch(`https://api.2ip.ua/provider.json?ip=${ipAddress}`)
     .then(res => res.json())
@@ -99,33 +86,19 @@ class SearchForm extends React.Component {
     })
     .catch( console.log('Fetch error...') )
   }
-  validateIPv4Address(ipAddress) {  
-    if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipAddress)) {  
-      return (true); 
-    }  
-    return (false);
-  }
-  setPreviosSearchValue(){
-    if ( localStorage.getItem('previosSearchValue') ) {
-      this.setState( { 'value': localStorage.getItem('previosSearchValue') } )
-    }
-  }
   componentDidMount() { 
     this.setPreviosSearchValue();
   }
-  componentWillUnmount() {
-    // localStorage.setItem('previosSearchValue', this.state.ipAddressItems);
-  }
-
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+     <Wrapper>
+        <form onSubmit={this.handleSubmit}>
         <label>
-          Enter IP adress:
+          Enter IP:
           <InputStyled 
             type="text" 
-            value={this.state.value} 
             onChange={this.handleChange} 
+            value={this.state.value}
             maxLength="15"
             minlength="15"
             required
@@ -133,6 +106,7 @@ class SearchForm extends React.Component {
         </label>
         <ButtonStyled type="submit" value="Search" />
       </form>
+     </Wrapper>
     );
   }
 }
