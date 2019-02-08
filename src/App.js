@@ -14,6 +14,8 @@ const StyledApp = styled.div`
 `;
 const StyledHeader = styled.header`
   position: fixed;
+  top: 0px;
+  left: 0px;
   width: 100%;
   height: 100px;
   margin: 0;
@@ -35,11 +37,17 @@ const StyledMain = styled.main`
 `;
 let IpStorage = {
   size: 0,
-  init: function(){
+  appStatePointer : null,
+  restore: function( that ){
     if ( localStorage.IpStorage === undefined ) {
       localStorage.IpStorage = JSON.stringify( this );
     } else {
-
+      let tempObj = JSON.parse( localStorage.IpStorage );
+      this.size = tempObj.size;
+      this.ipList = tempObj.ipList;
+      this.Items = tempObj.Items;
+      this.appStatePointer = that;
+      return this;
     }
   },
   isEmpty: function(){
@@ -51,7 +59,7 @@ let IpStorage = {
   addItem: function( objInfo ){
     if ( !this.hasIp( objInfo.ip ) ){
     	this.ipList.defineProperty( objInfo.ip, this.size );
-      this.items[ this.size ] = objInfo;
+      this.Items[ this.size ] = objInfo;
       this.size += 1;
     } else {
       console.log ( `${objInfo.ip} yet exist `)
@@ -59,26 +67,30 @@ let IpStorage = {
   },
   isEqual: function( objInfo ){
     if ( this.hasIp( objInfo.ip ) ) {
-      return _isEqual( this.items[ this.ipList[objInfo.ip] ], objInfo );
+      return _isEqual( this.Items[ this.ipList[objInfo.ip] ], objInfo );
     } else {
       console.log( `${objInfo.ip} does not exist` );
-    }    
+    }
   },
-  ipList:{ },
-  items: [ ]
+  save: function(){
+    this.appStatePointer = null;
+    localStorage.IpStorage = JSON.stringify( this );
+  },
+  ipList: { },
+  Items: [ ]
 }
-console.log( IpStorage.isEmpty() )
 
 class App extends Component {
   constructor(){
     super();
+    let that = this;
     this.state = {
-      ipStorage: null,
+      AppIpStorage: IpStorage.restore( that ),
       hasStorageResults: false,
       currentResult: null,
       error: false    
     }
-    IpStorage
+    
     this.handleSuccess = this.handleSuccess.bind(this);
     this.handleError = this.handleError.bind(this);
   }
@@ -96,15 +108,10 @@ class App extends Component {
     });
   }
   componentDidMount() {
-    if ( localStorage.Results ) {
-      this.setState({
-        storageResults: JSON.parse( localStorage.Results ),
-        hasStorageResults: true
-      });
-    } 
+    
   }
   componentWillUnmount(){
-    localStorage.setItem( 'previosResults', JSON.stringify(this.state.storageResults ) );    
+    this.state.IpStorage.save();
   }    
   render() {
     let result;
