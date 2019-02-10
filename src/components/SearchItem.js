@@ -1,36 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-let ResultStyled = styled.p`
+let ResultStyled = styled.div`
   margin: 0 .25rem;
-  min-width: 125px;
+  min-width: 275px;
   border-radius: 3px;
-  border: 2px solid palevioletred;
-  transition: border-color .5s ease-out;
-  margin: 0 1em;
+  border: 2px solid black;
+  margin: 1em;
   padding: 0.25em 1em;
 `;
-let ResultHeader = styled.span`
-  font-size: 16px; 
+let ResultHeader = styled.h2`
   margin: 0 .25rem;
-  min-width: 125px;
+  min-width: 225px;
   margin: 0 1em;
   padding: 0.25em 1em;
-  font-weight: bold;
 `;
 let ResultItem = styled.span`
   display: block;
   font-size: 16px; 
-  margin: 0 .25rem;
   min-width: 125px;
   border-radius: 3px;
   border: 2px solid palevioletred;
-  transition: border-color .5s ease-out;
   margin: 0 1em;
   padding: 0.25em 1em;
 `;
 
-class SearchResultItem extends Component {
+export default class SearchResultItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,4 +48,3 @@ class SearchResultItem extends Component {
     )
   }
 }
-export default SearchResultItem;

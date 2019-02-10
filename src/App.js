@@ -1,76 +1,76 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import {isEqual as _isEqual} from 'lodash';
+import { isEqual   as _isEqual } from 'lodash';
+
 import './css/App.css';
+
 import SearchPanel from './components/SearchPanel';
 import SearchItem from './components/SearchItem';
 import Error from './components/Error';
 import ErrorBoundary from './components/ErrorBoundary';
 
-const StyledApp = styled.div`
+const AppStyled = styled.div`
   width: 100%;
   height: 100vh;
   margin: 0;
   padding: 0;
   background-color: lavender;
 `;
-const StyledHeader = styled.header`
+const HeaderStyled = styled.header`
   position: fixed;
   top: 0px;
   left: 0px;
   width: 100%;
   height: 100px;
   margin: 0;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
-  /* Сверху | Справа | Снизу | Слева */
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);   
   padding: 0px;
   background-color: lavenderblush;
   border: 1px solid black;
   box-sizing: border-box;
   z-index: 10;
 `;
-const StyledMain = styled.main`
+const MainStyled = styled.main`
   position: relative;
   top: 110px;
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: lightgray;
+  background-color: lavender;
   box-sizing: border-box;
   z-index: 1;
 `;
 /**************____STORAGE_OBJECT____*******************************************************/
 let IpStorage = {
-  get size(){
-    return this.Items.length;
-  },
   init: function( ){
-    if ( localStorage.IpStorage === undefined ) {
-      localStorage.IpStorage = JSON.stringify( 
-        {
-          ipList: { },
-          Items: [ ],
-        }
-      );
-    } else {
+    if ( localStorage.IpStorage ) {
       let tempObj = JSON.parse( localStorage.IpStorage );
       this.ipList = tempObj.ipList;
       this.Items = tempObj.Items;
     }
   },
+  get size(){
+    return this.Items.length;
+  },
   get isEmpty(){
     return this.size  == 0;
   },
   hasIp: function( ipAddress ){
-  	return this.ipList[ipAddress] !== undefined;
+  	if ( this.ipList[ipAddress] === undefined ) {
+      return false;
+    };
+    return true;    
   },  
   addItem: function( objInfo ){
-    if ( !this.hasIp( objInfo.ip ) ){
-    	this.ipList[objInfo.ip] = this.size;
-      this.Items[ this.size ] = objInfo;
+    if ( this.hasIp(objInfo.ip) ) {
+      console.log ( `the address ${objInfo.ip} already exists` );
     } else {
-      console.log ( `${objInfo.ip} yet exist `)
+      this.ipList[objInfo.ip] = this.size;
+      this.Items.push( objInfo );
+      console.log('IP ', objInfo.ip, ' added' );
     }
+    console.log('Items: ', this.Items);
+    console.log('ipList ', this.ipList );
   },
   isEqual: function( objInfo ){
     if ( this.hasIp( objInfo.ip ) ) {
@@ -80,23 +80,20 @@ let IpStorage = {
     }
   },
   save: function(){
-    this.appStatePointer = null;
-    localStorage.IpStorage = JSON.stringify( 
-      {
+    localStorage.setItem( 'IpStorage', JSON.stringify({
         ipList: this.ipList,
-        Items: this.Items,
-      }
+         Items: this.Items,
+      })
     );
   },
   ipList: { },
   Items: [ ]
 }
 
-class App extends Component {
+export default class App extends React.Component {
   constructor(){
     super();
-    this.IpStorage = IpStorage;
-    this.IpStorage.init();
+    IpStorage.init();
     this.state = {
       Items: IpStorage.Items,
       currentItem: null,
@@ -104,40 +101,40 @@ class App extends Component {
       errorMsg: 'Not different...',
     }
     
-    //
     this.handleSuccess = this.handleSuccess.bind(this);
     this.handleError = this.handleError.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getIpInfo = this.getIpInfo.bind(this);
-    this.isValid = this.isValid.bind(this);
+    this.ipValid = this.ipValid.bind(this);
   }
 
-  handleSubmit( ipAddress ){
-    if ( this.isValid( ipAddress ) ) {
-        this.handleSuccess( ipAddress )
-    } else {
-      this.handleError(' Enter valid IP. ');
-    }    
-  }
   getIpInfo(ipAddress){
     fetch( `https://api.2ip.ua/provider.json?ip=${ipAddress}`)
-    .then( res => res.json() )
+    .then( res => res.json( ) )
     .then( item => {
-      this.IpStorage.addItem( item );
+      IpStorage.addItem( item );
       this.setState({ currentItem: item, error: false });
+      IpStorage.save( );
       console.table(item);
     })
     .catch( this.handleError( 'Fetch error...' ) )
   }
-  isValid(ipAddress) {  
+  ipValid(ipAddress) {  
     if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipAddress)) {  
       return (true); 
     }  
     return (false);
   }
+  handleSubmit( ipAddress ){
+    if ( this.ipValid( ipAddress ) ) {
+        this.handleSuccess( ipAddress )
+    } else {
+      this.handleError(' Enter a valid IP address... ');
+    }    
+  }
   handleSuccess( ipAddress ) {
-    if ( this.IpStorage.hasIp(ipAddress) ) {
-      this.setState({ currentItem: this.IpStorage.Items[ this.ipList[ipAddress] ] });
+    if ( IpStorage.hasIp(ipAddress) ) {
+      this.setState({ currentItem: IpStorage.Items[ IpStorage.ipList[ipAddress] ] });
     } else {
       this.getIpInfo( ipAddress );
     }
@@ -152,7 +149,7 @@ class App extends Component {
     
   }
   componentWillUnmount(){
-    this.IpStorage.save();
+   
   }    
   render() {
     let result;
@@ -166,29 +163,27 @@ class App extends Component {
       }
     }
     let previosResults;
-    if ( this.IpStorage.isEmpty ) {
+    if ( IpStorage.isEmpty ) {
       previosResults =  <h3>No previos results</h3>;
     } else {
-      previosResults = this.IpStorage.Items.map(
-        (item) => < SearchItem  result={item} />
+      previosResults = IpStorage.Items.map(
+        (item) => < SearchItem  result={item} key={item.ip} />
       );
     }
     return (
       <ErrorBoundary>
-      <StyledApp>
-        <StyledHeader>
+      <AppStyled>
+        <HeaderStyled>
           <SearchPanel handleSubmit={this.handleSubmit} />
-        </StyledHeader>
-        <StyledMain className="flex-center">
+        </HeaderStyled>
+        <MainStyled className="flex-center">
           <h2>Current result:</h2>
             {result}
           <h2>Previos Results:</h2>
             {previosResults}
-        </StyledMain>
-      </StyledApp>
+        </MainStyled>
+      </AppStyled>
       </ErrorBoundary>
     );
   }
 }
-
-export default App;

@@ -32,7 +32,7 @@ export default class SearchForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
+      value: '5.5.5.1',
     };
     this.setPreviosSearchValue = this.setPreviosSearchValue.bind(this);
     this.handleChange = this.handleChange.bind(this);
