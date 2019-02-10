@@ -86,7 +86,7 @@ let IpStorage = {
       })
     );
   },
-  ipList: { },
+  ipList: { }, // {"5.5.5.1":0}
   Items: [ ]
 }
 
