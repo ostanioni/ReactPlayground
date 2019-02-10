@@ -40,7 +40,7 @@ const MainStyled = styled.main`
   box-sizing: border-box;
   z-index: 1;
 `;
-/**************____STORAGE_OBJECT____*******************************************************/
+/**************____IP_STORAGE_OBJECT_FACADE____**************************/
 let IpStorage = {
   init: function( ){
     if ( localStorage.IpStorage ) {
