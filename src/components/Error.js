@@ -1,7 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 let ErrorStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: red;
   color: white;
   max-width: 400px;
@@ -9,19 +13,13 @@ let ErrorStyled = styled.div`
   padding: 70px 70px 70px 70px;
 `;
 
-class Error extends Component {
-  constructor(){
-    super();
-    this.state = {
-      isDone: false,
-      error: false
-    }
+export default class Error extends React.Component {
+  constructor(props){
+    super(props);
   }
   render() {
     return (
-      <ErrorStyled> ERROR! ENTER A VALID IP ADDRESS </ErrorStyled>
+      <ErrorStyled> <h2> {this.props.msg} </h2> </ErrorStyled>
     );
   }
 }
-
-export default Error;
