@@ -1,3 +1,6 @@
+/* eslint-disable */
+/*tslint:disabled*/
+
 import React from 'react';
 import styled from 'styled-components';
 import { isEqual   as _isEqual } from 'lodash';

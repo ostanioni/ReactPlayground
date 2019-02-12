@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 /*****************************__COMMON_LOADERS__*****************************************/
 /***___BABEL_LOADER___ ***/
 const BABEL = { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" };
