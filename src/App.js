@@ -44,7 +44,8 @@ const MainStyled = styled.main`
 
 @observer class App extends React.Component {
   constructor(){
-    super();  
+    super();
+    
   }
   showMsg = ( Msg='hello' ) => {
     alert( Msg )
