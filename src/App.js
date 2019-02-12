@@ -9,6 +9,11 @@ import './css/App.css';
 // import Error from './components/Error';
 import ErrorBoundary from './components/ErrorBoundary';
 import { observer } from "mobx-react";
+import { observable } from "mobx";
+import DevTools from 'mobx-react-devtools';
+// 
+import Prism from 'prismjs';
+//Prism.highlightAll();
 
 const AppStyled = styled.div`
   width: 100%;
@@ -47,6 +52,14 @@ const MainStyled = styled.main`
     super();
     
   }
+  @observable secondsPassed = 0
+
+  componentWillMount() {
+      setInterval(() => {
+          this.secondsPassed++
+      }, 1000)
+  }
+
   showMsg = ( Msg='hello' ) => {
     alert( Msg )
   }
@@ -56,6 +69,7 @@ const MainStyled = styled.main`
   }    
   render() {
     return (
+      <>
       <ErrorBoundary>
       <AppStyled>
         <HeaderStyled className="flex-center" onClick={this.showMsg}>
@@ -64,9 +78,23 @@ const MainStyled = styled.main`
         <MainStyled className="flex-center">
           <h2>MAIN</h2>
             MAIN CONTENT
+            <span>Seconds passed: { this.secondsPassed } </span>
+            <pre><code className="language-css">{`p { color: red }`}</code></pre>
+            <pre><code className="language-js  line-numbers" style={{fontSize: 22+'px'}}>{`var Prism = require('prismjs');
+var loadLanguages = require('prismjs/components/');
+loadLanguages(['haml']);
+// The code snippet you want to highlight, as a string
+var code = "= ['hi', 'there', 'reader!'].join \" \"";
+// Returns a highlighted HTML string
+var html = Prism.highlight(code, Prism.languages.haml, 'haml');`}</code></pre>
+<pre><code className="language-clike">{`int main(){
+printf("Hello World");
+}`}</code></pre>
         </MainStyled>
       </AppStyled>
       </ErrorBoundary>
+      <DevTools />
+      </>
     );
   }
 };
