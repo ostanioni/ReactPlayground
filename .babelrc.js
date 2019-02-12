@@ -7,9 +7,10 @@ const RUNTIME =  [
     "useESModules": false
   }
 ];
-const PROPOSAL = "@babel/plugin-proposal-class-properties";
+const DECORATOR = ["@babel/plugin-proposal-decorators", { "legacy": true }];
+const PROPOSAL = ["@babel/plugin-proposal-class-properties", { "loose" : true }];
 module.exports = {
   "presets": [ "@babel/preset-env", "@babel/preset-react", "minify" ],
-  "plugins": [ PROPOSAL, RUNTIME ],
+  "plugins": [ DECORATOR, PROPOSAL, RUNTIME ],
 };
  

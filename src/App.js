@@ -8,6 +8,7 @@ import './css/App.css';
 // import SearchItem from './components/SearchItem';
 // import Error from './components/Error';
 import ErrorBoundary from './components/ErrorBoundary';
+import { observer } from "mobx-react";
 
 const AppStyled = styled.div`
   width: 100%;
@@ -40,7 +41,8 @@ const MainStyled = styled.main`
   box-sizing: border-box;
   z-index: 1;
 `;
-export default class App extends React.Component {
+
+@observer class App extends React.Component {
   constructor(){
     super();  
   }
@@ -66,4 +68,5 @@ export default class App extends React.Component {
       </ErrorBoundary>
     );
   }
-}
+};
+export default App;
