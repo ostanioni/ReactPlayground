@@ -16,6 +16,10 @@ const FONT = { test: /\.(woff|woff2|eot|ttf|otf)$/, use: [ 'file-loader' ] };
 const XML = { test: /\.xml$/, use: [ 'xml-loader'  ] };
 /***__CSV_LOADER___***/
 const CSV = { test: /\.(csv|tsv)$/, use: [ 'csv-loader' ] };
+/***__MD_LOADER___***/
+const MD = { test: /\.md$/, use: [{ loader: "html-loader" }, { loader: "markdown-loader", options: { } }] };
+/***__HTML_LOADER___***/
+const HTML = { test: /\.(html)$/, use: { loader: 'html-loader', options: { attrs: [':data-src'] } }}; 
   
 const path = require('path');
 const webpack = require('webpack');
@@ -36,14 +40,13 @@ module.exports = {
   resolve: {
     extensions: [ '.jsx', '.js', '.json' ],
     alias: {
-      Utilities: path.resolve(__dirname, 'src/utilities/'),
-      Templates: path.resolve(__dirname, 'src/templates/'),
+      Pages: path.resolve(__dirname, 'src/pages/'),
+      Layouts: path.resolve(__dirname, 'src/layouts/'),
       Components: path.resolve(__dirname, 'src/components/'),
-      '@' : path.resolve(__dirname, 'src/')
     },
   },
   module: {
-    rules: [ BABEL, IMAGES, CSS, WORKER_LOADER]
+    rules: [ BABEL, IMAGES, CSS, WORKER_LOADER, MD, HTML]
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),

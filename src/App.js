@@ -18,6 +18,14 @@ import DevTools from 'mobx-react-devtools';
 import Prism from 'prismjs';
 //Prism.highlightAll();
 
+import BackToTop from './components/BackToTop';
+
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+import Album from './pages/Album';
+import Blog from './pages/Blog';
+
 const AppStyled = styled.div`
   width: 100%;
   height: 100vh;
@@ -75,6 +83,7 @@ const MainStyled = styled.main`
       <>
       <ErrorBoundary>
       <AppStyled>
+      <CssBaseline />
         <HeaderStyled className="flex-center" onClick={this.showMsg}>
          HEADER
         </HeaderStyled>
@@ -93,6 +102,12 @@ var html = Prism.highlight(code, Prism.languages.haml, 'haml');`}</code></pre>
 <pre><code className="language-clike">{`int main(){
 printf("Hello World");
 }`}</code></pre>
+          <BackToTop>BACKTOTOP</BackToTop>
+          <Button variant="contained" color="primary">
+      Hello World
+    </Button>
+    <Album />
+    <Blog />
         </MainStyled>
       </AppStyled>
       </ErrorBoundary>
