@@ -24,7 +24,7 @@ import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Album from './pages/Album';
-import Blog from './pages/Blog';
+// import Blog from './pages/Blog';
 
 const AppStyled = styled.div`
   width: 100%;
@@ -107,7 +107,6 @@ printf("Hello World");
       Hello World
     </Button>
     <Album />
-    <Blog />
         </MainStyled>
       </AppStyled>
       </ErrorBoundary>

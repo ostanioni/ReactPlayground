@@ -17,7 +17,10 @@ const XML = { test: /\.xml$/, use: [ 'xml-loader'  ] };
 /***__CSV_LOADER___***/
 const CSV = { test: /\.(csv|tsv)$/, use: [ 'csv-loader' ] };
 /***__MD_LOADER___***/
-const MD = { test: /\.md$/, use: [{ loader: "html-loader" }, { loader: "markdown-loader", options: { } }] };
+const MD = { test: /\.md$/, use: [{ loader: "raw-loader" }, { loader: "markdown-loader", options: { } }] };
+// const MD = { test: /\.md$/, use: [{ loader: "html-loader" }, { loader: "markdown-loader", options: { } }] };
+/***__RAW_LOADER___***/
+const RAW = { test: /\.txt$/i, use: 'raw-loader'};
 /***__HTML_LOADER___***/
 const HTML = { test: /\.(html)$/, use: { loader: 'html-loader', options: { attrs: [':data-src'] } }}; 
   
@@ -40,13 +43,13 @@ module.exports = {
   resolve: {
     extensions: [ '.jsx', '.js', '.json' ],
     alias: {
-      Pages: path.resolve(__dirname, 'src/pages/'),
-      Layouts: path.resolve(__dirname, 'src/layouts/'),
-      Components: path.resolve(__dirname, 'src/components/'),
+      pages: path.resolve(__dirname, 'src/pages/'),
+      layouts: path.resolve(__dirname, 'src/layouts/'),
+      components: path.resolve(__dirname, 'src/components/'),
     },
   },
   module: {
-    rules: [ BABEL, IMAGES, CSS, WORKER_LOADER, MD, HTML]
+    rules: [ BABEL, IMAGES, CSS, WORKER_LOADER, MD, HTML, RAW]
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),

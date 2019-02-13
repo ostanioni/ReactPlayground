@@ -18,8 +18,19 @@ const PRISM = [
       "css": true
   }
 ];
+const STYLED = [ 
+  "babel-plugin-styled-components", 
+  { 
+    "fileName": false,
+    "displayName": false,
+    "ssr": false,
+    "minify": false,
+    "pure": true,
+    "transpileTemplateLiterals": true
+  } 
+];
 module.exports = {
-  "presets": [ "@babel/preset-env", "@babel/preset-react", "minify" ],
-  "plugins": [ DECORATOR, PROPOSAL, RUNTIME, PRISM ],
+  "presets": [ "@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript", "minify" ],
+  "plugins": [ DECORATOR, PROPOSAL, RUNTIME, PRISM, STYLED ],
 };
  
