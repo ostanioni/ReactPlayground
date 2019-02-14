@@ -3,12 +3,14 @@ import {observer} from "mobx-react";
 import {observable} from "mobx";
 import styled, { ThemeProvider, createGlobalStyle, css } from 'styled-components';
 import AppBar from './components/AppBar';
+import Button from './components/Button';
 
 
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Roboto', sans-serif;
     color: ${props => (props.whiteColor ? 'white' : 'black')};
+    background-color: black;
   }
 `;
 const complexMixin = css`
@@ -71,6 +73,7 @@ class App extends React.Component {
           <button onClick={this.changeTheme}>PRESS</button>
           HELLO  <span>&#xf114; &#xf039; &#x2605; &#x2605; &#x2605; &#x2606; &#x2606;</span>
           <img src="img/theme-light-dark.svg" width="100px"/>
+          <Button />
         </Container>
         <img src="img/theme-light-dark.svg" />
         </>
