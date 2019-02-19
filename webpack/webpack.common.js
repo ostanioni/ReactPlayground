@@ -22,7 +22,8 @@ const MD = { test: /\.md$/, use: [{ loader: "raw-loader" }, { loader: "markdown-
 /***__RAW_LOADER___***/
 const RAW = { test: /\.txt$/i, use: 'raw-loader'};
 /***__HTML_LOADER___***/
-const HTML = { test: /\.(html)$/, use: { loader: 'html-loader', options: { attrs: [':data-src'] } }}; 
+const HTML = { test: /\.(html)$/, use: { loader: 'html-loader', options: { attrs: [':data-src'] } }};
+const ESLINT = { test: /\.(js|mjs|jsx)$/, enforce: 'pre', use: [ { options: { formatter: require.resolve('react-dev-utils/eslintFormatter'), eslintPath: require.resolve('eslint'), }, loader: require.resolve('eslint-loader'), }, ] }; //, include: paths.appSrc };
   
 const path = require('path');
 const webpack = require('webpack');
@@ -49,7 +50,7 @@ module.exports = {
     },
   },
   module: {
-    rules: [ BABEL, IMAGES, CSS, WORKER_LOADER, MD, HTML, RAW]
+    rules: [ BABEL, IMAGES, CSS, WORKER_LOADER, MD, HTML, RAW, ESLINT]
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),

@@ -1,6 +1,7 @@
 // import AppBar from '@material-ui/core/AppBar';
 import React from 'react';
-import styled, { ThemeProvider, createGlobalStyle, css } from 'styled-components';
+import styled from 'styled-components';
+// import styled, { ThemeProvider, createGlobalStyle, css } from 'styled-components';
 
 const AppHeaderStyled = styled.header`
   position: fixed;

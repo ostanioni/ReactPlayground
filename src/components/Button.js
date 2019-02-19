@@ -1,5 +1,6 @@
 import React from 'react';
-import styled, { ThemeProvider, createGlobalStyle, css } from 'styled-components';
+import styled, { ThemeProvider, createGlobalStyle, css, keyframes } from 'styled-components';
+import { Divider } from '@material-ui/core';
 
 const ButtonStyled = styled.button`
   width: 200px;
@@ -20,14 +21,46 @@ const ButtonStyled = styled.button`
   ${props => props.Warning && 'color: lawngreen' }
   */
 `;
+const animate = keyframes`
+  from {
+    width: 0;
+    height: 0;
+    opacity: .5;
+  }
+  to {
+    width: 400px;
+    height: 400px;
+    opacity: 0;
+  }
+`;
+const SpanStyled = styled.div`
+  position: relative;
+  left: 100px;
+  top: -30px;
+  background-color: white;
+  transform: translate(-50%,-50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  animation: ${animate} .7s linear infinite;
+`;
+const Wrapper = styled.div`
+  display: inline-block;
+  overflow: hidden;
+  width: 200px;
+  height: 60px;
+  cursor: pointer;
+`;
 
 class Button extends React.Component {
   render() {
     return (
+      <Wrapper>
         <ButtonStyled Info>
-          <span></span>
           HEADER
         </ButtonStyled>
+        <SpanStyled />
+      </Wrapper>
     )
   }
 };
