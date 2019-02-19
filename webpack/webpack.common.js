@@ -32,34 +32,46 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+/** CONTEXT */
+const CONTEXT = path.resolve(__dirname, '../');
+
+// the path(s) that should be cleaned
+let pathsToClean = [
+  'dist',
+];
+// the clean options to use
+let cleanOptions = {
+  root:     CONTEXT,
+  verbose:  true,
+  dry:      false
+};
+
 module.exports = {
-  context: path.resolve(__dirname, '../'),
+  context: CONTEXT,
   entry: {
-    //app: './src/index.tsx'
     app: './src/index.js'
   },
   output: {
     filename: '[hash].js',
-    path: path.resolve(__dirname, '../dist')
+    path: `${CONTEXT}/dist`
   },
   resolve: {
     extensions: [ '.jsx', '.js', '.json' ],
     alias: {
-      pages: path.resolve(__dirname, '../src/pages/'),
-      layouts: path.resolve(__dirname, '../src/layouts/'),
-      components: path.resolve(__dirname, '../src/components/'),
-      css: path.resolve(__dirname, '../src/public/css'),
-      imgs: path.resolve(__dirname, '../src/public/imgs'),
+      pages: `${CONTEXT}/src/pages`,
+      layouts: `${CONTEXT}/src/layouts`,
+      components: `${CONTEXT}/src/components`,
+      css: `${CONTEXT}/src/public/css`,
+      imgs: `${CONTEXT}/src/public/imgs`,
     },
   },
   module: {
     rules: [ BABEL, IMAGES, CSS, WORKER_LOADER, MD, RAW, ESLINT]
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(pathsToClean, cleanOptions),
     new HtmlWebpackPlugin({
-      template: 'src/public/index.html',
-      minify: true,
+      template: `${CONTEXT}/src/public/index.html`,
     }),
     new CopyWebpackPlugin(
       [
@@ -69,7 +81,7 @@ module.exports = {
           // toType: 'dir',
           ignore: [ '*.js' ],
           force: true,
-          context: path.resolve(__dirname, '../' )
+          context: `${CONTEXT}`
         },
         { 
           from: 'src/public/imgs/*',
@@ -77,7 +89,7 @@ module.exports = {
           // toType: 'dir',
           ignore: [ '*.js' ],
           force: true,
-          context: path.resolve(__dirname, '../' )
+          context: `${CONTEXT}`
         },
       ], 
       { debug: 'info' }
