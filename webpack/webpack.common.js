@@ -3,7 +3,9 @@
 /***___BABEL_LOADER___ ***/
 const BABEL = { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" };
 /***___TSX_LOADER___***/
-const TSX = { test: /\.tsx?$/, loader: "awesome-typescript-loader" };
+const TSX = { test: /\.tsx$/, loader: "awesome-typescript-loader" };
+/***___TS_LOADER___***/
+const TS = { test: /\.ts$/, loader: "ts-loader" };
 /***___IMAGES_LOADER___***/
 const IMAGES = { test: /\.(png|svg|jpg|gif)$/,  use: [ { loader: 'file-loader', options: { name(file) { if (process.env.NODE_ENV === 'development') { return '[path][name].[ext]'; } return '[hash].[ext]';},},},]};
 /***___WORKER_LOADER___***/
@@ -66,7 +68,7 @@ module.exports = {
     },
   },
   module: {
-    rules: [ BABEL, IMAGES, CSS, WORKER_LOADER, MD, RAW, ESLINT]
+    rules: [ BABEL, TS, TSX, IMAGES, CSS, WORKER_LOADER, MD, RAW, ESLINT]
   },
   plugins: [
     new CleanWebpackPlugin(pathsToClean, cleanOptions),
