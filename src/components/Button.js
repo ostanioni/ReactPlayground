@@ -14,7 +14,7 @@ const ButtonStyled = styled.button`
   font-weight: bold;
   background-color: ${props => props.theme.bg};
   ${props => props.Alert && 'color: rgb(33,139,198);border: 2px solid rgb(33,139,198);' }
-  ${props => props.Info && 'color: lawngreen;border: 2px solid lawngreen;'}
+  ${props => props.Info && 'color: #61dafb;border: 2px solid #61dafb;'}
   ${props => props.Warning && 'color: rgb(255,0,80);border: 2px solid rgb(255,0,80);' }
 /*
   ${props => props.Alert && 'color: lawngreen' }

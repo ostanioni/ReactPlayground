@@ -3,8 +3,8 @@ import {observer} from "mobx-react";
 import {observable} from "mobx";
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 // import styled, { ThemeProvider, createGlobalStyle, css } from 'styled-components';
-import AppBar from './components/AppBar';
-import Button from './components/Button';
+import AppBar from 'Components/AppBar';
+import Button from 'Components/Button';
 
 
 const GlobalStyle = createGlobalStyle`

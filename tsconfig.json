@@ -8,7 +8,8 @@
     "preserveConstEnums": true,
     "module": "commonjs",
     "target": "es5",
-    "jsx": "react"
+    "jsx": "react",
+    "experimentalDecorators": true
   },
   "include": [
     "./src/**/*"

@@ -45,9 +45,9 @@ module.exports = {
   resolve: {
     extensions: [ '.jsx', '.js', '.json' ],
     alias: {
-      pages: path.resolve(__dirname, 'src/pages/'),
-      layouts: path.resolve(__dirname, 'src/layouts/'),
-      components: path.resolve(__dirname, 'src/components/'),
+      Pages: path.resolve(__dirname, '../src/pages/'),
+      Layouts: path.resolve(__dirname, '../src/layouts/'),
+      Components: path.resolve(__dirname, '../src/components/'),
     },
   },
   module: {
