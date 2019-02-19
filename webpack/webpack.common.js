@@ -22,7 +22,8 @@ const MD = { test: /\.md$/, use: [{ loader: "raw-loader" }, { loader: "markdown-
 /***__RAW_LOADER___***/
 const RAW = { test: /\.txt$/i, use: 'raw-loader'};
 /***__HTML_LOADER___***/
-const HTML = { test: /\.(html)$/, use: { loader: 'html-loader', options: { attrs: [':data-src'] } }};
+// const HTML = { test: /\.(html)$/, use: { loader: 'html-loader', options: { attrs: [':data-src'] } }};
+/***__ESLINT_LOADER___***/
 const ESLINT = { test: /\.(js|mjs|jsx)$/, enforce: 'pre', use: [ { options: { formatter: require.resolve('react-dev-utils/eslintFormatter'), eslintPath: require.resolve('eslint'), }, loader: require.resolve('eslint-loader'), }, ] }; //, include: paths.appSrc };
   
 const path = require('path');
@@ -38,7 +39,7 @@ module.exports = {
     app: './src/index.js'
   },
   output: {
-    filename: 'bundle.js',
+    filename: '[hash].js',
     path: path.resolve(__dirname, '../dist')
   },
   resolve: {
@@ -50,18 +51,18 @@ module.exports = {
     },
   },
   module: {
-    rules: [ BABEL, IMAGES, CSS, WORKER_LOADER, MD, HTML, RAW, ESLINT]
+    rules: [ BABEL, IMAGES, CSS, WORKER_LOADER, MD, RAW, ESLINT]
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      template: './index.html',
+      template: 'src/public/index.html',
       minify: true,
     }),
     new CopyWebpackPlugin(
       [
         { 
-          from: 'src/css/*',
+          from: 'src/public/css/*',
           to: '../dist/css/[name].[ext]',
           // toType: 'dir',
           ignore: [ '*.js' ],
@@ -69,7 +70,7 @@ module.exports = {
           context: path.resolve(__dirname, '../' )
         },
         { 
-          from: 'src/img/*',
+          from: 'src/public/img/*',
           to: '../dist/img/[name].[ext]',
           // toType: 'dir',
           ignore: [ '*.js' ],

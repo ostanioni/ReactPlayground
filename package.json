@@ -1,8 +1,8 @@
 {
-  "name": "ts_wp_playground",
+  "name": "react_js_playground",
   "version": "0.0.1",
-  "description": "TypeScript_3_and_WebPack_4_playground",
-  "main": "main.ts",
+  "description": "React 16.8, Mobx, Styled-components",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack/webpack.prod.js",
@@ -88,5 +88,12 @@
   ],
   "eslintConfig": {
     "extends": "react-app"
-  }
+  },
+  "eslintIgnore": [
+    "/dist",
+    "/node_modules",
+    "/webpack",
+    "/src/css",
+    "/src/img"
+  ]
 }

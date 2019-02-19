@@ -1,7 +1,8 @@
 import React from 'react';
 import {observer} from "mobx-react";
 import {observable} from "mobx";
-import styled, { ThemeProvider, createGlobalStyle, css } from 'styled-components';
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+// import styled, { ThemeProvider, createGlobalStyle, css } from 'styled-components';
 import AppBar from './components/AppBar';
 import Button from './components/Button';
 
@@ -13,15 +14,16 @@ const GlobalStyle = createGlobalStyle`
     background-color: black;
   }
 `;
+/*
 const complexMixin = css`
   background-color: ${ props => (props.light ? 'black' : 'white' ) };
              color: ${ props => (props.whiteColor ? 'white' : 'black')};
 `;
-
+// This is an example of a nested interpolation
 const StyledComp = styled.div`
-  /* This is an example of a nested interpolation */
   ${props => (props.complex ? complexMixin : 'color: blue;')};
 `;
+*/
 
 const Container = styled.div`
   position: relative;
@@ -72,10 +74,10 @@ class App extends React.Component {
         <Container>
           <button onClick={this.changeTheme}>PRESS</button>
           HELLO  <span>&#xf114; &#xf039; &#x2605; &#x2605; &#x2605; &#x2606; &#x2606;</span>
-          <img src="img/theme-light-dark.svg" width="100px"/>
+          <img src="img/theme-light-dark.svg" alt="" width="100px" />
           <Button />
         </Container>
-        <img src="img/theme-light-dark.svg" />
+        <img src="img/theme-light-dark.svg" alt="" />
         </>
       </ThemeProvider>
     )

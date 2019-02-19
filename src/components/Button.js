@@ -1,6 +1,7 @@
 import React from 'react';
-import styled, { ThemeProvider, createGlobalStyle, css, keyframes } from 'styled-components';
-import { Divider } from '@material-ui/core';
+import styled, { keyframes } from 'styled-components';
+// import styled, { ThemeProvider, createGlobalStyle, css, keyframes } from 'styled-components';
+// import { Divider } from '@material-ui/core';
 
 const ButtonStyled = styled.button`
   width: 200px;
