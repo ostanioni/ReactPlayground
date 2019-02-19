@@ -2,6 +2,8 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 // import styled, { ThemeProvider, createGlobalStyle, css, keyframes } from 'styled-components';
 // import { Divider } from '@material-ui/core';
+import {observer} from "mobx-react";
+import {observable} from "mobx";
 
 const ButtonStyled = styled.button`
   width: 200px;
@@ -26,7 +28,7 @@ const animate = keyframes`
   from {
     width: 0;
     height: 0;
-    opacity: .5;
+    opacity: .3;
   }
   to {
     width: 400px;
@@ -43,7 +45,7 @@ const SpanStyled = styled.div`
   width: 0;
   height: 0;
   border-radius: 50%;
-  animation: ${animate} .7s linear infinite;
+  animation: ${animate} .7s linear 1;
 `;
 const Wrapper = styled.div`
   display: inline-block;
@@ -52,15 +54,22 @@ const Wrapper = styled.div`
   height: 60px;
   cursor: pointer;
 `;
-
+@observer
 class Button extends React.Component {
+  @observable showWave = false;
+  show = () => {
+    this.showWave = !this.showWave;
+  }
   render() {
     return (
-      <Wrapper>
-        <ButtonStyled Info>
+      <Wrapper onClick={this.show}>
+        <ButtonStyled  Info>
           HEADER
         </ButtonStyled>
-        <SpanStyled />
+        {
+          this.showWave ? <SpanStyled /> : null
+        }
+        
       </Wrapper>
     )
   }

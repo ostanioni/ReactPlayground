@@ -45,9 +45,11 @@ module.exports = {
   resolve: {
     extensions: [ '.jsx', '.js', '.json' ],
     alias: {
-      Pages: path.resolve(__dirname, '../src/pages/'),
-      Layouts: path.resolve(__dirname, '../src/layouts/'),
-      Components: path.resolve(__dirname, '../src/components/'),
+      pages: path.resolve(__dirname, '../src/pages/'),
+      layouts: path.resolve(__dirname, '../src/layouts/'),
+      components: path.resolve(__dirname, '../src/components/'),
+      css: path.resolve(__dirname, '../src/public/css'),
+      imgs: path.resolve(__dirname, '../src/public/imgs'),
     },
   },
   module: {
@@ -70,8 +72,8 @@ module.exports = {
           context: path.resolve(__dirname, '../' )
         },
         { 
-          from: 'src/public/img/*',
-          to: '../dist/img/[name].[ext]',
+          from: 'src/public/imgs/*',
+          to: '../dist/imgs/[name].[ext]',
           // toType: 'dir',
           ignore: [ '*.js' ],
           force: true,

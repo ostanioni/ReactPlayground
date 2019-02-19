@@ -3,8 +3,10 @@ import {observer} from "mobx-react";
 import {observable} from "mobx";
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 // import styled, { ThemeProvider, createGlobalStyle, css } from 'styled-components';
-import AppBar from 'Components/AppBar';
-import Button from 'Components/Button';
+import AppBar from 'components/AppBar';
+import Button from 'components/Button';
+import Layout from 'layouts/Layout';
+import './public/css/App.css';
 
 
 const GlobalStyle = createGlobalStyle`
@@ -72,12 +74,13 @@ class App extends React.Component {
       <GlobalStyle />
       <AppBar />
         <Container>
+          <Layout className=""></Layout>
           <button onClick={this.changeTheme}>PRESS</button>
           HELLO  <span>&#xf114; &#xf039; &#x2605; &#x2605; &#x2605; &#x2606; &#x2606;</span>
-          <img src="img/theme-light-dark.svg" alt="" width="100px" />
+          <img src="imgs/theme-light-dark.svg" alt="" width="100px" />
           <Button />
         </Container>
-        <img src="img/theme-light-dark.svg" alt="" />
+        <img src="imgs/theme-light-dark.svg" alt="" />
         </>
       </ThemeProvider>
     )
