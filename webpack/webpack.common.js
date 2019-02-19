@@ -60,11 +60,11 @@ module.exports = {
   resolve: {
     extensions: [ '.jsx', '.js', '.json' ],
     alias: {
-      pages: `${CONTEXT}/src/pages`,
-      layouts: `${CONTEXT}/src/layouts`,
+      pages:      `${CONTEXT}/src/pages`,
+      layouts:    `${CONTEXT}/src/layouts`,
       components: `${CONTEXT}/src/components`,
-      css: `${CONTEXT}/src/public/css`,
-      imgs: `${CONTEXT}/src/public/imgs`,
+      css:        `${CONTEXT}/src/public/css`,
+      imgs:       `${CONTEXT}/src/public/imgs`,
     },
   },
   module: {
