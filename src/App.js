@@ -75,6 +75,7 @@ class App extends React.Component {
       <GlobalStyle />
       <AppBar />
         <Container>
+        <BasicExample />
           <Layout className=""></Layout>
           <button onClick={this.changeTheme}>PRESS</button>
           HELLO  <span>&#xf114; &#xf039; &#x2605; &#x2605; &#x2605; &#x2606; &#x2606;</span>
@@ -82,7 +83,6 @@ class App extends React.Component {
           <Button />
         </Container>
         <img src="imgs/theme-light-dark.svg" alt="" />
-        <BasicExample />
         </>
       </ThemeProvider>
     )
