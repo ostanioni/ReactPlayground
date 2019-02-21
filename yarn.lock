@@ -2230,7 +2230,7 @@ commander@2.17.x, commander@~2.17.1:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
   integrity sha512-wPMUt6FnH2yzG95SA6mzjQOEKUU3aLaDEmzs1ti+1E9h+CsrZghRlqEM/EJ4KscsQVG8uNN4uVreUeT8+drlgg==
 
-commander@^2.11.0:
+commander@^2.11.0, commander@^2.16.0:
   version "2.19.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
   integrity sha512-6tvAOO+D6OENvRAh524Dh9jcfKTYDQAqvqezbCW82xj5X0pSrcpxtvRKHLG0yBY6SD7PSDrJaj+0AiOcKVd1Xg==
@@ -5079,6 +5079,13 @@ jsx-ast-utils@^2.0.1:
   dependencies:
     array-includes "^3.0.3"
 
+katex@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/katex/-/katex-0.10.0.tgz#da562e5d0d5cc3aa602e27af8a9b8710bfbce765"
+  integrity sha512-/WRvx+L1eVBrLwX7QzKU1dQuaGnE7E8hDvx3VWfZh9HbMiCfsKWJNnYZ0S8ZMDAfAyDSofdyXIrH/hujF1fYXg==
+  dependencies:
+    commander "^2.16.0"
+
 katex@^0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/katex/-/katex-0.9.0.tgz#26a7d082c21d53725422d2d71da9b2d8455fbd4a"
@@ -7366,10 +7373,10 @@ react-is@^16.6.0, react-is@^16.6.3, react-is@^16.7.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.2.tgz#09891d324cad1cb0c1f2d91f70a71a4bee34df0f"
   integrity sha512-D+NxhSR2HUCjYky1q1DwpNUD44cDpUXzSmmFyC3ug1bClcU/iDNy0YNn1iwme28fn+NFhpA13IndOd42CrFb+Q==
 
-react-latex@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-latex/-/react-latex-1.2.0.tgz#e6468657caf71fbed56d7b87cc34174454e730d7"
-  integrity sha512-Bv+YT2eiudw8okEaxs7/6q3RUqyUbKbYOy22KHj7N0BFHIagkVj4NGtDs5pUh8MU9x4M0CY2kc0VFXsYlvrWRQ==
+react-katex@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-katex/-/react-katex-2.0.2.tgz#0cb9559a4f30cb18f808006922b116c06e8b0ae9"
+  integrity sha512-mk1ezfUF4mBIstjvpfELf9g1rWF1Y1+idXMiOvkFvCLi0JFZDCQdui59VqQcI2ynOpb0jj52TM4kyBjKG+qEBg==
   dependencies:
     katex "^0.9.0"
 

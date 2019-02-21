@@ -8,6 +8,7 @@ import Button from 'components/Button';
 import Layout from 'layouts/Layout';
 import './public/css/App.css';
 import BasicExample from 'components/BasicExample';
+import Table from 'components/Table'
 
 
 const GlobalStyle = createGlobalStyle`
@@ -75,6 +76,7 @@ class App extends React.Component {
       <GlobalStyle />
       <AppBar />
         <Container>
+          <Table />
         <BasicExample />
           <Layout className=""></Layout>
           <button onClick={this.changeTheme}>PRESS</button>

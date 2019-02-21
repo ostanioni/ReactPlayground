@@ -68,7 +68,7 @@ module.exports = {
     },
   },
   module: {
-    rules: [ BABEL, TS, TSX, IMAGES, CSS, WORKER_LOADER, MD, RAW, ESLINT]
+    rules: [ BABEL, FONT, TS, TSX, IMAGES, CSS, WORKER_LOADER, MD, RAW, ESLINT]
   },
   plugins: [
     new CleanWebpackPlugin(pathsToClean, cleanOptions),
