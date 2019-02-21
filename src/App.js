@@ -7,6 +7,7 @@ import AppBar from 'components/AppBar';
 import Button from 'components/Button';
 import Layout from 'layouts/Layout';
 import './public/css/App.css';
+import BasicExample from 'components/BasicExample';
 
 
 const GlobalStyle = createGlobalStyle`
@@ -81,6 +82,7 @@ class App extends React.Component {
           <Button />
         </Container>
         <img src="imgs/theme-light-dark.svg" alt="" />
+        <BasicExample />
         </>
       </ThemeProvider>
     )
