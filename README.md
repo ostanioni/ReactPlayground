@@ -1,4 +1,11 @@
-# This project was created for example ( JS, TS, React, PostCSS, Styled-components )
+# React 16.8 playground
+
++ React 16.8
++ React-router 4.3
++ Styled-components 4.1
++ MobX-React 5.4
++ MobX 5.9
++ ...
 
 # Available Scripts
 ## Installation
