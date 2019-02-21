@@ -33,4 +33,4 @@ Your app is ready to be deployed!
 
 ## Project serve from  `./dist` folder after 'build'
 ### `yarn serve`
-Serve production version application 
+Serve production version of the application 
