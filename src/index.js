@@ -1,15 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
 import App from './App';
-import { BrowserRouter as Router } from "react-router-dom"
 
-const AppFracsh = () => { return (
-  <Router>
-    <App />
-  </Router>
-)}
+import { Provider } from "mobx-react"
+
+import settingsStore from 'stores/settingsStore'
+import themesStore from 'stores/themesStore'
+
+class Main extends React.Component {
+    render() {
+      return (
+        <Provider settingsStore={settingsStore} themesStore={themesStore}>
+          <App/>
+        </Provider>
+      )
+    }
+}
 
 
-ReactDOM.render( <AppFracsh/>, document.getElementById('example'));
-
+ReactDOM.render( <Main/>, document.getElementById('example'));

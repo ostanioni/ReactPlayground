@@ -1,8 +1,8 @@
 import React from 'react';
-import {observer} from "mobx-react";
-import {observable} from "mobx";
+import {observer, inject} from "mobx-react";
+
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
-// import styled, { ThemeProvider, createGlobalStyle, css } from 'styled-components';
+
 import AppBar from 'components/AppBar';
 import Button from 'components/Button';
 import Layout from 'layouts/Layout';
@@ -11,8 +11,6 @@ import './public/css/App.css';
 import { BrowserRouter as Router } from "react-router-dom"
 import Table from 'tables/Table'
 import NavMenu from 'components/NavMenu'
-
-import themes from 'stores/themes'
 
 
 const GlobalStyle = createGlobalStyle`
@@ -49,21 +47,22 @@ const Container = styled.div`
 `;
 
 
-
+@inject('settingsStore','themesStore')
 @observer
 class App extends React.Component {
-  @observable theme = 'dark';
   changeTheme = () => {
-    this.theme === 'dark'? this.theme = 'light': this.theme = 'dark';
+    this.props.settingsStore.setTheme('light')
+    //this.theme === 'dark'? this.theme = 'light': this.theme = 'dark';
+    console.log('CHANGED')
   }
   render() {
     return (
-      <ThemeProvider theme={themes[this.theme]}>
-      <>
-      <GlobalStyle />
-      <NavMenu />
-      <AppBar />
-        <Container>
+      <ThemeProvider theme={this.props.themesStore[this.props.settingsStore.theme]}>
+    <>
+      
+        <GlobalStyle />
+            <AppBar />
+          <Container>
           <Table />
           <Layout className=""></Layout>
           <button onClick={this.changeTheme}>PRESS</button>
@@ -72,8 +71,9 @@ class App extends React.Component {
           <Button />
         </Container>
         <img src="imgs/theme-light-dark.svg" alt="" />
-        </>
-      </ThemeProvider>
+      
+    </>
+    </ThemeProvider>
     )
   }
 };
