@@ -21,8 +21,10 @@ const TableStyled = styled.table.attrs({
 /* border: 1px solid blue; */
 border-collapse: collapse;
 margin: 1rem;
+font: normal 1rem Roboto;
 thead {
-  font: italic small-caps 1rem Arial, Helvetica, sans-serif;
+ /* font: italic small-caps 1rem Arial, Helvetica, sans-serif;*/
+ font-weight: bold;
   th {
     border: 0;
     border-bottom: 1px solid blue;
@@ -31,7 +33,7 @@ thead {
   }  
 }
 tbody {
-  font: normal 1rem Arial, Helvetica, sans-serif;
+  /*font: normal 1rem Arial, Helvetica, sans-serif;*/
   /* border: 1px solid blue; */
   td {
     /* border: 1px solid blue; */

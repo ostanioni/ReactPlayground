@@ -1,6 +1,7 @@
 /* eslint-disable */ 
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 /***___SCSS_SOURCE_MAP__ ***/
 const SCSS = { test: /\.scss$/, 
@@ -10,11 +11,20 @@ const SCSS = { test: /\.scss$/,
     { loader: "sass-loader", options: { sourceMap: false } }
   ]
 }
+/***___CSS_LOADER___***/
+const CSS = { test: /\.css$/, use: [ { loader: MiniCssExtractPlugin.loader,
+  options: {       
+        publicPath: '../dist'
+      }
+    },
+    "css-loader"
+  ]
+}
 
 module.exports = merge(common, {
   mode: 'production',
   module: {
-    rules: [ SCSS ]
+    rules: [ SCSS, CSS ]
   },
   optimization: {
     splitChunks: {
@@ -39,4 +49,12 @@ module.exports = merge(common, {
       }
     }
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: 'css/[name].[contenthash:8].css',
+      chunkFilename: 'css/[name].[contenthash:8].chunk.css',
+    }),
+  ]
 });

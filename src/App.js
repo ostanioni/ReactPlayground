@@ -7,11 +7,22 @@ import AppBar from 'components/AppBar';
 import Button from 'components/Button';
 import Layout from 'layouts/Layout';
 import './public/css/App.css';
-import BasicExample from 'components/BasicExample';
+// import BasicExample from 'components/BasicExample';
+import { BrowserRouter as Router } from "react-router-dom"
 import Table from 'tables/Table'
+import NavMenu from 'components/NavMenu'
+
+import themes from 'stores/themes'
 
 
 const GlobalStyle = createGlobalStyle`
+  html {
+    font-size: 3vw;
+    /*
+    @media (max-width: 700px){
+      font-size: 2vw;
+    } */
+  }
   body {
     font-family: 'Roboto', sans-serif;
     color: ${props => (props.whiteColor ? 'white' : 'black')};
@@ -37,47 +48,23 @@ const Container = styled.div`
   color: ${ props=>props.theme.text };
 `;
 
-const materialDark = {
-  "bg": "#303030", // rgb(48,48,48)
-  "wg": "#212121", // rgb(33,33,33)
-  "link": "#e10050", // rgb(255,0,80)
-  "text": "#fff", // rgb(255,255,255)
-  "subText": "#bebebe", // rgb(190,190,190)
-  "activeText": "#2188c6" // rgb(33,139,198)
-};
-const materialLight = {
-  "bg": "#fff", // rgb(48,48,48)
-  "wg": "#212121", // rgb(33,33,33)
-  "link": "#e10050", // rgb(255,0,80)
-  "text": "#000", // rgb(255,255,255)
-  "subText": "#bebebe", // rgb(190,190,190)
-  "activeText": "#2188c6" // rgb(33,139,198)
-};
+
 
 @observer
 class App extends React.Component {
-  @observable theme = materialDark;
-  dark = true;
+  @observable theme = 'dark';
   changeTheme = () => {
-    this.dark = !this.dark;
-    if ( this.dark ) {
-      this.theme = materialLight;
-      console.log( 'dark' )
-    } else {
-      this.theme = materialDark;
-      console.log( 'light' )
-    }
+    this.theme === 'dark'? this.theme = 'light': this.theme = 'dark';
   }
   render() {
     return (
-      
-      <ThemeProvider theme={this.theme}>
+      <ThemeProvider theme={themes[this.theme]}>
       <>
       <GlobalStyle />
+      <NavMenu />
       <AppBar />
         <Container>
           <Table />
-        <BasicExample />
           <Layout className=""></Layout>
           <button onClick={this.changeTheme}>PRESS</button>
           HELLO  <span>&#xf114; &#xf039; &#x2605; &#x2605; &#x2605; &#x2606; &#x2606;</span>

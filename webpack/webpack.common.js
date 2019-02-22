@@ -64,6 +64,7 @@ module.exports = {
       layouts:    `${CONTEXT}/src/layouts`,
       components: `${CONTEXT}/src/components`,
       tables:     `${CONTEXT}/src/tables`,
+      stores:     `${CONTEXT}/src/stores`,
       css:        `${CONTEXT}/src/public/css`,
       imgs:       `${CONTEXT}/src/public/imgs`,
     },
