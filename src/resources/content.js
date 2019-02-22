@@ -1,4 +1,4 @@
-let ContentsRus = [      
+const ContentsRus = [      
     {   "part": "Анализ",
         "chapters":[
             {   "caption":"Введение",

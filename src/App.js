@@ -64,6 +64,7 @@ class App extends React.Component {
         <GlobalStyle />
             <AppBar />
           <Container>
+          <NavMenu/>
           <Table />
           <Layout className=""></Layout>
           <button onClick={this.changeTheme}>PRESS</button>
@@ -71,8 +72,7 @@ class App extends React.Component {
           <img src="imgs/theme-light-dark.svg" alt="" width="100px" />
           <Button />
         </Container>
-        <img src="imgs/theme-light-dark.svg" alt="" />
-      
+        <img src="imgs/theme-light-dark.svg" alt="" />      
     </>
     </Router>
     </ThemeProvider>

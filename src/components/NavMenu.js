@@ -1,15 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 import { NavLink } from "react-router-dom"
-// import { withRouter } from 'react-router'
-/*
+
 const NavLinkStyled = styled(NavLink).attrs(
 )`
-  
+  color: rgb(62,166,255);
+  font-size: 30px;
+  text-decoration: none;
+  text-transform: uppercase;
 `
-*/
+
 const NavMenu = () => {  return (
-    <NavLink to="/about">About</NavLink>
+    <NavLinkStyled to="/about">About</NavLinkStyled>
 )}
 
 export default NavMenu

@@ -1,5 +1,5 @@
 
-let Part_1 = {
+const Part_1 = {
   1:{
     1: `
     #include <stdio.h>
@@ -52,7 +52,7 @@ let Part_1 = {
     `,
   }
 };
-let descriptionEn = {
+const descriptionEn = {
   1: `
     Quick-find solution to connectivity problem
     This program reads a sequence of pairs of nonnegative integers less than
@@ -89,7 +89,7 @@ let descriptionEn = {
     operations.
   `,
 }
-let descriptionRu = {
+const descriptionRu = {
   1: `
       Решение задачи связности методом быстрого поиска	
     Эта программа считывает последовательность пар неотрицательных целых чисел,

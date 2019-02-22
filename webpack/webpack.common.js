@@ -58,13 +58,14 @@ module.exports = {
     path: `${CONTEXT}/dist`
   },
   resolve: {
-    extensions: [ '.jsx', '.js', '.json' ],
+    extensions: [ '.jsx', '.js', '.json', "ts", "tsx" ],
     alias: {
       pages:      `${CONTEXT}/src/pages`,
       layouts:    `${CONTEXT}/src/layouts`,
       components: `${CONTEXT}/src/components`,
       tables:     `${CONTEXT}/src/tables`,
       stores:     `${CONTEXT}/src/stores`,
+      ts:         `${CONTEXT}/src/typescript`,
       css:        `${CONTEXT}/src/public/css`,
       imgs:       `${CONTEXT}/src/public/imgs`,
     },

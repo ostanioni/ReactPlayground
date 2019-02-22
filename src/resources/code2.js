@@ -1,4 +1,4 @@
-let code = {
+const code = {
   1: `
   int search(int a[], int v, int l, int r)
   { int i;
@@ -19,7 +19,7 @@ let code = {
   }
   `,
 }
-let descriptionEn = {
+const descriptionEn = {
   1: `
   Sequential search
   This function checks whether the number v is among a previously stored
@@ -34,7 +34,7 @@ let descriptionEn = {
   more efficient.
   `,
 }
-let descriptionRu = {
+const descriptionRu = {
   1: `
   Последовательный поиск	
   Данная функция проверяет, находится ли число v среди элементов массива

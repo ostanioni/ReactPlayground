@@ -22,6 +22,8 @@ const TableStyled = styled.table.attrs({
 border-collapse: collapse;
 margin: 1rem;
 font: normal 1rem Roboto;
+background-color: ${props=>props.theme.bgColor};
+color: ${props=>props.theme.textColor};
 thead {
  /* font: italic small-caps 1rem Arial, Helvetica, sans-serif;*/
  font-weight: bold;
