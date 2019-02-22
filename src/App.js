@@ -8,7 +8,7 @@ import Button from 'components/Button';
 import Layout from 'layouts/Layout';
 import './public/css/App.css';
 import BasicExample from 'components/BasicExample';
-import Table from 'components/Table'
+import Table from 'tables/Table'
 
 
 const GlobalStyle = createGlobalStyle`
