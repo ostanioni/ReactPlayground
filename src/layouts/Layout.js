@@ -49,7 +49,24 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-size: small;
 }
+h1 {
+  font-size: 150%;
+}
+h2 {
+  font-size: 130%;
+}
+h3 {
+  font-size: 120%;
+}
+ul li {
+  font-size: 100%;
+}
+.note {
+  font-size: 90%;
+}
+
 @media (max-width: 576px) {
   html {
     font-size: 12px;
