@@ -10,7 +10,7 @@ import './public/css/App.css';
 // import BasicExample from 'components/BasicExample';
 import { BrowserRouter as Router } from "react-router-dom"
 import Table from 'tables/Table'
-import NavMenu from 'components/NavMenu'
+
 
 
 const GlobalStyle = createGlobalStyle`
@@ -64,7 +64,6 @@ class App extends React.Component {
         <GlobalStyle />
             <AppBar />
           <Container>
-          <NavMenu/>
           <Table />
           <Layout className=""></Layout>
           <button onClick={this.changeTheme}>PRESS</button>

@@ -1,10 +1,51 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
+import Nav from 'components/Nav'
 
 
 const GlobalStyle = createGlobalStyle`
+  html {
+    font-size: 62.5%;
+  }
   body {
-    color: ${props => (props.whiteColor ? 'white' : 'black')};
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: small;
+  }
+  h1 {
+    font-size: 150%;
+  }
+  h2 {
+    font-size: 130%;
+  }
+  h3 {
+    font-size: 120%;
+  }
+  ul li {
+    font-size: 100%;
+  }
+  .note {
+    font-size: 90%;
+  }
+
+  @media (max-width: 576px) {
+    html {
+      
+
+    }
+  }
+  @media (min-width: 577px) and (max-width: 768px) {
+
+  }
+  @media (min-width: 769px) and (max-width: 992px) {
+
+  }
+  @media (min-width: 993px) and (max-width: 1200px) {
+
+  }
+  @media (min-width: 1201px) {
+
   }
 `
 
@@ -32,69 +73,21 @@ const AsideStyled = styled.aside``
 const FooterStyled = styled.footer``
 
 const MainLayoutStyled = () => { return (
-<>
-    <GlobalStyle />
-    
-    <HeaderStyled>
+  <>
+      <GlobalStyle />
 
-    </HeaderStyled>
-    <MainStyled>
+      <HeaderStyled>
+        <Nav />
+      </HeaderStyled>
+      <MainStyled>
 
-    </MainStyled>
-    <AsideStyled>
-      
-    </AsideStyled>
-    <FooterStyled>
+      </MainStyled>
+      <AsideStyled>
+        
+      </AsideStyled>
+      <FooterStyled>
 
-    </FooterStyled>
-</>
+      </FooterStyled>
+  </>
 )}
 export default MainLayoutStyled;
-/*
-html {
-  font-size: 62.5%;
-}
-body {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-size: small;
-}
-h1 {
-  font-size: 150%;
-}
-h2 {
-  font-size: 130%;
-}
-h3 {
-  font-size: 120%;
-}
-ul li {
-  font-size: 100%;
-}
-.note {
-  font-size: 90%;
-}
-
-@media (max-width: 576px) {
-  html {
-    
-
-  }
-}
-@media (min-width: 577px) and (max-width: 768px) {
-
-}
-@media (min-width: 769px) and (max-width: 992px) {
-
-}
-@media (min-width: 993px) and (max-width: 1200px) {
-
-}
-@media (min-width: 1201px) {
-
-}
-  
-  
-  
- */
