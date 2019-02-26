@@ -72,11 +72,12 @@ const MainStyled = styled.main`
   position: relative;
   top: 4.5rem;
   box-sizing: border-box;
+  margin: 0.5rem;
 `
 const AsideStyled = styled.aside``
 const FooterStyled = styled.footer``
 
-@inject('themesStore', 'settingsStore')
+@inject('themesStore', 'settingsStore', 'langStore')
 @observer
 class LayoutStyled extends React.Component {
   render () { return (

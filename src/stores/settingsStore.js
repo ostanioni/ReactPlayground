@@ -7,8 +7,14 @@ class Settings {
     this.theme === 'dark'? this.theme = 'light': this.theme = 'dark'
     console.log('this.theme = ', this.theme )
   }
-  @computed get light(){
-    return {}
+  @action toggleLang = ( )=>{
+    this.lang === 'en'? this.lang = 'ru': this.theme = 'en'
+    console.log('this.lang = ', this.lang )
+  }
+  @computed get params(){
+    return {
+      
+    }
   }
 }
 const settingsStore = new Settings()

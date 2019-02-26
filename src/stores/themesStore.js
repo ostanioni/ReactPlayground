@@ -3,7 +3,7 @@ const common = {
 }
 const dark = {
   ...common,
-  "bgColor": "#303030", // rgb(48,48,48)
+  "bgColor": "#212121", // rgb(33,33,33)
   "bgHeader": "#000", // rgb(220,217,212)
   "wg": "#212121", // rgb(33,33,33)
   "link": "#e10050", // rgb(255,0,80)
