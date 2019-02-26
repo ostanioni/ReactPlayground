@@ -89,9 +89,10 @@ module.exports = {
           context: `${CONTEXT}`
         },
         { 
-          from: 'src/public/imgs/*',
-          to: '../dist/imgs/[name].[ext]',
-          // toType: 'dir',
+          from: 'src/public/imgs',
+          to: '../dist/imgs',  
+          // [name].[ext]',
+          toType: 'dir',
           ignore: [ '*.js' ],
           force: true,
           context: `${CONTEXT}`
