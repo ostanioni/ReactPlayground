@@ -1,42 +1,34 @@
 import React from 'react'
-
-import {observer, inject} from "mobx-react"
-import styled, { createGlobalStyle } from 'styled-components'
+import { observer, inject } from "mobx-react"
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 
 import Nav from 'components/Nav'
 
-
+// import {  } from 'styled-components'
 const GlobalStyle = createGlobalStyle`
-/*
   html {
-    font-size: 62.5%;
-  }
-  */
+    font-family: 'Roboto', sans-serif;
+  } 
   body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-size: small;
+    background-color: ${props=>props.theme.bgColor};
+    color: ${props=>props.theme.textColor}
   }
   h1 {
-    font-size: 150%;
+    font-size: 1.5rem;
   }
   h2 {
-    font-size: 130%;
+    font-size: 1.3rem;
   }
   h3 {
-    font-size: 120%;
+    font-size: 1.2rem;
   }
-  ul li {
-    font-size: 100%;
-  }
-  .note {
-    font-size: 90%;
-  }
-
+  
   @media (max-width: 576px) {
     html {
-      font-size: 12px;
+      font-size: 13px;
     }
   }
   @media (min-width: 577px) and (max-width: 768px) {
@@ -70,32 +62,38 @@ const HeaderStyled = styled.header`
   margin: 0;
   padding: 0px;
   border: none;
-  box-shadow: 0 0 1.5rem rgba(0,0,0,0.5);
+  box-shadow: ${props=>props.theme.headerShadow};
   box-sizing: border-box;
   z-index: 1000;
-  background-color: ${props=>props.bgColor};
+  background-color: ${props=>props.theme.bgHeader};
   color: ${props=>props.textColor};
 `
 const MainStyled = styled.main`
   position: relative;
-  top: 80px;
+  top: 4.5rem;
   box-sizing: border-box;
 `
 const AsideStyled = styled.aside``
 const FooterStyled = styled.footer``
 
-@inject('settingsStore', 'langStore')
+@inject('themesStore', 'settingsStore')
 @observer
 class LayoutStyled extends React.Component {
   render () { return (
+    <ThemeProvider theme={this.props.themesStore[this.props.settingsStore.theme]}>
     <>
     <GlobalStyle />
       <HeaderStyled>
-          <Nav />
+        <Nav />
       </HeaderStyled>
-          
       <MainStyled>
-            
+            <h1>H!H!H!H!H!H!H!H!H</h1>
+            <h2>H!H!H!H!H!H!H!H!H</h2>
+            <h3>H!H!H!H!H!H!H!H!H</h3>
+            <p>
+              J,skljfdjlkfjlfdjldjglfj lkjfgjldkfjkg lkjlkdjfgj
+            </p>
+            <i></i>
       </MainStyled>
       <AsideStyled>
               
@@ -104,6 +102,7 @@ class LayoutStyled extends React.Component {
      
       </FooterStyled>
     </>
+    </ThemeProvider>
   )}
 }
 export default LayoutStyled

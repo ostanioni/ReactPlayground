@@ -3,7 +3,7 @@ class Settings {
   @observable theme = 'dark'
   @observable themePrism = ''
   @observable lang = 'en'
-  @action setTheme = (theme)=>{
+  @action toggleTheme = ( )=>{
     this.theme === 'dark'? this.theme = 'light': this.theme = 'dark'
     console.log('this.theme = ', this.theme )
   }
