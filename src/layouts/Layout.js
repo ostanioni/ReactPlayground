@@ -1,5 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    color: ${props => (props.whiteColor ? 'white' : 'black')};
+  }
+`
 
 const HeaderStyled = styled.header`
   position: fixed;
@@ -26,6 +33,8 @@ const FooterStyled = styled.footer``
 
 const MainLayoutStyled = () => { return (
 <>
+    <GlobalStyle />
+    
     <HeaderStyled>
 
     </HeaderStyled>
@@ -43,7 +52,7 @@ const MainLayoutStyled = () => { return (
 export default MainLayoutStyled;
 /*
 html {
-  
+  font-size: 62.5%;
 }
 body {
   padding: 0;
@@ -69,7 +78,7 @@ ul li {
 
 @media (max-width: 576px) {
   html {
-    font-size: 12px;
+    
 
   }
 }
