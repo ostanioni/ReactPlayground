@@ -17,10 +17,9 @@ const NavLinkStyled = styled(NavLink).attrs({
 const NavStyled = styled.nav.attrs({
   role: "navigation",
 })`
-  position: fixed;
   display: block;
   width: 100%;
-  height: 4rem;
+  height: 100%;
   background-color: ${props=>props.theme.bgHeader};
   &>ul {
     display: inline;
@@ -111,7 +110,4 @@ class Nav extends React.Component {
   )}
 }
 
-
 export default Nav
-
-
