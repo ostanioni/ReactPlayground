@@ -8,7 +8,7 @@ class Icon extends React.Component {
       <span style={{
           fontSize: this.props.size    || '2rem', 
           color:    this.props.color   || '#1bb', 
-          padding:  this.props.padding || '0 1rem', 
+          padding:  this.props.padding || '0 1.7rem', 
           margin:   this.props.margin  || '0',
           align:    'center',
           cursor: 'pointer',
@@ -23,7 +23,7 @@ class Icon extends React.Component {
 }
 const IconStyled = styled(Icon).attrs(props=>({
      size: props.size,
-    color: props.theme[props.name],
+    color: props.theme.themeToggler,
    prefix: props.prefix,
      type: props.type,
    margin: props.margin,

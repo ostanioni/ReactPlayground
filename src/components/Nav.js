@@ -1,8 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
-import { inject } from 'mobx-react'
-import Icon from 'components/Icon'
+// import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { observer, inject } from 'mobx-react'
+// import Icon from 'components/Icon'
+import { IconStyled, IconLangStyled } from 'components/Icon'
+
+import { ThemeConsumer } from 'styled-components'
 
 // NavLinkStyled
 const NavLinkStyled = styled(NavLink).attrs({
@@ -17,7 +21,7 @@ const NavLinkStyled = styled(NavLink).attrs({
 const NavStyled = styled.nav.attrs({
   role: "navigation",
 })`
-  display: block;
+  display: flex;
   width: 100%;
   height: 100%;
   background-color: ${props=>props.theme.bgHeader};
@@ -76,21 +80,38 @@ const NavStyled = styled.nav.attrs({
   }
   }
 `
+const LeftMenuSide = styled.div`
+  display: inline-flex;
+  height: 3.9rem;
+  width: 50%;
+  background-color: ${props=>props.theme.bgHeader};
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+`
+const RightMenuSide = styled.div`
+  display: inline-flex;
+  height: 3.9rem;
+  width: 50%;
+  background-color: ${props=>props.theme.bgHeader};
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  box-sizing: border-box;
+`
 // Nav class
 @inject('settingsStore')
+@observer
 class Nav extends React.Component {
-  render() {  
-    const globeIcon = this.props.settingsStore.theme === 'dark'? 
-      <Icon size={"2rem"} prefix={"fas"} color={"white"} type={"globe"} margin={"0.5rem"} onClick={this.props.settingsStore.toggleTheme} />:
-      <Icon size={"2rem"} prefix={"fas"} color={"rgb(255,0,80)"} type={"globe"} margin={"0.5rem"} onClick={this.props.settingsStore.toggleTheme} />
-    const lightIcon = this.props.settingsStore.theme === 'dark'? 
-      <Icon size={"2rem"}   color={"lightgrey"}   prefix={"fas"}     type={"lightbulb"}   margin={"0.5rem"} />:
-      <Icon size={"2rem"}   color={"lightyellow"}  prefix={"far"}     type={"lightbulb"}   margin={"0.5rem"} />
-
+  render() { 
     return (
     <NavStyled>
-     
-      <Icon size={"2rem"} color={"rgb(255,0,80)"} prefix={'fas'} type={"bars"} margin={"0.5rem"} padding={"0.2rem"}/>
+      <LeftMenuSide>
+        <IconStyled size={"2rem"} color={"rgb(255,0,80)"} prefix={'fas'} type={"bars"} padding={'0 0 0 1rem'}/>
+      </LeftMenuSide>
+     { /*
+      
  
   
       <ul>
@@ -99,14 +120,39 @@ class Nav extends React.Component {
         <li id="t-news" ><a href="news.html" style={{color: '#61dafb'}}>NEWS &amp; EVENTS</a></li>
         <li id="t-sponsors"><a href="sponsors.html" style={{color: 'rgb(255,0,80)'}}>Sponsors</a></li>
       </ul>
- 
-   
+      <DivStyled />
+        
       <Icon size={"2rem"}   prefix={"fas"} color={"rgb(255,0,80)"} type={"flag-usa"}    margin={"0.5rem"} />
-        {globeIcon}
-        {lightIcon}
-      <Icon size={"1.5rem"} color={"grey"}   prefix={"fas"}        type={"ellipsis-v"}  margin={"0.5rem"} padding={"0.4rem"} />
+      
     
+      <Icon size={"2rem"} prefix={"fas"} color={this.props.settingsStore.langTogglerColor} type={"globe"} margin={"0.5rem"} onClick={this.props.settingsStore.toggleLang} />:
+      <Icon size={"2rem"}   color={this.props.theme.themesTogglerColor}   prefix={"fas"}     type={"lightbulb"}   margin={"0.5rem"}  onClick={this.props.settingsStore.toggleTheme}/>:
+      
+      <Icon size={"1.5rem"} color={"grey"}   prefix={"fas"}        type={"ellipsis-v"}  margin={"0.5rem"} padding={"0.4rem"} />
+      
+      <IconThemeStyled onClick={this.props.settingsStore.toggleTheme} />
+      <IconLangStyled theme={this.props.theme} onClick={this.props.settingsStore.toggleLang} />
+      */}
+      {
+        /**color={this.props.settingsStore.langTogglerColor} 
+         * <Icon onClick={this.props.settingsStore.toggleLang}  color={this.props.settingsStore.langTogglerColor}/>
+        */
+      }
+      {
+        //console.log(this.props.theme)
+        //
+      }
+      <RightMenuSide>
+      <IconStyled padding={'0 0.5rem 0 1rem'} onClick={this.props.settingsStore.toggleTheme}  type={"search"} name={'iconTheme'} />
+        <IconStyled padding={'0 0 0 1rem'} onClick={this.props.settingsStore.toggleTheme}  type={"lightbulb"} name={'iconTheme'} />
+        <IconLangStyled 
+          onClick={this.props.settingsStore.toggleLang} 
+            color={this.props.settingsStore.langTogglerColor}
+        />
+      </RightMenuSide>
+      
     </NavStyled>
+    
   )}
 }
 

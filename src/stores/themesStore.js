@@ -10,6 +10,8 @@ const dark = {
   "textColor": "#fff", // rgb(255,255,255)
   "subText": "#bebebe", // rgb(190,190,190)
   "headerShadow": "0 0 1.2rem rgb(62,166,255,0.5)",
+  "themeToggler": "rgb(62,166,255)",
+  "iconTheme": "#1bb"
 };
 const light = {
   ...common,
@@ -20,6 +22,8 @@ const light = {
   "textColor": "#000", // rgb(255,255,255)
   "subText": "#bebebe", // rgb(190,190,190)
   "headerShadow": "0 0 1.2rem rgba(0,0,0,0.5)",
+  "themeToggler": "#fff",
+  "iconTheme": "#e10050",
 };
 // bootstrapLinkBlue #61dafb rgb(97,218,251)
 // googleLinkBlue rgb(62,166,255)

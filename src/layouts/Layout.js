@@ -8,11 +8,13 @@ import Nav from 'components/Nav'
 const GlobalStyle = createGlobalStyle`
   html {
     font-family: 'Roboto', sans-serif;
-  } 
+  }
+  body, header, main, footer, div, nav {
+    box-sizing: border-box;
+  }
   body {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
     background-color: ${props=>props.theme.bgColor};
     color: ${props=>props.theme.textColor}
   }

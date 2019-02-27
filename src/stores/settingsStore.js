@@ -3,17 +3,22 @@ class Settings {
   @observable theme = 'dark'
   @observable themePrism = ''
   @observable lang = 'en'
+  // @observable langTogglerIsActive = 'false'
+  // this.langTogglerColor = this.langTogglerColor.bind(this)
   @action toggleTheme = ( )=>{
     this.theme === 'dark'? this.theme = 'light': this.theme = 'dark'
     console.log('this.theme = ', this.theme )
   }
   @action toggleLang = ( )=>{
-    this.lang === 'en'? this.lang = 'ru': this.theme = 'en'
+    this.lang === 'en'? this.lang = 'ru': this.lang = 'en'
+    // this.langTogglerIsActive = !this.langTogglerIsActive
     console.log('this.lang = ', this.lang )
   }
-  @computed get params(){
-    return {
-      
+  @computed get langTogglerColor() {
+    if ( this.lang === 'en' ) { 
+      return '#ff8d00' 
+    } else {
+      return '#388'
     }
   }
 }
