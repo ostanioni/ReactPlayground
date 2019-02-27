@@ -6,7 +6,7 @@ import { observer, inject } from 'mobx-react'
 // import Icon from 'components/Icon'
 import { IconStyled, IconLangStyled } from 'components/Icon'
 
-import { ThemeConsumer } from 'styled-components'
+import SearchStyled from 'components/SearchInput'
 
 // NavLinkStyled
 const NavLinkStyled = styled(NavLink).attrs({
@@ -143,6 +143,7 @@ class Nav extends React.Component {
         //
       }
       <RightMenuSide>
+        <SearchStyled />
       <IconStyled padding={'0 0.5rem 0 1rem'} onClick={this.props.settingsStore.toggleTheme}  type={"search"} name={'iconTheme'} />
         <IconStyled padding={'0 0 0 1rem'} onClick={this.props.settingsStore.toggleTheme}  type={"lightbulb"} name={'iconTheme'} />
         <IconLangStyled 
