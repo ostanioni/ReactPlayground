@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const SearchStyled = styled.input.attrs(props=>({
   type: 'search',
   placeholder: ' Enter...',
+  required: 'true'
 
 }))`
 width: 12rem;
