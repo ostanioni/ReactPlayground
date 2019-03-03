@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     font-family: 'Roboto', sans-serif;
   }
-  body, header, main, footer, div, nav {
+  * {
     box-sizing: border-box;
   }
   body {
