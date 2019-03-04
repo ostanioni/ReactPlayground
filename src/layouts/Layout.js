@@ -2,8 +2,10 @@ import React from 'react'
 import { observer, inject } from "mobx-react"
 import styled, { ThemeProvider } from 'styled-components'
 
-import Nav from 'components/Nav'
 import GlobalStyle from 'styled/GlobalStyle'
+import Nav from 'components/Nav'
+import SideBar from 'components/SideBar'
+
 
 
 
@@ -49,6 +51,7 @@ class LayoutStyled extends React.Component {
               J,skljfdjlkfjlfdjldjglfj lkjfgjldkfjkg lkjlkdjfgj
             </p>
             <i></i>
+            <SideBar />
       </MainStyled>
       <AsideStyled>
               
