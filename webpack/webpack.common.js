@@ -65,6 +65,7 @@ module.exports = {
       components: `${CONTEXT}/src/components`,
       tables:     `${CONTEXT}/src/tables`,
       stores:     `${CONTEXT}/src/stores`,
+      styled:     `${CONTEXT}/src/styled`,
       ts:         `${CONTEXT}/src/typescript`,
       css:        `${CONTEXT}/src/public/css`,
       imgs:       `${CONTEXT}/src/public/imgs`,
