@@ -1,13 +1,11 @@
 import React from 'react'
 import { observer, inject } from "mobx-react"
-import styled, { ThemeProvider } from 'styled-components'
 
+import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyle from 'styled/GlobalStyle'
+
 import Nav from 'components/Nav'
 import SideBar from 'components/SideBar'
-
-
-
 
 const HeaderStyled = styled.header`
   position: fixed;

@@ -12,7 +12,10 @@ width: 100%;
 height: 100%;
 color: ${props=>props.theme.textColor};
 background-color: ${props=>props.theme.bgColor};
-& ul {list-style: none;}
+& ul {
+  list-style: none;
+  cursor: pointer;
+}
 `
 
 @inject('themesStore', 'settingsStore', 'langStore')
