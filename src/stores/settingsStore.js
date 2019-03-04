@@ -2,7 +2,7 @@ import { observable, action, computed} from 'mobx'
 class Settings {
   @observable theme = 'dark'
   @observable themePrism = ''
-  @observable lang = 'en'
+  @observable lang = 'ru'
   // @observable langTogglerIsActive = 'false'
   // this.langTogglerColor = this.langTogglerColor.bind(this)
   @action toggleTheme = ( )=>{

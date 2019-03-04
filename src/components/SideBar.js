@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { observer, inject } from "mobx-react"
 import styled from 'styled-components'
 
-import {En,Ru} from 'resources/content'
+import Content from 'resources/content'
 
 let SideBarStyled = styled.nav.attrs(props=>{
 
@@ -12,23 +12,46 @@ width: 100%;
 height: 100%;
 color: ${props=>props.theme.textColor};
 background-color: ${props=>props.theme.bgColor};
+& ul {list-style: none;}
 `
+
 @inject('themesStore', 'settingsStore', 'langStore')
 @observer
 class SideBar extends Component {
-  static propTypes = {
-    prop: PropTypes
+  currentChapter = 0
+  incChapter = ()=>{
+    this.currentChapter++
   }
-
+  content = (arr)=>{
+    let items = arr.map( (part,index)=> ( 
+        <li key={part.part}>
+          {`${index+1} ${part.part}`}
+            <ul>
+              { part.chapters.map( (chapter,indx)=> 
+                <li key={chapter}>
+                  {`${++this.currentChapter}.${chapter.caption}`}
+                  <ul>
+                    { chapter.paragraphs.map( (paragraph,idx) => (
+                        <li key={paragraph}>
+                          {`${this.currentChapter}.${idx+1} ${paragraph}`}
+                        </li>
+                      ))
+                    }
+                  </ul>
+                </li>
+              )}
+            </ul>
+        </li> 
+      ) 
+    )
+    return items
+  }
   render() {
+    this.currentChapter = 0
     return (
       <SideBarStyled>
         <ul>
-          <li>HHHHHH</li>
-          <li>22222222</li>
-          <li>3333333</li>
-          <li>4444444</li>
-          <li>555555555</li>
+          {this.content(Content[this.props.settingsStore.lang])}
         </ul>
       </SideBarStyled>
     )
