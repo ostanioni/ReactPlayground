@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { observer, inject } from "mobx-react"
 import styled from 'styled-components'
 
+import {En,Ru} from 'resources/content'
 
 let SideBarStyled = styled.nav.attrs(props=>{
 

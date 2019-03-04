@@ -63,6 +63,7 @@ module.exports = {
       pages:      `${CONTEXT}/src/pages`,
       layouts:    `${CONTEXT}/src/layouts`,
       components: `${CONTEXT}/src/components`,
+      resources:  `${CONTEXT}/src/resources`,
       tables:     `${CONTEXT}/src/tables`,
       stores:     `${CONTEXT}/src/stores`,
       styled:     `${CONTEXT}/src/styled`,
