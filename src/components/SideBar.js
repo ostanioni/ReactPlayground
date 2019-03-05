@@ -5,14 +5,16 @@ import styled from 'styled-components'
 
 import Content from 'resources/content'
 
+import uuidv4 from 'uuid/v4'
+
 let SideBarStyled = styled.nav.attrs(props=>{
 
 })`
 display: inline-block;
 position: relative;
 top: -1.1rem;
-left: -0.5rem;
-width: 25rem;
+/*left: -1rem;*/
+width: 28rem;
 height: 100vh;
 margin: 0;
 padding: 0;
@@ -29,24 +31,23 @@ font-family: Monospace;
   cursor: pointer;
   position: relative;
   left: -1rem;
-  &.visible {
+  &.hide {
     display: none;
-  }
+  }  
 }
-
 & h2,h3 {
   margin:0.5rem;
   padding:0;
 }
 & h2 {
   color: ${props=>props.theme.link};
-  &: hover {
+  &:hover {
     color: ${props=>props.theme.textColor}
   }
 }
 & h3 {
   color: rgb(62,166,255);
-  &: hover {
+  &:hover {
     color: ${props=>props.theme.bsLink}
   }
 }
@@ -90,25 +91,42 @@ class SideBar extends Component {
   part = ''
   chapter = ''
   currentChapter = 0
-  showAlert = () => {
-    alert('Hello')
-  }
+  
   incChapter = ()=>{
     this.currentChapter++
   }
-  showList = (e)=>{
-    console.log(e.target.nextSibling)
-    console.log(e.target.nextSibling.classList.toggle('visible'))
+  handleClick = (e)=>{
+    let node = e.target.nextSibling
+    node.classList.contains('hide')? showList(node): hideList(node)
+    function showList(node){
+      node.classList.remove('hide')
+      node.classList.add('animated','fadeIn','fast')
+      node.addEventListener('animationend', handleAnimationEnd)
+      function handleAnimationEnd(e){
+        e.target.classList.remove('animated','fadeIn','fast')
+        e.target.removeEventListener('animationend', handleAnimationEnd)
+      }
+    }
+    function hideList(node){
+      node.classList.add('animated','fadeOut','faster')
+      node.addEventListener('animationend', handleAnimationEnd)
+      function handleAnimationEnd(e){
+        e.target.classList.remove('animated','fadeOut','faster')
+        e.target.classList.add('hide')
+        e.target.removeEventListener('animationend', handleAnimationEnd)
+      }  
+    }
   }
   content = (arr)=>{
     let items = arr.map( (part,index)=> ( 
         <li key={part.part}>
-          <h2 onClick={this.showList}>{`${this.part} ${index+1}. ${part.part}`}</h2>
-            <ul className='visible'>
+          <h2 onClick={this.handleClick}>{`${this.part} ${index+1}. ${part.part}`}</h2>
+            <ul className='hide'>
               { part.chapters.map( (chapter,indx)=> 
                 <li key={chapter.caption}>
-                  <h3 onClick={this.showList}>{`${this.chapter} ${++this.currentChapter}. ${chapter.caption}`}</h3>
-                  <ul className='visible'>
+                  <h3 onClick={this.handleClick}>{`${this.chapter} ${++this.currentChapter}. ${chapter.caption}`}</h3>
+                  
+                  <ul className='hide'>
                     { chapter.paragraphs.map( (paragraph,idx) => (
                         <li key={paragraph}>
                           {`${this.currentChapter}.${idx+1} ${paragraph}`}
@@ -116,6 +134,7 @@ class SideBar extends Component {
                       ))
                     }
                   </ul>
+                  
                 </li>
               )}
             </ul>
