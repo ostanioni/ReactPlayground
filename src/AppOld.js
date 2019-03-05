@@ -92,7 +92,7 @@ const MainStyled = styled.main`
             MAIN CONTENT
             <span>Seconds passed: { this.secondsPassed } </span>
             <pre><code className="language-css">{`p { color: red }`}</code></pre>
-            <pre><code className="language-js  line-numbers" style={{fontSize: 22+'px'}}>{`var Prism = require('prismjs');
+            <pre><code className="language-js  line-numbers">{`var Prism = require('prismjs');
 var loadLanguages = require('prismjs/components/');
 loadLanguages(['haml']);
 // The code snippet you want to highlight, as a string
