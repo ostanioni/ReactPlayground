@@ -22,7 +22,7 @@ border: 1px solid ${props=>props.theme.textColor};
 */
 color: ${props=>props.theme.textColor};
 background-color: ${props=>props.theme.bgSideBar};
-font-family: 'Times New Roman';
+font-family: Monospace;
 
 & ul {
   list-style: none;

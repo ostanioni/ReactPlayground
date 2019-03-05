@@ -76,7 +76,7 @@ module.exports = {
     rules: [ BABEL, FONT, TS, TSX, IMAGES, CSS, WORKER_LOADER, MD, RAW, ESLINT]
   },
   plugins: [
-    new CleanWebpackPlugin(pathsToClean, cleanOptions),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: `${CONTEXT}/src/public/index.html`,
     }),
