@@ -5,7 +5,7 @@
 + Styled-components 4.1
 + MobX-React 5.4
 + MobX 5.9
-+ ESLint 5.14
++ ESLint 5.15
 + ...
 
 # Available Scripts:
