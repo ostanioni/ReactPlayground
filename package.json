@@ -1,5 +1,6 @@
 {
   "name": "react_mobx_styled-components_playground",
+  "sideEffects": false,
   "version": "0.1.1",
   "description": "React 16.8, Mobx 5.9, Styled-components 4.1",
   "main": "index.js",

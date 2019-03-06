@@ -69,6 +69,7 @@ module.exports = merge(common, {
     new webpack.HotModuleReplacementPlugin(),
   ],
   optimization: {
-    minimize: false
+    minimize: false,
+    usedExports: true
   }
 });
