@@ -1,7 +1,7 @@
 {
-  "name": "react_js_playground",
-  "version": "0.0.1",
-  "description": "React 16.8, Mobx, Styled-components",
+  "name": "react_mobx_styled-components_playground",
+  "version": "0.1.1",
+  "description": "React 16.8, Mobx 5.9, Styled-components 4.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,7 @@
     "serve": "http-server ./dist"
   },
   "author": "Ostanin Sergey",
-  "license": "ISC",
+  "license": "BSD-3",
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/plugin-proposal-class-properties": "^7.3.4",
@@ -22,8 +22,8 @@
     "@types/node": "^11.10.4",
     "@types/react": "^16.8.6",
     "@types/react-dom": "^16.8.2",
-    "@types/styled-components": "^4.1.11",
-    "@types/three": "^0.93.22",
+    "@types/styled-components": "^4.1.12",
+    "@types/three": "^0.93.26",
     "awesome-typescript-loader": "^5.2.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
@@ -36,7 +36,7 @@
     "css-loader": "^2.1.0",
     "cssnano": "^4.1.10",
     "cssnano-preset-advanced": "^4.0.7",
-    "eslint": "^5.15.0",
+    "eslint": "^5.15.1",
     "eslint-config-react-app": "^3.0.7",
     "eslint-loader": "^2.1.2",
     "eslint-plugin-flowtype": "^3.4.2",
@@ -77,10 +77,10 @@
     "katex": "^0.10.1",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
-    "mobx-react-devtools": "^6.1.0",
+    "mobx-react-devtools": "^6.1.1",
     "prismjs": "^1.15.0",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
     "react-katex": "^2.0.2",
     "react-router-dom": "^4.3.1",
     "react-transition-group": "^2.6.0",
@@ -100,7 +100,6 @@
     "/dist",
     "/node_modules",
     "/webpack",
-    "/src/css",
-    "/src/img"
+    "/src/public"
   ]
 }

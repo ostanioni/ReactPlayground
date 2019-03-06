@@ -19,7 +19,7 @@ const light = {
   ...common,
   "bgColor": "#fff", // rgb(48,48,48)
   "bgHeader": "#303030", // rgb(48,48,48)
-  "bgSideBar": "#ddd",
+  "bgSideBar": "white",
   "wg": "#212121", // rgb(33,33,33)
   "link": "#e10050", // rgb(255,0,80)
   "textColor": "#000", // rgb(255,255,255)

@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 const GlobalStyle = createGlobalStyle`
   html {
     font-family: 'Roboto', sans-serif;
+    scrollbar-color: dark;
   }
   * {
     box-sizing: border-box;
@@ -11,7 +12,8 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     background-color: ${props=>props.theme.bgColor};
-    color: ${props=>props.theme.textColor}
+    color: ${props=>props.theme.textColor};
+    scrollbar-color: dark;
   }
   h1 {
     font-size: 1.5rem;
