@@ -7,7 +7,9 @@ import GlobalStyle from 'styled/GlobalStyle'
 import Nav from 'components/Nav'
 import SideBar from 'components/SideBar'
 
-import Prism from 'prismjs';
+import 'css/App.scss'
+
+// import Prism from 'prismjs';
 
 const HeaderStyled = styled.header`
   position: fixed;
@@ -49,19 +51,7 @@ class LayoutStyled extends React.Component {
       </HeaderStyled>
       <MainStyled>
         <SideBar />
-        <CodeStyled>
-        <pre><code className="language-css">{`p { color: red }`}</code></pre>
-            <pre><code className="language-js  line-numbers" >{`var Prism = require('prismjs');
-var loadLanguages = require('prismjs/components/');
-loadLanguages(['haml']);
-// The code snippet you want to highlight, as a string
-var code = "= ['hi', 'there', 'reader!'].join \" \"";
-// Returns a highlighted HTML string
-var html = Prism.highlight(code, Prism.languages.haml, 'haml');`}</code></pre>
-<pre><code className="language-clike">{`int main(){
-printf("Hello World");
-}`}</code></pre>
-</CodeStyled>
+        
       </MainStyled>
       <AsideStyled>
               

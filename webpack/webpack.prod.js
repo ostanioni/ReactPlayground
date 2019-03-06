@@ -1,17 +1,23 @@
-/* eslint-disable */ 
+/* eslint-disable */
+/*tslint:disabled*/
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 /***___SCSS_SOURCE_MAP__ ***/
-const SCSS = { test: /\.scss$/, 
+/*
+const CSS = {
+  test: /\.(css|scss)$/,
   use: [
-    { loader: "style-loader" }, 
-    { loader: "css-loader",  options: { sourceMap: false } },
-    { loader: "sass-loader", options: { sourceMap: false } }
+    { loader: 'style-loader',   options: { sourceMap: false } },
+    { loader: 'css-loader',     options: { sourceMap: false } },
+    { loader: 'postcss-loader', options: { sourceMap: false } },
+    { loader: 'sass-loader',    options: { sourceMap: false } }
   ]
 }
+*/
 /***___CSS_LOADER___***/
+/*
 const CSS = { test: /\.css$/, use: [ { loader: MiniCssExtractPlugin.loader,
   options: {       
         publicPath: '../dist'
@@ -20,11 +26,48 @@ const CSS = { test: /\.css$/, use: [ { loader: MiniCssExtractPlugin.loader,
     "css-loader"
   ]
 }
+*/
+
+cssnano = { 
+  "preset": [ "advanced", { "discardComments": {"removeAll": true} } ]
+}
+const options = {
+  cssnano,
+  'postcss-preset-env': {
+    stage: 3,
+    autoprefixer: { grid: true },
+    features: {
+    'nesting-rules': true,
+    'color-mod-function': { unresolved: 'warn' }
+    }
+  },
+ }
+const POSTCSS_LOADER = {
+  loader: 'postcss-loader',
+  options: {
+    sourceMap: false,
+    ident: 'postcss',
+    plugins: (loader) => [
+      require('postcss-import')({ root: loader.resourcePath }),
+      require('postcss-preset-env')(options['postcss-preset-env']),
+      require('cssnano')(options.cssnano),
+    ]
+  }
+}
+const SCSS = {
+  test: /\.scss$/,
+  use: [
+    { loader: 'style-loader',   options: { sourceMap: false } },
+    { loader: 'css-loader',     options: { sourceMap: false } },
+    POSTCSS_LOADER,
+    { loader: 'sass-loader',    options: { sourceMap: false } }
+  ]
+}
 
 module.exports = merge(common, {
   mode: 'production',
   module: {
-    rules: [ SCSS, CSS ]
+    rules: [ SCSS ]
   },
   optimization: {
     splitChunks: {
@@ -48,7 +91,11 @@ module.exports = merge(common, {
         }
       }
     }
-  },
+  }
+});
+/**
+ * 
+ ,
   plugins: [
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
@@ -57,4 +104,4 @@ module.exports = merge(common, {
       chunkFilename: 'css/[name].[contenthash:8].chunk.css',
     }),
   ]
-});
+ */

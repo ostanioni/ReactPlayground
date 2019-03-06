@@ -1,4 +1,5 @@
-/* eslint-disable */ 
+/* eslint-disable */
+/*tslint:disabled*/
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const webpack = require('webpack');
@@ -6,6 +7,7 @@ const webpack = require('webpack');
 /***___SOURCE_MAP____***/
 const JS_SOURCE_MAP = { enforce: "pre", test: /\.js$/, loader: "source-map-loader" };
 /***___SCSS_SOURCE_MAP__ ***/
+/*
 const SCSS_SOURCE_MAP = { test: /\.scss$/, 
   use: [
     { loader: "style-loader" }, 
@@ -13,6 +15,45 @@ const SCSS_SOURCE_MAP = { test: /\.scss$/,
     { loader: "sass-loader", options: { sourceMap: true } }
   ]
 }
+require('autoprefixer')({...options}),
+require('stylelint')({"extends": "stylelint-config-recommended"}),
+*/
+cssnano = { 
+  "preset": [ "advanced", { "discardComments": {"removeAll": true} } ]
+}
+const options = {
+  cssnano,
+  'postcss-preset-env': {
+    stage: 3,
+    autoprefixer: { grid: true },
+    features: {
+    'nesting-rules': true,
+    'color-mod-function': { unresolved: 'warn' }
+    }
+  },
+ }
+const POSTCSS_LOADER = {
+  loader: 'postcss-loader',
+  options: {
+    sourceMap: true,
+    ident: 'postcss',
+    plugins: (loader) => [
+      require('postcss-import')({ root: loader.resourcePath }),
+      require('postcss-preset-env')(options['postcss-preset-env']),
+      require('cssnano')(options.cssnano),      
+    ]
+  }
+}
+const SCSS_SOURCE_MAP = {
+  test: /\.scss)$/,
+  use: [
+    { loader: 'style-loader',   options: { sourceMap: true } },
+    { loader: 'css-loader',     options: { sourceMap: true } },
+    POSTCSS_LOADER,
+    { loader: 'sass-loader',    options: { sourceMap: true } }
+  ]
+}
+
 module.exports = merge(common, {
   mode: 'development',
   devServer: {
