@@ -45,7 +45,7 @@ const POSTCSS_LOADER = {
   }
 }
 const SCSS_SOURCE_MAP = {
-  test: /\.scss)$/,
+  test: /\.scss$/,
   use: [
     { loader: 'style-loader',   options: { sourceMap: true } },
     { loader: 'css-loader',     options: { sourceMap: true } },
