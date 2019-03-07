@@ -25,6 +25,7 @@ border: 1px solid ${props=>props.theme.textColor};
 color: ${props=>props.theme.textColor};
 background-color: ${props=>props.theme.bgSideBar};
 font-family: Monospace;
+transition: all 0.5s;
 
 & ul {
   list-style: none;
