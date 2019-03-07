@@ -6,54 +6,6 @@ const webpack = require('webpack');
 
 /***___SOURCE_MAP____***/
 const JS_SOURCE_MAP = { enforce: "pre", test: /\.js$/, loader: "source-map-loader" };
-/***___SCSS_SOURCE_MAP__ ***/
-/*
-const SCSS_SOURCE_MAP = { test: /\.scss$/, 
-  use: [
-    { loader: "style-loader" }, 
-    { loader: "css-loader",  options: { sourceMap: true } },
-    { loader: "sass-loader", options: { sourceMap: true } }
-  ]
-}
-require('autoprefixer')({...options}),
-require('stylelint')({"extends": "stylelint-config-recommended"}),
-========================================================================================
-cssnano = { 
-  "preset": [ "advanced", { "discardComments": {"removeAll": true} } ]
-}
-const options = {
-  cssnano,
-  'postcss-preset-env': {
-    stage: 3,
-    autoprefixer: { grid: true },
-    features: {
-    'nesting-rules': true,
-    'color-mod-function': { unresolved: 'warn' }
-    }
-  },
- }
-const POSTCSS_LOADER = {
-  loader: 'postcss-loader',
-  options: {
-    sourceMap: true,
-    ident: 'postcss',
-    plugins: (loader) => [
-      require('postcss-import')({ root: loader.resourcePath }),
-      require('postcss-preset-env')(options['postcss-preset-env']),
-      require('cssnano')(options.cssnano),      
-    ]
-  }
-}
-const SCSS_SOURCE_MAP = {
-  test: /\.scss$/,
-  use: [
-    { loader: 'style-loader',   options: { sourceMap: true } },
-    { loader: 'css-loader',     options: { sourceMap: true } },
-    POSTCSS_LOADER,
-    { loader: 'sass-loader',    options: { sourceMap: true } }
-  ]
-}
-*/
 
 /***___SCSS_SOURCE_MAP__ ***/
 const SCSS_SOURCE_MAP = {
@@ -65,7 +17,7 @@ const SCSS_SOURCE_MAP = {
     { loader: 'postcss-loader', options: { sourceMap: true, 
         ident: 'postcss',
         plugins: () => [
-          require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] }),
+          require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] } ),
         ]
       }
     },
@@ -91,7 +43,7 @@ const CSS_SOURCE_MAP = {
             'color-mod-function': { unresolved: 'warn' }
             }
           }),
-          require('cssnano')({ "preset": "advanced" }),
+          require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] } ),
         ]
       } 
     }
@@ -117,6 +69,10 @@ module.exports = merge(common, {
     usedExports: true
   }
 });
-global.console.clear()
-const devMode = process.env.NODE_ENV !== 'production';
-global.console.log('DEV_MODE:', devMode)
+
+/*
+======================================================================
+require('autoprefixer')({...options}),
+require('stylelint')({"extends": "stylelint-config-recommended"}),
+======================================================================
+*/

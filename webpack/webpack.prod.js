@@ -4,46 +4,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-/***___SCSS_SOURCE_MAP__ ***/
-/*
-const CSS = {
-  test: /\.(css|scss)$/,
-  use: [
-    { loader: 'style-loader',   options: { sourceMap: false } },
-    { loader: 'css-loader',     options: { sourceMap: false } },
-    { loader: 'postcss-loader', options: { sourceMap: false } },
-    { loader: 'sass-loader',    options: { sourceMap: false } }
-  ]
-}
-*/
-/***___CSS_LOADER___***/
-/*
-const CSS = { test: /\.css$/, use: [ { loader: MiniCssExtractPlugin.loader,
-  options: {       
-        publicPath: '../dist'
-      }
-    },
-    "css-loader"
-  ]
-}
-
-
-cssnano = { 
-  "preset": [ "advanced", { "discardComments": {"removeAll": true} } ]
-}
-const options = {
-  cssnano,
-  'postcss-preset-env': {
-    stage: 3,
-    autoprefixer: { grid: true },
-    features: {
-    'nesting-rules': true,
-    'color-mod-function': { unresolved: 'warn' }
-    }
-  },
- }
- */
-/***___SCSS_SOURCE_MAP__ ***/
+/***___SCSS_LOADER_WITHOUT_SOURCE_MAP__ ***/
 const SCSS = {
   test: /\.scss$/,
   exclude: /node_modules/,
@@ -53,14 +14,14 @@ const SCSS = {
     { loader: 'postcss-loader', options: { sourceMap: false, 
         ident: 'postcss',
         plugins: () => [
-          require('cssnano')({ "preset": "advanced" }),
+          require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] } ),
         ]
       }
     },
     { loader: 'sass-loader',    options: { sourceMap: false } }
   ]
 }
-/***___CSS_LOADER___***/
+/***___CSS_LOADER_WITHOUT_SOURCE_MAP___***/
 const CSS = {
   test: /\.css$/,
   exclude: /node_modules/,
@@ -79,7 +40,7 @@ const CSS = {
             'color-mod-function': { unresolved: 'warn' }
             }
           }),
-          require('cssnano')({ "preset": "advanced" }),
+          require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] } ),
         ]
       } 
     }
@@ -93,7 +54,7 @@ module.exports = merge(common, {
   },
   optimization: {
     splitChunks: {
-      chunks: 'async',
+      chunks: 'all', // 'async'
       minSize: 30000,
       maxSize: 0,
       minChunks: 1,
@@ -115,9 +76,7 @@ module.exports = merge(common, {
     }
   }
 });
-/**
- * 
- ,
+/*
   plugins: [
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
