@@ -9,6 +9,9 @@ import SideBar from 'components/SideBar'
 
 import 'css/App.scss'
 
+import 'css/normalize.css'
+
+
 // import Prism from 'prismjs';
 
 const HeaderStyled = styled.header`
