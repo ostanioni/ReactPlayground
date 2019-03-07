@@ -26,7 +26,7 @@ const CSS = { test: /\.css$/, use: [ { loader: MiniCssExtractPlugin.loader,
     "css-loader"
   ]
 }
-*/
+
 
 cssnano = { 
   "preset": [ "advanced", { "discardComments": {"removeAll": true} } ]
@@ -42,32 +42,54 @@ const options = {
     }
   },
  }
-const POSTCSS_LOADER = {
-  loader: 'postcss-loader',
-  options: {
-    sourceMap: false,
-    ident: 'postcss',
-    plugins: (loader) => [
-      require('postcss-import')({ root: loader.resourcePath }),
-      require('postcss-preset-env')(options['postcss-preset-env']),
-      require('cssnano')(options.cssnano),
-    ]
-  }
-}
+ */
+/***___SCSS_SOURCE_MAP__ ***/
 const SCSS = {
   test: /\.scss$/,
+  exclude: /node_modules/,
   use: [
     { loader: 'style-loader',   options: { sourceMap: false } },
     { loader: 'css-loader',     options: { sourceMap: false } },
-    POSTCSS_LOADER,
+    { loader: 'postcss-loader', options: { sourceMap: false, 
+        ident: 'postcss',
+        plugins: () => [
+          require('cssnano')({ "preset": "advanced" }),
+        ]
+      }
+    },
     { loader: 'sass-loader',    options: { sourceMap: false } }
+  ]
+}
+/***___CSS_LOADER___***/
+const CSS = {
+  test: /\.css$/,
+  exclude: /node_modules/,
+  use: [
+    { loader: 'style-loader',   options: { sourceMap: false } },
+    { loader: 'css-loader',     options: { sourceMap: false, importLoaders: 1 } },
+    { loader: 'postcss-loader', options: { sourceMap: false,
+        ident: 'postcss',
+        plugins: [
+          require('postcss-import')(),
+          require('postcss-preset-env')({ 
+            stage: 3,
+            autoprefixer: { grid: true },
+            features: {
+            'nesting-rules': true,
+            'color-mod-function': { unresolved: 'warn' }
+            }
+          }),
+          require('cssnano')({ "preset": "advanced" }),
+        ]
+      } 
+    }
   ]
 }
 
 module.exports = merge(common, {
   mode: 'production',
   module: {
-    rules: [ SCSS ]
+    rules: [ SCSS, CSS ]
   },
   optimization: {
     splitChunks: {

@@ -17,7 +17,7 @@ const SCSS_SOURCE_MAP = { test: /\.scss$/,
 }
 require('autoprefixer')({...options}),
 require('stylelint')({"extends": "stylelint-config-recommended"}),
-*/
+========================================================================================
 cssnano = { 
   "preset": [ "advanced", { "discardComments": {"removeAll": true} } ]
 }
@@ -53,6 +53,50 @@ const SCSS_SOURCE_MAP = {
     { loader: 'sass-loader',    options: { sourceMap: true } }
   ]
 }
+*/
+
+/***___SCSS_SOURCE_MAP__ ***/
+const SCSS_SOURCE_MAP = {
+  test: /\.scss$/,
+  exclude: /node_modules/,
+  use: [
+    { loader: 'style-loader',   options: { sourceMap: true } },
+    { loader: 'css-loader',     options: { sourceMap: true } },
+    { loader: 'postcss-loader', options: { sourceMap: true, 
+        ident: 'postcss',
+        plugins: () => [
+          require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] }),
+        ]
+      }
+    },
+    { loader: 'sass-loader',    options: { sourceMap: true } }
+  ]
+}
+/***___CSS_LOADER___***/
+const CSS_SOURCE_MAP = {
+  test: /\.css$/,
+  exclude: /node_modules/,
+  use: [
+    { loader: 'style-loader',   options: { sourceMap: true } },
+    { loader: 'css-loader',     options: { sourceMap: true, importLoaders: 1 } },
+    { loader: 'postcss-loader', options: { sourceMap: true,
+        ident: 'postcss',
+        plugins: [
+          require('postcss-import')(),
+          require('postcss-preset-env')({
+            stage: 3,
+            autoprefixer: { grid: true },
+            features: {
+            'nesting-rules': true,
+            'color-mod-function': { unresolved: 'warn' }
+            }
+          }),
+          require('cssnano')({ "preset": "advanced" }),
+        ]
+      } 
+    }
+  ]
+}
 
 module.exports = merge(common, {
   mode: 'development',
@@ -63,7 +107,7 @@ module.exports = merge(common, {
   },
   devtool: 'source-map',
   module: {
-    rules: [ JS_SOURCE_MAP, SCSS_SOURCE_MAP ]
+    rules: [ JS_SOURCE_MAP, SCSS_SOURCE_MAP, CSS_SOURCE_MAP ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -73,3 +117,6 @@ module.exports = merge(common, {
     usedExports: true
   }
 });
+global.console.clear()
+const devMode = process.env.NODE_ENV !== 'production';
+global.console.log('DEV_MODE:', devMode)
