@@ -13,6 +13,7 @@ class Icon extends React.Component {
           align:    'center',
           cursor: 'pointer',
           boxSizing: 'border-box',
+          transition: 'color 0.7s'
         }}
         onClick={this.props.onClick || f}
       >
