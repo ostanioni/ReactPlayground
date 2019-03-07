@@ -44,12 +44,14 @@ font-family: Monospace;
   &:hover {
     color: ${props=>props.theme.textColor}
   }
+  transition: color 0.4s;
 }
 & h3 {
   color: rgb(62,166,255);
   &:hover {
     color: ${props=>props.theme.bsLink}
   }
+  transition: color 0.3s;
 }
 ul>li>ul>li>ul>li:hover{
   text-decoration: underline;
@@ -98,6 +100,7 @@ class SideBar extends Component {
   handleClick = (e)=>{
     let node = e.target.nextSibling
     node.classList.contains('hide')? showList(node): hideList(node)
+
     function showList(node){
       node.classList.remove('hide')
       node.classList.add('animated','fadeIn','fast')
@@ -107,6 +110,7 @@ class SideBar extends Component {
         e.target.removeEventListener('animationend', handleAnimationEnd)
       }
     }
+
     function hideList(node){
       node.classList.add('animated','fadeOut','faster')
       node.addEventListener('animationend', handleAnimationEnd)

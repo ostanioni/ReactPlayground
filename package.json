@@ -106,5 +106,8 @@
     "/node_modules",
     "/webpack",
     "/src/public"
-  ]
+  ],
+  "stylelint": {
+    "extends": "stylelint-config-recommended"
+  }
 }

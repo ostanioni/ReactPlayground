@@ -35,7 +35,12 @@ const MainStyled = styled.main`
   box-sizing: border-box;
   margin: 0.5rem;
 `
-const AsideStyled = styled.aside``
+const AsideStyled = styled.aside`
+  & #icon:hover {
+    fill: #0f0;
+    cursor: pointer;
+  }
+`
 const FooterStyled = styled.footer``
 
 const CodeStyled = styled.div`
@@ -57,7 +62,9 @@ class LayoutStyled extends React.Component {
         
       </MainStyled>
       <AsideStyled>
-              
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path id="icon" d="M0 0h24v24H0z" fill="#f00"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+      </svg>
       </AsideStyled>
       <FooterStyled>
      
