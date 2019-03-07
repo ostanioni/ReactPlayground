@@ -1,3 +1,18 @@
+/* eslint-disable */
+/*tslint:disabled*/
+// Post data to parent thread
+self.postMessage({ foo: 'foo' })
+
+// Respond to message from parent thread
+self.addEventListener('message', (event) => console.log(event))
+
+onmessage = function(e) {
+  //console.log('Message received from main script');
+  //var workerResult = 'Result: ' + (e.data[0] * e.data[1]);
+  //console.log('Posting message back to main script');
+  postMessage( quickSort(e.data) );
+}
+
 function quickSort(items) {
   return quickSortHelper(items, 0, items.length-1);
 }
@@ -33,5 +48,4 @@ function partition(array, left, right) {
   }
   return left;
 }
-quickSort([6,1,23,4,2,3]); // [1, 2, 3, 4, 6, 23]
  
