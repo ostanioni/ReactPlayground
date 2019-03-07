@@ -39,17 +39,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 /** CONTEXT */
 const CONTEXT = path.resolve(__dirname, '../');
 
-// the path(s) that should be cleaned
-let pathsToClean = [
-  'dist',
-];
-// the clean options to use
-let cleanOptions = {
-  root:     CONTEXT,
-  verbose:  true,
-  dry:      false
-};
-
 module.exports = {
   context: CONTEXT,
   entry: {
