@@ -70,12 +70,25 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
+      inject: true,
       template: `${CONTEXT}/src/public/index.html`,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      }
     }),
     new CopyWebpackPlugin(
       [
         { 
-          from: 'src/public/css/*',
+          from: 'src/public/css',
           to: '../dist/css',
           toType: 'dir',
           ignore: [ '*.js' ],
