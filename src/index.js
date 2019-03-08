@@ -27,6 +27,7 @@ class App extends React.Component {
 
 ReactDOM.render( <App/>, document.getElementById('edf720cb-b61fe') )
 */
+import 'css/abc.css'
 console.clear()
 const worker = new Worker('./workers/sortQuick.js');
 
