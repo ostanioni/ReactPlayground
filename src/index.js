@@ -27,8 +27,8 @@ class App extends React.Component {
 
 ReactDOM.render( <App/>, document.getElementById('edf720cb-b61fe') )
 */
-
-const worker = new Worker('workers/sortQuick.js');
+console.clear()
+const worker = new Worker('./workers/sortQuick.js');
 
 worker.postMessage('Hello from index.js')
 console.log('Hello from index.js');
@@ -36,7 +36,15 @@ console.log('Hello from index.js');
 worker.onmessage = function (e) {
   console.log( 'FROM WORKER: ', e.data )
 };
-
+function getMsg(){
+  let result = window.prompt('Приветствую тебя. Что ты хотел сказать?')
+  worker.postMessage(result)
+}
+const  app = document.getElementById('edf720cb-b61fe')
+const Button = document.createElement('button')
+Button.onclick = getMsg
+Button.textContent = 'Жми'
+app.appendChild(Button)
 // worker.addEventListener("message", function (event) {});
 
 

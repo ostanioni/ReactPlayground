@@ -92,7 +92,7 @@ module.exports = {
           context: `${CONTEXT}`
         },
         { 
-          from: 'src/public/imgs',
+          from: 'src/public/workers',
           to: '../dist/workers',  
           // [name].[ext]',
           toType: 'dir',
