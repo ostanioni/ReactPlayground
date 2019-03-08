@@ -4,22 +4,10 @@
 
 
 // Respond to message from parent thread
+var counter = 1
 self.onmessage = function(e){
-  self.postMessage('Hello from worker')
-}
-
-let arr = [];
-for(let i=100; i>1; i--){
-  arr.push(getRandomInt(0, 100))
-}
-
-console.log('Unodered array:', arr)
-
-onmessage = function(e) {
-  //console.log('Message received from main script');
-  //var workerResult = 'Result: ' + (e.data[0] * e.data[1]);
-  //console.log('Posting message back to main script');
-  postMessage( quickSort(e.data) );
+  let str = `Hello from worker ${counter++} ${e.data}`
+  self.postMessage( str )
 }
 
 function quickSort(items) {
