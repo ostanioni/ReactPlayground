@@ -11,7 +11,6 @@ import     langStore from 'stores/langStore'
 
 import Layout from 'layouts/Layout'
 */
-import Worker from 'algs/sortQuick.worker.js'
 
 /*
 class App extends React.Component {
@@ -28,17 +27,14 @@ class App extends React.Component {
 
 ReactDOM.render( <App/>, document.getElementById('edf720cb-b61fe') )
 */
-const worker = new Worker();
-let arr = [];
-for(let i=100; i>1; i--){
-  arr.push(getRandomInt(0, 100))
-}
-console.log('Unodered array:', arr)
 
-worker.postMessage(arr)
+const worker = new Worker('workers/sortQuick.js');
+
+worker.postMessage('Hello from index.js')
+console.log('Hello from index.js');
+
 worker.onmessage = function (e) {
-  console.log( 'WorkerSort', e.data )
-  console.log( 'arr after:', arr)
+  console.log( 'FROM WORKER: ', e.data )
 };
 
 // worker.addEventListener("message", function (event) {});

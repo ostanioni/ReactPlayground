@@ -76,8 +76,8 @@ module.exports = {
       [
         { 
           from: 'src/public/css/*',
-          to: '../dist/css/[name].[ext]',
-          // toType: 'dir',
+          to: '../dist/css',
+          toType: 'dir',
           ignore: [ '*.js' ],
           force: true,
           context: `${CONTEXT}`
@@ -88,6 +88,14 @@ module.exports = {
           // [name].[ext]',
           toType: 'dir',
           ignore: [ '*.js' ],
+          force: true,
+          context: `${CONTEXT}`
+        },
+        { 
+          from: 'src/public/imgs',
+          to: '../dist/workers',  
+          // [name].[ext]',
+          toType: 'dir',
           force: true,
           context: `${CONTEXT}`
         },
