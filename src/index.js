@@ -28,7 +28,7 @@ class App extends React.Component {
 ReactDOM.render( <App/>, document.getElementById('edf720cb-b61fe') )
 */
 import 'css/abc.css'
-import THREE from 'three'
+import * as THREE from 'three'
 
 ////////////////////////////////////////
 
