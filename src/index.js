@@ -39,16 +39,42 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+var sphere = new THREE.SphereGeometry( 15, 10, 100 );
+var box = new THREE.BoxGeometry( 15, 15, 15 );
+
 var material = new THREE.MeshNormalMaterial();
-var cube = new THREE.Mesh( geometry, material );
+
+var cube = new THREE.Mesh( box, material );
+var geo = new THREE.Mesh( sphere, material );
+
 scene.add( cube );
-camera.position.z = 5;
+scene.add( geo );
+camera.position.z = 100;
 
 var render = function () {
   requestAnimationFrame( render );
   cube.rotation.x += 0.1;
   cube.rotation.y += 0.1;
+  let l = 0;
+  let napr = 'l'
+  if( l<-10 ){
+    geo.position.x += 0.5;
+    l+=0.5;
+    napr = 'r';
+  }
+  else if( l>10 ){
+    geo.position.x -= 0.5;
+    l-=0.5;
+    napr = 'l';
+  }else {
+    if(napr==='r'){
+      geo.position.x += 0.5;
+      l+=0.5;
+    } else {
+      geo.position.x -= 0.5;
+      l-=0.5;
+    }
+  }
   renderer.render( scene, camera );
 };
 
