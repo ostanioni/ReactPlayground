@@ -42,7 +42,8 @@ const CONTEXT = path.resolve(__dirname, '../');
 module.exports = {
   context: CONTEXT,
   entry: {
-    app: './src/index.js'
+   // app: './src/index.js'
+   app: './src/canvas.js'
   },
   output: {
     filename: '[hash].js',
