@@ -29,6 +29,7 @@ ReactDOM.render( <App/>, document.getElementById('edf720cb-b61fe') )
 */
 import 'css/abc.css'
 import * as THREE from 'three'
+import WEBGL from 'webgl/utils/Detector'
 
 ////////////////////////////////////////
 
@@ -49,38 +50,47 @@ var geo = new THREE.Mesh( sphere, material );
 
 scene.add( cube );
 scene.add( geo );
-camera.position.z = 100;
+camera.position.z = 80;
+
+var materialLine = new THREE.LineBasicMaterial({ color: 0x0000ff });
+var geometryLine = new THREE.Geometry();
+geometryLine.vertices.push(new THREE.Vector3(-10, 0, 0));
+geometryLine.vertices.push(new THREE.Vector3(0, 10, 0));
+geometryLine.vertices.push(new THREE.Vector3(10, 0, 0));
+var line = new THREE.Line(geometryLine, materialLine);
+scene.add(line);
 
 var render = function () {
   requestAnimationFrame( render );
   cube.rotation.x += 0.1;
   cube.rotation.y += 0.1;
-  let l = 0;
-  let napr = 'l'
-  if( l<-10 ){
-    geo.position.x += 0.5;
-    l+=0.5;
-    napr = 'r';
-  }
-  else if( l>10 ){
-    geo.position.x -= 0.5;
-    l-=0.5;
-    napr = 'l';
-  }else {
-    if(napr==='r'){
-      geo.position.x += 0.5;
-      l+=0.5;
-    } else {
-      geo.position.x -= 0.5;
-      l-=0.5;
-    }
-  }
+  
+  geo.position.x += 2*Math.cos(0.01);
+ 
   renderer.render( scene, camera );
 };
 
 render();
+if ( WEBGL.isWebGL2Available() === false ) {
 
+  console.log('WEBGL2 AVAILABLE')
+  // Initiate function or other initializations here
+	//animate();
 
+}
+
+if ( WEBGL.isWebGLAvailable() ) {
+
+  console.log('WEBGL AVAILABLE')
+  // Initiate function or other initializations here
+	//animate();
+
+} else {
+  console.warning('WEBGL NOT AVAILABLE')
+	var warning = WEBGL.getWebGLErrorMessage();
+	document.getElementById( 'container' ).appendChild( warning );
+
+}
 ///////////////////////////////////////
 console.clear()
 const worker = new Worker('./workers/sortQuick.js');
@@ -116,3 +126,6 @@ function getRandomArbitrary(min, max) {
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
+
+
+WEBGL.isWebGLAvailable() 

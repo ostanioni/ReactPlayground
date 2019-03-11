@@ -62,6 +62,7 @@ module.exports = {
       css:        `${CONTEXT}/src/public/css`,
       imgs:       `${CONTEXT}/src/public/imgs`,
       algs:       `${CONTEXT}/src/typescript/algorithms`,
+      webgl:      `${CONTEXT}/src/webgl`,
     },
   },
   module: {
