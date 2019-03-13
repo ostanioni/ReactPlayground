@@ -74,6 +74,7 @@ render();
 if ( WEBGL.isWebGL2Available() === false ) {
 
   console.log('WEBGL2 AVAILABLE')
+  document.body.appendChild( WEBGL.getWebGL2ErrorMessage() );
   // Initiate function or other initializations here
 	//animate();
 
