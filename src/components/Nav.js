@@ -1,10 +1,10 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import { NavLink } from 'react-router-dom'
 // import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { observer, inject } from 'mobx-react'
 // import Icon from 'components/Icon'
-import { IconStyled, IconLangStyled } from 'components/Icon'
+import IconSvg from 'components/IconSvg'
 
 import SearchStyled from 'components/SearchInput'
 
@@ -80,36 +80,25 @@ const NavStyled = styled.nav.attrs({
   }
   }
 `
-const LeftMenuSide = styled.div`
-  display: inline-flex;
-  height: 3.9rem;
-  width: 50%;
-  background-color: ${props=>props.theme.bgHeader};
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  box-sizing: border-box;
-`
-const RightMenuSide = styled.div`
-  display: inline-flex;
-  height: 3.9rem;
-  width: 50%;
-  background-color: ${props=>props.theme.bgHeader};
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  box-sizing: border-box;
-`
+
+
 // Nav class
-@inject('settingsStore')
+@inject('themesStore', 'settingsStore', 'langStore')
 @observer
 class Nav extends React.Component {
+  clk = ()=>{
+    alert('click')
+  }
   render() { 
     return (
+    <ThemeProvider theme={this.props.themesStore[this.props.settingsStore.theme]}>
     <NavStyled>
-      <LeftMenuSide>
-        <IconStyled size={"2rem"} color={"rgb(255,0,80)"} prefix={'fas'} type={"bars"} padding={'0 0 0 1rem'}/>
-      </LeftMenuSide>
+      <IconSvg id="bars" src="imgs/nav/bars.svg" width="2rem" alt="LANG" onClick={this.clk}/>
+      <IconSvg src="imgs/nav/globe.svg" width="2rem" alt="LANG" color="#fff" onClick={this.props.settingsStore.toggleLang}/>
+      <IconSvg src="imgs/nav/lightbulb.svg" width="1.5rem" alt="LANG" onClick={this.props.settingsStore.toggleTheme} />
+      <IconSvg src="imgs/nav/search.svg" width="2rem" alt="LANG" />
+     
+     
      { /*
       
  
@@ -142,7 +131,18 @@ class Nav extends React.Component {
         //console.log(this.props.theme)
         //
       }
-      <RightMenuSide>
+      
+      
+      
+    </NavStyled>
+    </ThemeProvider>
+  )}
+}
+
+export default Nav
+
+/*
+<RightMenuSide>
         <SearchStyled />
       <IconStyled padding={'0 0.5rem 0 1rem'} onClick={this.props.settingsStore.toggleTheme}  type={"search"} name={'iconTheme'} />
         <IconStyled padding={'0 0 0 1rem'} onClick={this.props.settingsStore.toggleTheme}  type={"lightbulb"} name={'iconTheme'} />
@@ -151,10 +151,7 @@ class Nav extends React.Component {
             color={this.props.settingsStore.langTogglerColor}
         />
       </RightMenuSide>
-      
-    </NavStyled>
-    
-  )}
-}
 
-export default Nav
+
+      
+      */

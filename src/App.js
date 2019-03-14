@@ -60,7 +60,6 @@ class App extends React.Component {
       <ThemeProvider theme={this.props.themesStore[this.props.settingsStore.theme]}>
       <Router>
     <>
-      
         <GlobalStyle />
             <AppBar />
           <Container>

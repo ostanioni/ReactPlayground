@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${props=>props.theme.bgColor};
     color: ${props=>props.theme.textColor};
     scrollbar-color: dark;
+    transition: all 0.5s ease-out;
   }
   h1 {
     font-size: 1.5rem;
@@ -39,15 +40,24 @@ const GlobalStyle = createGlobalStyle`
     html {
       font-size: 16px;
     }
+    #bars {
+      display: none;
+    }
   }
   @media (min-width: 993px) and (max-width: 1200px) {
     html {
       font-size: 18px;
     }
+    #bars {
+      display: none;
+    }
   }
   @media (min-width: 1201px) {
     html {
       font-size: 20px;
+    }
+    #bars {
+      display: none;
     }
   }
 `

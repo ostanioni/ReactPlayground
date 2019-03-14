@@ -16,9 +16,7 @@ const SCSS = {
     { loader: 'css-loader',     options: { sourceMap: false } },
     { loader: 'postcss-loader', options: { sourceMap: false, 
         ident: 'postcss',
-        plugins: () => [
-          require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] } ),
-        ]
+        plugins: [ require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] } ), ]
       }
     },
     { loader: 'sass-loader',    options: { sourceMap: false } }
