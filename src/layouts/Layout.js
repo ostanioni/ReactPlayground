@@ -30,10 +30,12 @@ const HeaderStyled = styled.header`
   color: ${props=>props.textColor};
 `
 const MainStyled = styled.main`
+  background-color: ${props=>props.theme.bgColor}
   position: relative;
-  top: 4.5rem;
+  top: 3.9rem;
   box-sizing: border-box;
-  margin: 0.5rem;
+  margin: 0;
+  transition: color 0.5s;
 `
 const AsideStyled = styled.aside`
   & #icon:hover {

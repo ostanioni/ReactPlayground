@@ -4,6 +4,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     font-family: 'Roboto', sans-serif;
     scrollbar-color: dark;
+    /* transition: all 0.5s ease-in-out;*/
   }
   * {
     box-sizing: border-box;
@@ -14,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${props=>props.theme.bgColor};
     color: ${props=>props.theme.textColor};
     scrollbar-color: dark;
-    transition: all 0.5s ease-out;
+    /*transition: all 0.5s ease-out;*/
   }
   h1 {
     font-size: 1.5rem;
@@ -39,9 +40,6 @@ const GlobalStyle = createGlobalStyle`
   @media (min-width: 769px) and (max-width: 992px) {
     html {
       font-size: 16px;
-    }
-    #bars {
-      display: none;
     }
   }
   @media (min-width: 993px) and (max-width: 1200px) {

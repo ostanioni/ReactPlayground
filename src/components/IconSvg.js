@@ -11,7 +11,7 @@ margin: 0.7rem;
 cursor: pointer;
 &>svg>path {
   fill: ${props=>props.theme.color};
-  transition: fill 2s fade;
+  transition: fill 0.5s easy-in-out;
 }
 `
 export default IconSvg

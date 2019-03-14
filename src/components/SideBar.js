@@ -7,13 +7,17 @@ import Content from 'resources/content'
 
 import uuidv4 from 'uuid/v4'
 
-let SideBarStyled = styled.nav.attrs(props=>{
-
-})`
+let SideBarStyled = styled.nav.attrs(props=>({
+  id: props.id,
+}))`
 display: inline-block;
 position: relative;
-top: -1.1rem;
-/*left: -1rem;*/
+&.isActive {
+  position: relative;
+  left: 0;
+}
+/* top: -1.1rem;
+left: -1rem;*/
 width: 28rem;
 height: 100vh;
 margin: 0;
@@ -52,7 +56,7 @@ transition: all 0.5s;
   &:hover {
     color: ${props=>props.theme.bsLink}
   }
-  transition: color 0.3s;
+  transition: color 0.5s;
 }
 ul>li>ul>li>ul>li:hover{
   text-decoration: underline;
@@ -63,17 +67,30 @@ ul>li>ul>li>ul>li:hover{
     }
     & ul {
       position: relative;
-      left: -2rem;
+      /* left: -2rem; */
     }
+    &.isActive {
+      left: 0;
+    }
+    left: -29rem;
   }
   @media (min-width: 577px) and (max-width: 768px) {
     html {
       font-size: 14px;
     }
+    position: relative;
+    left: -29rem;
+    &.isActive {
+      left: 0;
+    }
   }
   @media (min-width: 769px) and (max-width: 992px) {
     html {
       font-size: 16px;
+    }
+    left: -29rem;
+    &.isActive {
+      left: 0;
     }
   }
   @media (min-width: 993px) and (max-width: 1200px) {
@@ -153,7 +170,7 @@ class SideBar extends Component {
     this.part = this.props.settingsStore.lang === 'en' ? 'Part': 'Часть'
     this.chapter = this.props.settingsStore.lang === 'en' ? 'Chapter': 'Глава'
     return (
-      <SideBarStyled>
+      <SideBarStyled id="sideBar">
         <ul>
           {this.content(Content[this.props.settingsStore.lang])}
         </ul>
