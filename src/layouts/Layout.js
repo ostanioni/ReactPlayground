@@ -5,7 +5,8 @@ import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyle from 'styled/GlobalStyle'
 
 import Nav from 'components/Nav'
-import SideBar from 'components/SideBar'
+import Drawer from 'components/Drawer'
+import MainContent from 'components/MainContent'
 
 import 'css/App.scss'
 
@@ -13,8 +14,15 @@ import 'css/normalize.css'
 
 
 // import Prism from 'prismjs';
-
-const HeaderStyled = styled.header`
+const GridStyled = styled.div.attrs(props=>({
+  id:"grid",
+}))`
+  background-color: ${props=>props.theme.bgColor};
+  color: ${props=>props.theme.textColor};
+`
+const HeaderStyled = styled.header.attrs(props=>({
+  
+}))`
   position: fixed;
   top: 0px;
   left: 0px;
@@ -29,13 +37,17 @@ const HeaderStyled = styled.header`
   background-color: ${props=>props.theme.bgHeader};
   color: ${props=>props.textColor};
 `
-const MainStyled = styled.main`
-  background-color: ${props=>props.theme.bgColor}
-  position: relative;
-  top: 3.9rem;
+const MainStyled = styled.main.attrs(props=>({
+  id: 'main',
+}))`
+  background-color: ${props=>props.theme.bgColor};
+  color: ${props=>props.theme.textColor};
+  /*position: relative;
+  top: 3.9rem;*/
   box-sizing: border-box;
   margin: 0;
   transition: color 0.5s;
+  border: 1px solid red;
 `
 const AsideStyled = styled.aside`
   & #icon:hover {
@@ -54,22 +66,22 @@ const CodeStyled = styled.div`
 class LayoutStyled extends React.Component {
   render () { return (
     <ThemeProvider theme={this.props.themesStore[this.props.settingsStore.theme]}>
-    <>
-    <GlobalStyle />
-      <HeaderStyled>
-        <Nav />
-      </HeaderStyled>
-      <MainStyled>
-        <SideBar />
-        
-      </MainStyled>
-      <AsideStyled>
-      
-      </AsideStyled>
-      <FooterStyled>
-      
-      </FooterStyled>
-    </>
+      <GridStyled>
+        <GlobalStyle />
+          <HeaderStyled>
+            <Nav />
+          </HeaderStyled>
+          <Drawer />
+          <MainStyled>
+            <MainContent />        
+          </MainStyled>
+          <AsideStyled>
+          
+          </AsideStyled>
+          <FooterStyled>
+          
+          </FooterStyled>
+      </GridStyled>
     </ThemeProvider>
   )}
 }

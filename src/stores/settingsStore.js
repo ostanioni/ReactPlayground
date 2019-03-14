@@ -14,11 +14,9 @@ class Settings {
     // this.langTogglerIsActive = !this.langTogglerIsActive
     console.log('this.lang = ', this.lang )
   }
-  @action toggleSideBar = ()=>{
-    let bars = document.getElementById('sideBar')
-    bars.classList.toggle('isActive')
-    console.log(bars)
-    console.log( 'bars show' )
+  @action toggleDrawer = ()=>{
+    let bars = document.getElementById('drawer')
+    bars.classList.toggle('drawer-is-open')
   }
   @computed get langTogglerColor() {
     if ( this.lang === 'en' ) { 

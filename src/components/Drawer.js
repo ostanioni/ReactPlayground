@@ -5,25 +5,19 @@ import styled from 'styled-components'
 
 import Content from 'resources/content'
 
-import uuidv4 from 'uuid/v4'
+// import uuidv4 from 'uuid/v4'
 
-let SideBarStyled = styled.nav.attrs(props=>({
+let DrawerStyled = styled.nav.attrs(props=>({
   id: props.id,
 }))`
 display: inline-block;
 position: relative;
-&.isActive {
-  position: relative;
-  left: 0;
-}
-/* top: -1.1rem;
-left: -1rem;*/
-width: 28rem;
-height: 100vh;
+height: auto;
 margin: 0;
 padding: 0;
-overflow-y: scroll;
+overflow-y: auto;
 /*
+overflow-y: scroll;
 border: 1px solid ${props=>props.theme.textColor};
 */
 color: ${props=>props.theme.textColor};
@@ -36,7 +30,7 @@ transition: all 0.5s;
   cursor: pointer;
   position: relative;
   left: -1rem;
-  &.hide {
+  .hide {
     display: none;
   }  
 }
@@ -61,53 +55,12 @@ transition: all 0.5s;
 ul>li>ul>li>ul>li:hover{
   text-decoration: underline;
 }
-  @media (max-width: 576px) {
-    html {
-      font-size: 13px;
-    }
-    & ul {
-      position: relative;
-      /* left: -2rem; */
-    }
-    &.isActive {
-      left: 0;
-    }
-    left: -29rem;
-  }
-  @media (min-width: 577px) and (max-width: 768px) {
-    html {
-      font-size: 14px;
-    }
-    position: relative;
-    left: -29rem;
-    &.isActive {
-      left: 0;
-    }
-  }
-  @media (min-width: 769px) and (max-width: 992px) {
-    html {
-      font-size: 16px;
-    }
-    left: -29rem;
-    &.isActive {
-      left: 0;
-    }
-  }
-  @media (min-width: 993px) and (max-width: 1200px) {
-    html {
-      font-size: 18px;
-    }
-  }
-  @media (min-width: 1201px) {
-    html {
-      font-size: 20px;
-    }
-  }
+  
 `
 
 @inject('themesStore', 'settingsStore', 'langStore')
 @observer
-class SideBar extends Component {
+class Drawer extends Component {
   part = ''
   chapter = ''
   currentChapter = 0
@@ -117,6 +70,7 @@ class SideBar extends Component {
   }
   handleClick = (e)=>{
     let node = e.target.nextSibling
+    console.log('NODE = ', node)
     node.classList.contains('hide')? showList(node): hideList(node)
 
     function showList(node){
@@ -127,6 +81,7 @@ class SideBar extends Component {
         e.target.classList.remove('animated','fadeIn','fast')
         e.target.removeEventListener('animationend', handleAnimationEnd)
       }
+      console.log('showList')
     }
 
     function hideList(node){
@@ -136,7 +91,10 @@ class SideBar extends Component {
         e.target.classList.remove('animated','fadeOut','faster')
         e.target.classList.add('hide')
         e.target.removeEventListener('animationend', handleAnimationEnd)
+        console.log('hideList')
+        console.log('E_TARGET', e.target)
       }  
+      console.log('hideList')
     }
   }
   content = (arr)=>{
@@ -170,13 +128,13 @@ class SideBar extends Component {
     this.part = this.props.settingsStore.lang === 'en' ? 'Part': 'Часть'
     this.chapter = this.props.settingsStore.lang === 'en' ? 'Chapter': 'Глава'
     return (
-      <SideBarStyled id="sideBar">
+      <DrawerStyled id="drawer">
         <ul>
           {this.content(Content[this.props.settingsStore.lang])}
         </ul>
-      </SideBarStyled>
+      </DrawerStyled>
     )
   }
 }
 
-export default SideBar
+export default Drawer

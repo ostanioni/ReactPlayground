@@ -78,9 +78,8 @@ const NavStyled = styled.nav.attrs({
     &>ul {
     display: inline;
   }
-  }
+}
 `
-
 // Nav class
 @inject('themesStore', 'settingsStore', 'langStore')
 @observer
@@ -92,18 +91,18 @@ class Nav extends React.Component {
     return (
     <ThemeProvider theme={this.props.themesStore[this.props.settingsStore.theme]}>
       <NavStyled>
-        <IconSvg id="bars" src="imgs/nav/bars.svg" width="2rem" alt="LANG" onClick={this.props.settingsStore.toggleSideBar}/>
+        <IconSvg id="bars" src="imgs/nav/bars.svg" width="2rem" alt="LANG" onClick={this.props.settingsStore.toggleDrawer}/>
         <IconSvg src="imgs/nav/globe.svg" width="2rem" alt="LANG" color="#fff" onClick={this.props.settingsStore.toggleLang}/>
         <IconSvg src="imgs/nav/lightbulb.svg" width="1.5rem" alt="LANG" onClick={this.props.settingsStore.toggleTheme} />
         <IconSvg src="imgs/nav/search.svg" width="2rem" alt="LANG" />
-        { 
-        <ul>
+      
+        <ul style={{ font: 'Monospace',}}>
           <li id="t-intro"><NavLinkStyled to="/about">About</NavLinkStyled></li>
           <li id="t-about"><NavLinkStyled to="/about">About Lance </NavLinkStyled></li>
           <li id="t-news" ><a href="news.html" style={{color: '#61dafb'}}>NEWS &amp; EVENTS</a></li>
           <li id="t-sponsors"><a href="sponsors.html" style={{color: 'rgb(255,0,80)'}}>Sponsors</a></li>
         </ul>
-        }
+     
       </NavStyled>
     </ThemeProvider>
   )}
