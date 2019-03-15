@@ -92,7 +92,7 @@ class Nav extends React.Component {
     <ThemeProvider theme={this.props.themesStore[this.props.settingsStore.theme]}>
       <NavStyled>
         <IconSvg id="bars" src="imgs/nav/bars.svg" width="2rem" alt="LANG" onClick={this.props.settingsStore.toggleDrawer}/>
-        <IconSvg src="imgs/nav/globe.svg" width="2rem" alt="LANG" color="#fff" onClick={this.props.settingsStore.toggleLang}/>
+        <IconSvg src="imgs/nav/globe.svg" width="2rem" alt="LANG" onClick={this.props.settingsStore.toggleLang}/>
         <IconSvg src="imgs/nav/lightbulb.svg" width="1.5rem" alt="LANG" onClick={this.props.settingsStore.toggleTheme} />
         <IconSvg src="imgs/nav/search.svg" width="2rem" alt="LANG" />
       

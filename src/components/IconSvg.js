@@ -10,7 +10,7 @@ width: ${props=>props.width};
 margin: 0.7rem;
 cursor: pointer;
 &>svg>path {
-  fill: ${props=>props.theme.color};
+  fill: ${props=>props.theme.textColor};
   transition: fill 0.5s easy-in-out;
 }
 `
