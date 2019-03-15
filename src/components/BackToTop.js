@@ -7,11 +7,16 @@ import Icon from 'components/IconProbe'
 
 const BackToTopStyled = styled.span.attrs(props=>({
   onCick: props.onClick,
+  id: props.id,
 }))`
   position: fixed;
   cursor: pointer;
   bottom: 2.5rem;
   right: 2.5rem;
+  &.toTop-is-hide {
+    right: -2.5rem;
+  }
+  transition: right 0.5s;
 `
 
 class BackToTop extends React.Component {
@@ -23,7 +28,7 @@ class BackToTop extends React.Component {
   }
   render() {
     return (
-      <BackToTopStyled onClick={this.toTop}>
+      <BackToTopStyled onClick={this.toTop} id={this.props.id}>
         <Icon width="2.5rem" alt="UP" />
       </BackToTopStyled>
     )      

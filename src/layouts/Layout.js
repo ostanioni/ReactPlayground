@@ -74,15 +74,23 @@ const CodeStyled = styled.div`
 @observer
 class LayoutStyled extends React.Component {
   prevOffset = 0
-  hideHeader = () => {
+  hideElements = () => {
     const header = document.getElementById('header')
-    this.prevOffset = window.pageYOffset
-    console.log(this.prevOffset)
-    if (window.pageYOffset > 50) header.classList.add('header-is-hide')
-    if (window.pageYOffset < 50) header.classList.remove('header-is-hide')
+    const toTop  = document.getElementById('toTop')
+    if (window.pageYOffset > 50) {
+      header.classList.add('header-is-hide')
+       toTop.classList.remove('toTop-is-hide')
+    }
+    if (window.pageYOffset < 50) {
+      header.classList.remove('header-is-hide')
+       toTop.classList.add('toTop-is-hide')
+    }
+  }
+  init = ()=>{
+    window.addEventListener('scroll', this.hideElements)
   }
   componentDidMount(){
-    window.addEventListener('scroll', this.hideHeader)
+    document.addEventListener('DOMContentLoaded', this.init );
   }
   render () { return (
     <ThemeProvider theme={this.props.themesStore[this.props.settingsStore.theme]}>
@@ -101,7 +109,7 @@ class LayoutStyled extends React.Component {
           <FooterStyled>
             FOOTER
           </FooterStyled>
-          <BackToTop />
+          <BackToTop id="toTop" />
       </GridStyled>
     </ThemeProvider>
   )}
