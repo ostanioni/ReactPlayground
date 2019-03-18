@@ -55,7 +55,14 @@ transition: all 0.5s;
 ul>li>ul>li>ul>li:hover{
   text-decoration: underline;
 }
-  
+`
+
+const DivStyled = styled.div.attrs(props=>({
+
+}))`
+width: 100%;
+height: 100vh;
+background-color: ${props=>props.theme.bgColor};
 `
 
 @inject('themesStore', 'settingsStore', 'langStore')
@@ -128,11 +135,13 @@ class Drawer extends Component {
     this.part = this.props.settingsStore.lang === 'en' ? 'Part': 'Часть'
     this.chapter = this.props.settingsStore.lang === 'en' ? 'Chapter': 'Глава'
     return (
-      <DrawerStyled id="drawer">
-        <ul>
-          {this.content(Content[this.props.settingsStore.lang])}
-        </ul>
-      </DrawerStyled>
+      <DivStyled>
+        <DrawerStyled id="drawer">
+          <ul>
+            {this.content(Content[this.props.settingsStore.lang])}
+          </ul>
+        </DrawerStyled>
+      </DivStyled>
     )
   }
 }
