@@ -25,6 +25,7 @@ const NavStyled = styled.nav.attrs({
   width: 100%;
   height: 100%;
   background-color: ${props=>props.theme.bgHeader};
+  transition: all 0.5s;
   &>ul {
     display: inline;
   }

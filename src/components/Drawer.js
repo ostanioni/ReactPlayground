@@ -15,11 +15,8 @@ position: relative;
 height: auto;
 margin: 0;
 padding: 0;
-overflow-y: auto;
-/*
-overflow-y: scroll;
+overflow: scroll;
 border: 1px solid ${props=>props.theme.textColor};
-*/
 color: ${props=>props.theme.textColor};
 background-color: ${props=>props.theme.bgSideBar};
 font-family: Monospace;
@@ -58,11 +55,29 @@ ul>li>ul>li>ul>li:hover{
 `
 
 const DivStyled = styled.div.attrs(props=>({
-
+ id: props.id,
 }))`
+position: fixed;
+top: 0;
+left: 0;
 width: 100%;
 height: 100vh;
+z-index: 1005;
+background-color: rgba(0,0,0,0.7);
+&.wrapper-is-hide {
+  left: 110vw;
+}
+transition: all 0.7;
+`
+const DivBack = styled.div.attrs(props=>({
+
+}))`
+position: fixed;
+height: 4rem;
 background-color: ${props=>props.theme.bgColor};
+color: ${props=>props.theme.textColor};
+cursor: pointer;
+border: 1px solid ${props=>props.theme.textColor};
 `
 
 @inject('themesStore', 'settingsStore', 'langStore')
@@ -135,8 +150,9 @@ class Drawer extends Component {
     this.part = this.props.settingsStore.lang === 'en' ? 'Part': 'Часть'
     this.chapter = this.props.settingsStore.lang === 'en' ? 'Chapter': 'Глава'
     return (
-      <DivStyled>
-        <DrawerStyled id="drawer">
+      <DivStyled className="wrapper-is-hide" id="drawerWrapper">
+      <DivBack onClick={this.props.settingsStore.toggleDrawer}>Назад </DivBack>
+      <DrawerStyled id="drawer">
           <ul>
             {this.content(Content[this.props.settingsStore.lang])}
           </ul>

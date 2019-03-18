@@ -40,6 +40,7 @@ const HeaderStyled = styled.header.attrs(props=>({
   &.header-is-hide {
     transform: translateY(-4.5rem);
   }
+  transition: all 0.5s;
 `
 const MainStyled = styled.main.attrs(props=>({
   id: 'main',
@@ -51,7 +52,7 @@ const MainStyled = styled.main.attrs(props=>({
   box-sizing: border-box;
   margin: 0;
   transition: color 0.5s;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
 `
 const AsideStyled = styled.aside`
   & #icon:hover {
@@ -76,14 +77,11 @@ class LayoutStyled extends React.Component {
   prevOffset = 0
   hideElements = () => {
     const header = document.getElementById('header')
-    const toTop  = document.getElementById('toTop')
     if (window.pageYOffset > 50) {
       header.classList.add('header-is-hide')
-       toTop.classList.remove('toTop-is-hide')
     }
     if (window.pageYOffset < 50) {
       header.classList.remove('header-is-hide')
-       toTop.classList.add('toTop-is-hide')
     }
   }
   init = ()=>{
@@ -109,7 +107,7 @@ class LayoutStyled extends React.Component {
           <FooterStyled>
             FOOTER
           </FooterStyled>
-          <BackToTop id="toTop" />
+          <BackToTop />
       </GridStyled>
     </ThemeProvider>
   )}

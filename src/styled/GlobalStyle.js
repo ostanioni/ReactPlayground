@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
+    background-color: ${props=>props.theme.bgColor};
   }
   h1 {
     font-size: 1.5rem;
@@ -43,11 +44,11 @@ const GlobalStyle = createGlobalStyle`
     #drawer {
       position: fixed;
       top: 3.9rem;
-      left: -35rem;
+      left: -50rem;
       &.drawer-is-open {
         left: 0;
       }
-      transition: left 0.5s;
+      transition: left 0.7s;
     }
   }
   @media (min-width: 577px) and (max-width: 768px) {
@@ -71,11 +72,11 @@ const GlobalStyle = createGlobalStyle`
     #drawer {
       position: fixed;
       top: 3.9rem;
-      left: -35rem;
+      left: -50rem;
       &.drawer-is-open {
         left: 0;
       }
-      transition: left 0.5s;
+      transition: left 0.7s;
     }
   }
   @media (min-width: 769px) and (max-width: 992px) {
@@ -99,11 +100,11 @@ const GlobalStyle = createGlobalStyle`
     #drawer {
       position: fixed;
       top: 3.9rem;
-      left: -35rem;
+      left: -50rem;
       &.drawer-is-open {
         left: 0;
       }
-      transition: left 0.5s;
+      transition: left 0.7s;
     }
   }
   @media (min-width: 993px) and (max-width: 1200px) {
@@ -113,7 +114,7 @@ const GlobalStyle = createGlobalStyle`
     #grid {
       display: grid;
       grid-gap: 8 px;
-      grid-template-columns: 1fr 4fr 1fr;
+      grid-template-columns: 1fr 5fr 1fr;
       grid-template-rows: 5rem 100vh;
       background-color: ${props=>props.theme.bgColor};
       color: ${props=>props.theme.textColor};
@@ -127,11 +128,11 @@ const GlobalStyle = createGlobalStyle`
     #drawer {
       position: fixed;
       top: 3.9rem;
-      left: -35rem;
+      left: -50rem;
       &.drawer-is-open {
         left: 0;
       }
-      transition: left 0.5s;
+      transition: left 0.7s;
     }
   }
   @media (min-width: 1201px) {
@@ -155,11 +156,11 @@ const GlobalStyle = createGlobalStyle`
     #drawer {
       position: fixed;
       top: 3.9rem;
-      left: -40rem;
+      left: -50rem;
       &.drawer-is-open {
         left: 0;
       }
-      transition: left 0.5s;
+      transition: left 0.7s;
     }
   }
 `

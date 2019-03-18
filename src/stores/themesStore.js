@@ -10,7 +10,7 @@ const dark = {
   "link": "#e10050", // rgb(255,0,80)
   "textColor": "#fff", // rgb(255,255,255)
   "subText": "#bebebe", // rgb(190,190,190)
-  "headerShadow": "0 0 1.2rem rgb(62,166,255,0.5)",
+  "headerShadow": "0 0 1.5rem rgb(62,166,255,0.5)",
   "themeToggler": "rgb(62,166,255)",
   "iconTheme": "#1bb",
   "bsLink": "rgb(97,218,251)"
@@ -24,7 +24,7 @@ const light = {
   "link": "#e10050", // rgb(255,0,80)
   "textColor": "#000", // rgb(255,255,255)
   "subText": "#bebebe", // rgb(190,190,190)
-  "headerShadow": "0 0 1.2rem rgba(0,0,0,0.5)",
+  "headerShadow": "0 0 1.5rem rgba(0,0,0,0.5)",
   "themeToggler": "#fff",
   "iconTheme": "#e10050",
   "bsLink": "rgb(97,218,251)"

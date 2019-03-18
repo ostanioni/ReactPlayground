@@ -15,8 +15,14 @@ class Settings {
     console.log('this.lang = ', this.lang )
   }
   @action toggleDrawer = ()=>{
-    let bars = document.getElementById('drawer')
-    bars.classList.toggle('drawer-is-open')
+    let drawer = document.getElementById('drawer')
+    let wrapper = document.getElementById('drawerWrapper')
+    console.log('DRAWER = ', drawer)
+    console.log('WRAPPER = ', wrapper)
+    drawer.classList.toggle('drawer-is-open')
+    
+    const f = () => wrapper.classList.toggle('wrapper-is-hide')
+    setTimeout(f,500)
   }
   @computed get langTogglerColor() {
     if ( this.lang === 'en' ) { 
