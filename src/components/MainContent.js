@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import { observer, inject } from "mobx-react"
 
-import page from 'resources/en1'
+import Introduction from 'resources/en1'
 
 const MainContentStyled = styled.div.attrs(props=>({
   onClick: props.OnClick,
@@ -24,13 +25,25 @@ color: ${props=>props.theme.textColor};
   line-height: 0.8;
 }
 `
+
+@inject('settingsStore')
+@observer
 class MainContent extends React.Component {
   render(){
     return (
       <MainContentStyled>
-        <p>
-        {page}
-        </p>
+        {
+          Introduction[this.props.settingsStore.lang].map( (el,idx)=>{
+              return (
+                <div>
+                <h2>{el.label}</h2>
+                <div dangerouslySetInnerHTML={{ __html: el.text }}></div>
+                </div>
+              )
+            
+            }
+          )
+        }
       </MainContentStyled>
     )
   }
