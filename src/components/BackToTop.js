@@ -13,7 +13,7 @@ const BackToTopStyled = styled.span.attrs(props=>({
   cursor: pointer;
   bottom: 2.5rem;
   right: 2.5rem;
-  &.toTop-is-hide {
+  &.BackToTop-is-hide {
     right: -2.5rem;
   }
   transition: right 0.5s;
@@ -26,9 +26,16 @@ class BackToTop extends React.Component {
   toTop = ()=>{
     window.scrollTo(0,0);
   }
+  scrollHandler = ()=>{
+    const toTop  = document.getElementById('BackToTop')
+    window.pageYOffset > 50 ? toTop.classList.remove('BackToTop-is-hide') : toTop.classList.add('BackToTop-is-hide')
+  }
+  componentDidMount(){
+    window.addEventListener('scroll', this.scrollHandler)
+  }
   render() {
     return (
-      <BackToTopStyled onClick={this.toTop} id={this.props.id}>
+      <BackToTopStyled onClick={this.toTop} id="BackToTop" className="BackToTop-is-hide">
         <Icon width="2.5rem" alt="UP" />
       </BackToTopStyled>
     )      
