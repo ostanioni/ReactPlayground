@@ -2,7 +2,7 @@ const par_1_en = {
 label:'Preface',
 text : `
 <p>
-THIS BOOK IS intended to survey the most important computer algorithms in use today, 
+THIS BOOK IS INTENDED to survey the most important computer algorithms in use today, 
 and to teach fundamental techniques to
 the growing number of people in need of knowing them. It can be
 used as a textbook for a second, third, or fourth course in computer
@@ -51,7 +51,7 @@ const par_2_en ={
 label: 'Scope',
 text:`
 <p>
-THE BOOK contains 16 chapters grouped into four major parts: fundamentals, data structures, sorting, and searching. The descriptions here
+THE BOOK CONTAINS 16 chapters grouped into four major parts: fundamentals, data structures, sorting, and searching. The descriptions here
 are intended to give readers an understanding of the basic properties
 of as broad a range of fundamental algorithms as possible. Ingenious
 methods ranging from binomial queues to patricia tries are described,
@@ -83,7 +83,7 @@ const par_3_en = {
 label:'Use in the Curriculum',
 text : `
 <p>
-THERE IS a great deal of flexibility in how the material here can be
+THERE IS A GREAT DEAL of flexibility in how the material here can be
 taught, depending on the taste of the instructor and the preparation
 of the students. The algorithms described here have found widespread
 use for years, and represent an essential body of knowledge for both
@@ -138,7 +138,7 @@ const par_4_en = {
 label: 'Algorithms of Practical Use',
 text: `
 <p>
-ANYONE WANTING to use a computer more effectively can use this book
+ANYONE WANTING TO USE a computer more effectively can use this book
 for reference or for self-study. People with programming experience
 can find information on specific topics throughout the book. To a large
 extent, you can read the individual chapters in the book independently
@@ -175,7 +175,7 @@ const par_5_en = {
 label: 'Programming Language',
 text:`
 <p>
-THE PROGRAMMING language used for all of the implementations is C.
+THE PROGRAMMING LANGUAGE used for all of the implementations is C.
 Any particular language has advantages and disadvantages; we use
 C because it is widely available and provides the features needed for
 our implementations. The programs can be translated easily to other
@@ -218,7 +218,7 @@ const par_6_en ={
 label: 'Acknowledgments',
 text:`
 <p>
-MANY PEOPLE gave me helpful feedback on earlier versions of this book.
+MANY PEOPLE GAVE ME helpful feedback on earlier versions of this book.
 In particular, hundreds of students at Princeton and Brown have suffered through preliminary drafts over the years. Special thanks are due
 to Trina Avery and Tom Freeman for their help in producing the first
 edition; to Janet Incerpi for her creativity and ingenuity in persuading
@@ -288,7 +288,7 @@ const par_7_en = {
 label: 'Notes on Exercises',
 text:`
 <p>
-CLASSIFYING exercises is an activity fraught with peril, because readers
+CLASSIFYING EXERCISES IS an activity fraught with peril, because readers
 of a book such as this come to the material with various levels of
 knowledge and experience. Nonetheless, guidance is appropriate, so
 many of the exercises carry one of four annotations, to help you decide
@@ -356,7 +356,7 @@ const par_1_ru = {
 label:'Предисловие',
 text:`
 <p>
-ЭТА КНИГА знакомит вас с наиболее важными из применяемых на сегодняшний день
+ЭТА КНИГА ЗНАКОМИТ вас с наиболее важными из применяемых на сегодняшний день
 компьютерных алгоритмов, а также обучает, фундаментальным технологиям, которые 
 непосредственно адресованы все возрастающему количеству разработчиков,
 нуждающихся в подобных знаниях. Она может быть использована как учебник для студентов 
@@ -466,7 +466,7 @@ const par_2_ru = {
 label: 'Круг рассматриваемых вопросов',
 text:`
 <p>
-Книга содержит 22 главы, сгруппированных в виде пяти основных частей: основные 
+КНИГА СОДЕРЖИТ 22 главы, сгруппированных в виде пяти основных частей: основные 
 понятия, структуры данных, сортировка, поиск и алгоритмы на графах. 
 Приведенные в ней описания призваны ознакомить читателей с основными свойствами 
 максимально широкого круга фундаментальных алгоритмов. Описанные здесь алгоритмы
@@ -512,7 +512,7 @@ const par_3_ru ={
   label:'Использование материала в рамках учебных курсов',
   text:`
 <p>
-Что касается стиля изложения материала, то в этом плане преподавателю предоставляется 
+ЧТО КАСАЕТСЯ СТИЛЯ изложения материала, то в этом плане преподавателю предоставляется 
 свобода в широких пределах, в зависимости от предпочтений преподавателя
 и подготовки студентов. Описанные в книге алгоритмы широко использовались в течение 
 многих лет, они представляют собой совокупность знаний, необходимых как
@@ -556,7 +556,7 @@ const par_4_ru ={
 label:'Язык программирования',
 text:`
 <p>
-Во всех реализациях используется язык программирования С. Каждый конкретный
+ВО ВСЕХ РЕАЛИЗАЦИЯХ используется язык программирования С. Каждый конкретный
 язык программирования имеет свои преимущества и недостатки; мы используем язык
 С, так как он легко доступен и обладает свойствами, которые требуются для наших
 приложений. Программные реализации можно легко перевести на любой другой современный
@@ -593,7 +593,7 @@ const par_5_ru = {
 label:'Благодарности',
 text: `
 <p>
-Многие читатели прислали мне исключительно полезные отзывы о предыдущих изданиях 
+МНОГИЕ ЧИТАТЕЛИ прислали мне исключительно полезные отзывы о предыдущих изданиях 
 этой книги. В частности, в течение ряда лет предварительные наброски книги
 апробировались на сотнях студентов в Принстоне и Брауне. Особую благодарность 
 хотелось бы выразить Трине Эйвери (Tina Avery) и Тому Фримену (Tom Freeman) за
@@ -668,7 +668,7 @@ const par_6_ru = {
 label:'Примечания к упражнениям',
 text:`
 <p>
-Классификация упражнений - это занятие, сопряженное с рядом трудностей, 
+КЛАССИФИКАЦИЯ УПРАЖНЕНИЙ - это занятие, сопряженное с рядом трудностей, 
 поскольку читатели такой книги, как эта, обладают различным уровнем знаний и опыта.
 Тем не менее, определенное указание не помешает, поэтому многие упражнения помечены 
 одним из четырех маркеров, дабы проще было выбрать соответствующий подход.
