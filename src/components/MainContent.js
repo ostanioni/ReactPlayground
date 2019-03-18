@@ -12,7 +12,7 @@ width: 100%;
 height: auto;
 background-color: ${props=>props.theme.bgColor};
 color: ${props=>props.theme.textColor};
-&>p::first-letter{
+& p::first-letter{
   font-family: "Times New Roman";
   font-size: 3rem;
   color: red;
