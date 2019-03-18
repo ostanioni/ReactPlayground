@@ -2,11 +2,11 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   html {
-    font-family: 'Roboto', sans-serif;
+    font-family: Monospace,'Times New Roman','Roboto', sans-serif;
   }
   * {
     box-sizing: border-box;
-    transition: all 0.5s;
+   /* transition: background-color, color 0.1s;*/
   }
   body {
     padding: 0;

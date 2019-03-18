@@ -51,7 +51,7 @@ const par_2_en ={
 label: 'Scope',
 text:`
 <p>
-The book contains 16 chapters grouped into four major parts: fundamentals, data structures, sorting, and searching. The descriptions here
+THE BOOK contains 16 chapters grouped into four major parts: fundamentals, data structures, sorting, and searching. The descriptions here
 are intended to give readers an understanding of the basic properties
 of as broad a range of fundamental algorithms as possible. Ingenious
 methods ranging from binomial queues to patricia tries are described,
@@ -83,7 +83,7 @@ const par_3_en = {
 label:'Use in the Curriculum',
 text : `
 <p>
-There is a great deal of flexibility in how the material here can be
+THERE IS a great deal of flexibility in how the material here can be
 taught, depending on the taste of the instructor and the preparation
 of the students. The algorithms described here have found widespread
 use for years, and represent an essential body of knowledge for both
@@ -138,7 +138,7 @@ const par_4_en = {
 label: 'Algorithms of Practical Use',
 text: `
 <p>
-Anyone wanting to use a computer more effectively can use this book
+ANYONE WANTING to use a computer more effectively can use this book
 for reference or for self-study. People with programming experience
 can find information on specific topics throughout the book. To a large
 extent, you can read the individual chapters in the book independently
@@ -175,7 +175,7 @@ const par_5_en = {
 label: 'Programming Language',
 text:`
 <p>
-The programming language used for all of the implementations is C.
+THE PROGRAMMING language used for all of the implementations is C.
 Any particular language has advantages and disadvantages; we use
 C because it is widely available and provides the features needed for
 our implementations. The programs can be translated easily to other
@@ -218,7 +218,7 @@ const par_6_en ={
 label: 'Acknowledgments',
 text:`
 <p>
-Many people gave me helpful feedback on earlier versions of this book.
+MANY PEOPLE gave me helpful feedback on earlier versions of this book.
 In particular, hundreds of students at Princeton and Brown have suffered through preliminary drafts over the years. Special thanks are due
 to Trina Avery and Tom Freeman for their help in producing the first
 edition; to Janet Incerpi for her creativity and ingenuity in persuading
@@ -288,7 +288,7 @@ const par_7_en = {
 label: 'Notes on Exercises',
 text:`
 <p>
-Classifying exercises is an activity fraught with peril, because readers
+CLASSIFYING exercises is an activity fraught with peril, because readers
 of a book such as this come to the material with various levels of
 knowledge and experience. Nonetheless, guidance is appropriate, so
 many of the exercises carry one of four annotations, to help you decide
@@ -356,7 +356,7 @@ const par_1_ru = {
 label:'Предисловие',
 text:`
 <p>
-Эта книга знакомит вас с наиболее важными из применяемых на сегодняшний день
+ЭТА КНИГА знакомит вас с наиболее важными из применяемых на сегодняшний день
 компьютерных алгоритмов, а также обучает, фундаментальным технологиям, которые 
 непосредственно адресованы все возрастающему количеству разработчиков,
 нуждающихся в подобных знаниях. Она может быть использована как учебник для студентов 

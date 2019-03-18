@@ -12,15 +12,25 @@ width: 100%;
 height: auto;
 background-color: ${props=>props.theme.bgColor};
 color: ${props=>props.theme.textColor};
-& p::first-letter{
-  font-family: "Times New Roman";
-  font-size: 3rem;
+& h2 {
+  color: rgb(62,166,255);
+}
+& p {
+  text-indent: 1.5rem;
+  margin: 0.4rem;
+  padding: 0;
+}
+& p:first-child::first-letter{
+  text-indent: 1px;
+  /*font-family: "Times New Roman";*/
+  font-size: 2.5rem;
   color: red;
-  float: left;
-  margin-top: -0.4rem;
+  /*float: left;*/
+  margin-top: 0rem;
   margin-right: 0.2rem;
   text-shadow: 1px 1px 2px ${props=>props.theme.textColor}, 0 0 0.3rem red;
   padding: 0;
+  text-transform: capitalize;
   /*border: 2px solid red;*/
   line-height: 0.8;
 }
