@@ -100,7 +100,7 @@ class Nav extends React.Component {
         <ul style={{ font: 'Monospace',}}>
           <li id="t-intro"><NavLinkStyled to="/about">About Me</NavLinkStyled></li>
           <li id="t-about"><NavLinkStyled to="/home">Home</NavLinkStyled></li>
-          <li id="t-about"><NavLinkStyled to="/alginc">AlgInC</NavLinkStyled></li>
+          <li id="t-about"><NavLinkStyled to="/alginc/c/part/chapter/paragraph">AlgInC</NavLinkStyled></li>
           {/*
           <li id="t-news" ><a href="news.html" style={{color: '#61dafb'}}>NEWS &amp; EVENTS</a></li>
           <li id="t-sponsors"><a href="sponsors.html" style={{color: 'rgb(255,0,80)'}}>Sponsors</a></li>

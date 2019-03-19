@@ -1,40 +1,46 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import { observer, inject } from "mobx-react"
-import axios from 'axios'
 
-@inject('settingsStore')
+@inject('settingsStore', 'dataStore')
 @observer
 class AlgInC extends Component {
+  // @observable dataLoaded = false
   constructor({match}){
     super()
     this.match = match
     this.state = {
-      data: []
+      data: null,
+      loading: false,
     }
   }
-  handleSuccess = (data)=>{
-    this.setState({'data': data})
+  componentDidMount(){
+    console.log ('PROPS = ', this.props.dataStore.loaded)
+    this.setState({
+      data: this.props.dataStore.getData('/resources/Introduction.json'),
+    })
   }
   render() {
-    axios.get('/resources/Introduction.json')
-    .then( (response)=>{
-      // handle success
-      this.handleSuccess(response.data);
+    console.log('MATCH = ', this.match)
+    let data = ''
+    if (this.state.data){
+      data = this.state.data[this.props.settingsStore.lang].map( (el,idx)=>{
+        return (
+          <div key={el.label}>
+            <h2>{el.label}</h2>
+            <div dangerouslySetInnerHTML={{ __html: el.text }}></div>
+          </div>
+        )
+    
     })
+    } else {
+      data = 'loading...'
+    }
+    // console.log ('PROPS = ', this.props.dataStore)
     return (
       <div>
-        {
-        this.state.data[this.props.settingsStore.lang].map( (el,idx)=>{
-              return (
-                <div key={el.label}>
-                  <h2>{el.label}</h2>
-                  <div dangerouslySetInnerHTML={{ __html: el.text }}></div>
-                </div>
-              )
-          
-        })
-      }
+        <h1>HELLO FROM ALGINC</h1>
+      { data }
       </div>
     )
   }

@@ -58,7 +58,6 @@ class App extends React.Component {
   render() {
     return (
       <ThemeProvider theme={this.props.themesStore[this.props.settingsStore.theme]}>
-      <Router>
     <>
         <GlobalStyle />
             <AppBar />
@@ -72,7 +71,6 @@ class App extends React.Component {
         </Container>
         <img src="imgs/theme-light-dark.svg" alt="" />      
     </>
-    </Router>
     </ThemeProvider>
     )
   }

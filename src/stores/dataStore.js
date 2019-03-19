@@ -6,7 +6,7 @@ class Store {
   @observable data = null
   @observable error = false
   @observable errorMsg = false
-  @observable loading = false    
+  @observable loaded = false    
   @action.bound
     getData(path){
       axios.get(path)
@@ -16,10 +16,12 @@ class Store {
   @action.bound
     handleSuccess(data) {
         this.data = JSON.parse(data)
+        this.loaded = true
     }
   @action.bound
     handleError(error) {
-        this.state = "error"
+        this.error = true
+        this.loaded = false
     }
     /*
   @computed get langTogglerColor() {

@@ -59,7 +59,7 @@ class MainContent extends React.Component {
           
         <Route exact path="/home" component={Home}/>
         <Route exact path="/about" component={About}/>
-        <Route exact path="/alginc" component={AlgInC}/>
+        <Route path="/alginc/c/:part/:chapter/:paragraph" component={AlgInC}/>
         {/*
           <Route path="/books/c/:part/:chapter/:paragraph" component={AlgInC}/>
         */}
