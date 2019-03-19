@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
-import { observer, inject } from "mobx-react"
 
-
-@inject('settingsStore')
-@observer
-class AlgInC extends Component {
+export default class About extends Component {
   constructor({match}){
     super()
     this.match = match
@@ -18,5 +13,3 @@ class AlgInC extends Component {
     )
   }
 }
-
-export default AlgInC

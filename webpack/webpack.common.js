@@ -65,6 +65,8 @@ module.exports = {
       algs:       `${CONTEXT}/src/typescript/algorithms`,
       webgl:      `${CONTEXT}/src/webgl`,
       polyfills:  `${CONTEXT}/src/polyfills`,
+      resources:  `${CONTEXT}/src/public/resources`,
+      workers:    `${CONTEXT}/src/public/workers`,
     },
   },
   module: {
@@ -110,6 +112,14 @@ module.exports = {
         { 
           from: 'src/public/workers',
           to: '../dist/workers',  
+          // [name].[ext]',
+          toType: 'dir',
+          force: true,
+          context: `${CONTEXT}`
+        },
+        { 
+          from: 'src/public/resources',
+          to: '../dist/resources',  
           // [name].[ext]',
           toType: 'dir',
           force: true,

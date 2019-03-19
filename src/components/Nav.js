@@ -98,10 +98,13 @@ class Nav extends React.Component {
         <IconSvg src="imgs/nav/search.svg" width="2rem" alt="LANG" />
       
         <ul style={{ font: 'Monospace',}}>
-          <li id="t-intro"><NavLinkStyled to="/about">About</NavLinkStyled></li>
-          <li id="t-about"><NavLinkStyled to="/about">About Lance </NavLinkStyled></li>
+          <li id="t-intro"><NavLinkStyled to="/about">About Me</NavLinkStyled></li>
+          <li id="t-about"><NavLinkStyled to="/home">Home</NavLinkStyled></li>
+          <li id="t-about"><NavLinkStyled to="/proffit">Proffit</NavLinkStyled></li>
+          {/*
           <li id="t-news" ><a href="news.html" style={{color: '#61dafb'}}>NEWS &amp; EVENTS</a></li>
           <li id="t-sponsors"><a href="sponsors.html" style={{color: 'rgb(255,0,80)'}}>Sponsors</a></li>
+          */}
         </ul>
      
       </NavStyled>

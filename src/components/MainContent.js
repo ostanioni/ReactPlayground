@@ -2,8 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import { Switch, Route } from 'react-router'
 import { observer, inject } from "mobx-react"
-
+import { TransitionGroup, CSSTransition } from "react-transition-group"
+// import uuidv4 from 'uuid/v4'
 import Introduction from 'resources/en1'
+import About        from 'pages/About'
+import Home         from 'pages/Home'
+import NoMatch      from 'pages/NoMatch'
+import AlgInC       from 'pages/AlgInC'
+const uuidv4 = require('uuid/v4')
 
 const MainContentStyled = styled.div.attrs(props=>({
   onClick: props.OnClick,
@@ -43,18 +49,28 @@ class MainContent extends React.Component {
   render(){
     return (
       <MainContentStyled>
+        <TransitionGroup>
+                <CSSTransition
+                  key={uuidv4()}
+                  classNames="fade"
+                  timeout={1300}
+                >
+        <Switch>
+          
+        <Route exact path="/home" component={Home}/>
+        <Route exact path="/about" component={About}/>
+        
+          <Route path="/books/c/:part/:chapter/:paragraph" component={AlgInC}/>
+          <Route component={NoMatch}/>
+        </Switch>
+        </CSSTransition>
+       </TransitionGroup>
         {
           Introduction[this.props.settingsStore.lang].map( (el,idx)=>{
               return (
-                <div>
+                <div key={el.label}>
                 <h2>{el.label}</h2>
                 <div dangerouslySetInnerHTML={{ __html: el.text }}></div>
-                  <Switch>
-                    <Route exact path="/" component={Home}/>
-                    <Route path="/about" component={About}/>
-                    <Route path="/:user" component={User}/>
-                    <Route component={NoMatch}/>
-                  </Switch>
                 </div>
               )
             
