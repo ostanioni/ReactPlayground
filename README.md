@@ -1,7 +1,7 @@
 # React 16.8 playground (JSX, TSX)
 
 + React 16.8
-+ React-router 4.3
++ React-router 5.0
 + Styled-components 4.1
 + MobX-React 5.4
 + MobX 5.9
