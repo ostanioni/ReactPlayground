@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Switch, Route } from 'react-router'
 import { observer, inject } from "mobx-react"
 
 import Introduction from 'resources/en1'
@@ -48,6 +49,12 @@ class MainContent extends React.Component {
                 <div>
                 <h2>{el.label}</h2>
                 <div dangerouslySetInnerHTML={{ __html: el.text }}></div>
+                  <Switch>
+                    <Route exact path="/" component={Home}/>
+                    <Route path="/about" component={About}/>
+                    <Route path="/:user" component={User}/>
+                    <Route component={NoMatch}/>
+                  </Switch>
                 </div>
               )
             
