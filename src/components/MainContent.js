@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router'
 import { observer, inject } from "mobx-react"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
 // import uuidv4 from 'uuid/v4'
-import Introduction from 'resources/en1'
+// import Introduction from 'resources/en1'
 import About        from 'pages/About'
 import Home         from 'pages/Home'
 import NoMatch      from 'pages/NoMatch'
@@ -59,13 +59,15 @@ class MainContent extends React.Component {
           
         <Route exact path="/home" component={Home}/>
         <Route exact path="/about" component={About}/>
-        
+        <Route exact path="/alginc" component={AlgInC}/>
+        {/*
           <Route path="/books/c/:part/:chapter/:paragraph" component={AlgInC}/>
+        */}
           <Route component={NoMatch}/>
         </Switch>
         </CSSTransition>
        </TransitionGroup>
-        {
+        {/*
           Introduction[this.props.settingsStore.lang].map( (el,idx)=>{
               return (
                 <div key={el.label}>
@@ -74,9 +76,9 @@ class MainContent extends React.Component {
                 </div>
               )
             
-            }
+              
           )
-        }
+        }*/}
       </MainContentStyled>
     )
   }
