@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     background-color: ${props=>props.theme.bgColor};
+    transition: color 1.5s;
   }
   h1 {
     font-size: 1.5rem;
