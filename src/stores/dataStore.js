@@ -6,25 +6,34 @@ class Store {
   @observable data = null
   @observable error = false
   @observable errorMsg = false
-  @observable loaded = false    
+  @observable loading = false    
   @action.bound
     getData(path){
-      axios.get(path)
+      this.loading = true
+      const axiosInstance = axios.create({
+        baseURL: 'http://localhost:3001',
+        timeout: 2000,
+        // headers: {'X-Custom-Header': 'foobar'}
+      });
+      axiosInstance.get(path)
       .then( (response)=>this.handleSuccess(response.data) )
       .catch( (error)=>this.handleError(error) )
     }
   @action.bound
     handleSuccess(data) {
-        this.data = JSON.parse(data)
-        this.loaded = true
+        this.data = data
+        this.loading = false
+        return this.data
+        // console.log('dataStore LOADED...', data)
     }
   @action.bound
     handleError(error) {
         this.error = true
-        this.loaded = false
+        this.loading = false
+        //console.log('dataStore ERRORED...', error)
     }
-    /*
-  @computed get langTogglerColor() {
+  /*
+  @computed get () {
     
   }*/
 }
