@@ -218,7 +218,7 @@ const ru = {text:`
 </p>
 `
 }
-p_1_1 = [
+const p_1_1 = [
   en,
   ru
 ]

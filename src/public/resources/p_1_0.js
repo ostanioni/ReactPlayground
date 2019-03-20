@@ -97,7 +97,7 @@ const ru = {text:`
 </p>
 `
 }
-page3 = [
+const page3 = [
   en,
   ru
 ]
