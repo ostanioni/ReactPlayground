@@ -105,13 +105,15 @@ const en = {text: `
   entries with the same name as q to have the same name as p.
 </p>
 <p>
-  Figure 1.3 shows the changes to the array for the union operations in the example in Figure 1.1. To implement find, we just test
+  Figure 1.3 shows the changes to the array for the union operations in 
+  the example in Figure 1.1. To implement find, we just test
   the indicated array entries for equality-hence the name quick find.
   The union operation, on the other hand, involves scanning through
   the whole array for each input pair.
 </p>
 <p>
-  <strong>Property I. I</strong> The quick-find algorithm executes at least 1\11N instructions to solve a connectivity problem with N objects that involves 1v1
+  <strong>Property I. I</strong> The quick-find algorithm executes at least 
+  1\11N instructions to solve a connectivity problem with N objects that involves 1v1
   union operations.
 </p>
 <p>
@@ -142,7 +144,8 @@ const en = {text: `
 <p>
   The next algorithm that we consider is a complementary method
   called the quick-union algorithm. It is based on the same data
-  structure-an array indexed by object names-but it uses a different interpretation of the values that leads to more complex abstract
+  structure-an array indexed by object names-but it uses a different 
+  interpretation of the values that leads to more complex abstract
   structures. Each object points to another object in the same set, in a
   structure with no cycles. To determine whether two objects are in the
   same set, we follow pointers for each until we reach an object that
@@ -154,12 +157,15 @@ const en = {text: `
 </p>
 <p>
   Figure 1.5 shows the graphical representation that corresponds to
-  Figure 1.4 for the operation of the quick-union algorithm on the example of Figure 1.1, and Figure 1.6 shows the corresponding changes to
+  Figure 1.4 for the operation of the quick-union algorithm on the example 
+  of Figure 1.1, and Figure 1.6 shows the corresponding changes to
   the id array. The graphical representation of the data structure makes
   it relatively easy to understand the operation of the algorithm-input
   pairs that are known to he connected in the data are also connected to
-  one another in the data structure. As mentioned previously, it is important to note at the outset that the connections in the data structure
-  are not necessarily the same as the connections in the application implied by the input pairs; rather, they are constructed by the algorithm
+  one another in the data structure. As mentioned previously, it is 
+  important to note at the outset that the connections in the data structure
+  are not necessarily the same as the connections in the application 
+  implied by the input pairs; rather, they are constructed by the algorithm
   to facilitate efficient implementation of union and find.
 </p>
 <p>
@@ -189,13 +195,15 @@ const en = {text: `
   need to follow several links to get to the root in a quick-union tree.
 </p>
 <p>
-  Program 1.2 is an implementation of the union and find operations that comprise the quick-union algorithm to solve the connectivity
+  Program 1.2 is an implementation of the union and find operations that 
+  comprise the quick-union algorithm to solve the connectivity
   problem. The quick-union algorithm would seem to be faster than the
   quick-find algorithm, because it does not have to go through the entire
   array for each input pair; but how much faster is it? This question is
   more difficult to answer here than it was for quick find, because the
   running time is much more dependent on the nature of the input. By
-  running empirical studies or doing mathematical analysis (see Chapter 2), we can convince ourselves that Program 1.2 is far more efficient
+  running empirical studies or doing mathematical analysis (see Chapter 2), 
+  we can convince ourselves that Program 1.2 is far more efficient
   than Program 1.1, and that it is feasible to consider using Program 1.2
   for huge practical problems. We shall discuss one such empirical study
   at the end of this section. For the moment, we can regard quick union
@@ -271,7 +279,8 @@ const en = {text: `
 </p>
 <p>
   The practical implication of Property I.3 is that the weighted
-  quick-union algorithm uses at most a constant times "~,f 19 N instructions to process 11.1 edges on N objects (see Exercise 1.9). This result is
+  quick-union algorithm uses at most a constant times "~,f 19 N instructions 
+  to process 11.1 edges on N objects (see Exercise 1.9). This result is
   in stark contrast to our finding that quick find always (and quick union
   sometimes) uses at least A1N/2 instructions. The conclusion is that,
   with weighted quick union, we can guarantee that we can solve huge
@@ -290,7 +299,8 @@ const en = {text: `
 </p>
 <p>
   We immediately come to the question of whether or not we can
-  find an algorithm that has guaranteed linear performance. This question is an extremely difficult one that plagued researchers for many
+  find an algorithm that has guaranteed linear performance. This question 
+  is an extremely difficult one that plagued researchers for many
   years (see Section 2.7). There are a number of easy ways to improve
   the weighted quick-union algorithm further. Ideally, we would like
   every node to point directly to the root of its tree, but we do not want
@@ -300,9 +310,11 @@ const en = {text: `
   seems drastic at first blush, but it is easy to implement, and there is
   nothing sacrosanct about the structure of these trees: If we can modify
   them to make the algorithm more efficient, we should do so. We can
-  implement this method, called path compression, easily, by adding another pass through each path during the union operation, setting the
+  implement this method, called path compression, easily, by adding another 
+  pass through each path during the union operation, setting the
   id entry corresponding to each vertex encountered along the way to
-  point to the root. The net result is to flatten the trees almost completely, approximating the ideal achieved by the quick-find algorithm,
+  point to the root. The net result is to flatten the trees almost completely, 
+  approximating the ideal achieved by the quick-find algorithm,
   as illustrated in Figure 1.9. The analysis that establishes this fact is
   extremely complex, but the method is simple and effective. Figure I. I I
   shows the result of path compression for a large example.
@@ -323,13 +335,16 @@ const en = {text: `
   to the analysis of algorithms.
 </p>
 <p>
-  The end result of the succession of algorithms that we have considered to solve the connectivity problem is about the best that we
+  The end result of the succession of algorithms that we have considered 
+  to solve the connectivity problem is about the best that we
   could hope for in any practical sense. We have algorithms that are
   easy to implement whose running time is guaranteed to be within a
-  constant factor of the cost of gathering the data. Moreover, the algorithms are online algorithms that consider each edge once, using
+  constant factor of the cost of gathering the data. Moreover, the algorithms 
+  are online algorithms that consider each edge once, using
   space proportional to the number of objects, so there is no limitation
   on the number of edges that they can handle. The empirical studies
-  in Table LI validate our conclusion that Program I.3 and its pathcompression variations are useful even for huge practical applications.
+  in Table LI validate our conclusion that Program I.3 and its pathcompression 
+  variations are useful even for huge practical applications.
   Choosing which is the best among these algorithms requires careful
   and sophisticated analysis (see Chapter 2).
 </p>
