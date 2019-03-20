@@ -97,7 +97,13 @@ const ru = {text:`
 </p>
 `
 }
-const page3 = [
+const p_1_0 = [
   en,
   ru
 ]
+const Json = JSON.stringify(p_1_0)
+const fs = require('fs')
+fs.writeFile('p_1_0.json', Json, (err) => {
+  if (err) throw err;
+  console.log('The file has been saved!');
+});

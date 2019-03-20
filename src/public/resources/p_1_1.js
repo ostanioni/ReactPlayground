@@ -222,3 +222,10 @@ const p_1_1 = [
   en,
   ru
 ]
+
+const Json = JSON.stringify(Introduction)
+const fs = require('fs')
+fs.writeFile('Introduction.json', Json, (err) => {
+  if (err) throw err;
+  console.log('The file has been saved!');
+});
