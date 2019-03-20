@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import { observer, inject } from "mobx-react"
 import { observable, /* computed */ } from "mobx"
 import axios from 'axios'
+// import SVG from 'svg'
+import * as _SVG from '@svgdotjs/svg.js'
 
 @inject('settingsStore', 'dataStore')
 @observer
@@ -41,6 +43,14 @@ class AlgInC extends Component {
   componentDidMount(){
     console.log ('PROPS = ', this.props)
     this.getData('/resources/Introduction.json')
+    const canvas = _SVG.SVG().addTo('#drawing').size(300, 300)
+    var rect = canvas.rect(100, 100).attr({ fill: '#f06' })
+    console.log('canvas = ', canvas )
+    // console.log('SVG is ', new SVG.SVG('drawing').size(300, 300))
+    //let Svg = SVG(document.getElementById('drawing'))
+    // var draw = SVG('drawing').size(300, 300)
+    // console.log('Svg is ', Svg)
+    //var rect = draw.rect(100, 100).attr({ fill: '#f06' }) 
   }   
     // this.data = this.props.dataStore.data
     
@@ -70,6 +80,7 @@ class AlgInC extends Component {
       data = this.state.data[this.props.settingsStore.lang]
     }
     return (
+      <>
       <div>
         <h1>HELLO FROM ALGINC</h1>
       { data.map((el,idx)=>{
@@ -82,6 +93,10 @@ class AlgInC extends Component {
          })
       }
       </div>
+      <div id="drawing">
+      HELLO SVG
+      </div>
+      </>
     )
   }
   
