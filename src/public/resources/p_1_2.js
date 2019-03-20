@@ -156,7 +156,7 @@ const en = {text:`
   problem.
 </p>
 <p>
-<strong>Exercises</strong>
+<h4>Exercises</h4>
   1.1 Give the output that a connectivity algorithm should produce when
   given the input 0-2,1-4,2-5,3-6,0-4,6-0, and 1-3.
   1.2 List all the different ways to connect two different objects for 
@@ -325,7 +325,7 @@ const ru = {text:`
   связности.
 </p>
 <p>
-  <h3>Упражнения</h3>
+  <h4>Упражнения</h4>
   1.1.	Приведите выходные результаты, которые должен вычислить алгоритм решения 
   задачи связности при заданном вводе 0-2, 1-4, 2-5, 3-6, 0-4, 6-0 и 1-3.
   1.2.	Перечислите все возможные способы связывания двух различных объектов,
