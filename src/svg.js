@@ -8,35 +8,6 @@ const pulse = keyframes`
   0% {
     opacity: 0;
   }
-  10%{
-    
-      /* transform: translateX(300px);*/
-      stroke: "red";
-  }
-  20%{
-    
-  }
-  30%{
-
-  }
-  40%{
-
-  }
-  50%{
-
-  }
-  60%{
-
-  }
-  70%{
-
-  }
-  80%{
-
-  }
-  90%{
-    stroke: "cyan";
-  }
   100% {
     opacity: 1;
   }
