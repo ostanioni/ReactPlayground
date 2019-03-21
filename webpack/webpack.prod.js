@@ -8,20 +8,22 @@ const safePostCssParser = require('postcss-safe-parser');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
+const $SOURCE_MAP = true
+
 /***___SCSS_LOADER_WITHOUT_SOURCE_MAP__ ***/
 const SCSS = {
   test: /\.scss$/,
   // exclude: /node_modules/,
   use: [
-    // { loader: 'style-loader', options: { attrs: { id: 'id' }, sourceMap: false } },
-    { loader: MiniCssExtractPlugin.loader },
-    { loader: 'css-loader',     options: { sourceMap: false } },
-    /*{ loader: 'postcss-loader', options: { sourceMap: false, 
+    { loader: 'style-loader', options: { attrs: { id: 'id' }, sourceMap: $SOURCE_MAP } },
+    // { loader: MiniCssExtractPlugin.loader },
+    { loader: 'css-loader',     options: { sourceMap: $SOURCE_MAP } },
+    /*{ loader: 'postcss-loader', options: { sourceMap: $SOURCE_MAP, 
         ident: 'postcss',
         plugins: [ require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] } ), ]
       }
     },*/
-    { loader: 'sass-loader',    options: { sourceMap: false } }
+    { loader: 'sass-loader',    options: { sourceMap: $SOURCE_MAP } }
   ]
 }
 /***___CSS_LOADER_WITHOUT_SOURCE_MAP___***/
@@ -30,9 +32,9 @@ const CSS = {
   // exclude: /node_modules/,
   use: [
     {loader: 'style-loader'},
-    { loader: MiniCssExtractPlugin.loader },
-    { loader: 'css-loader',     options: { sourceMap: false, importLoaders: 1 } },
-    { loader: 'postcss-loader', options: { sourceMap: false,
+    // { loader: MiniCssExtractPlugin.loader },
+    { loader: 'css-loader',     options: { sourceMap: $SOURCE_MAP, importLoaders: 1 } },
+    { loader: 'postcss-loader', options: { sourceMap: $SOURCE_MAP,
         ident: 'postcss',
         plugins: [
           require('postcss-import')(),
@@ -57,7 +59,7 @@ module.exports = merge(common, {
   module: {
     rules: [ SCSS, CSS ]
   },
-  plugins: [
+  plugins: $SOURCE_MAP? []: [
     new TerserPlugin({
       terserOptions: {
         parse: {
@@ -80,7 +82,7 @@ module.exports = merge(common, {
       },
       parallel: true,
       cache: true,
-      sourceMap: false,
+      sourceMap: $SOURCE_MAP,
     }),
     new MiniCssExtractPlugin({
         cssProcessorOptions: {
@@ -90,11 +92,12 @@ module.exports = merge(common, {
       filename: '[contenthash].css',
       // chunkFilename: '[contenthash].chunk.css',
     }),
+    $SOURCE_MAP?'':
     new CompressionPlugin({
       algorithm: 'gzip'
     })
   ],
-  optimization: {
+  optimization: $SOURCE_MAP?{}:{
     minimizer: [
       new OptimizeCSSAssetsPlugin({})
     ],

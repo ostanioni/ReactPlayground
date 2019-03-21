@@ -1,4 +1,6 @@
 /* eslint-disable */ 
+/* __________ENTRY__POINT_____________*/
+const $ENTRY = './src/svg.js'
 /*****************************__COMMON_LOADERS__*****************************************/
 /***___BABEL_LOADER___ ***/
 const BABEL = { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" };
@@ -42,7 +44,8 @@ const CONTEXT = path.resolve(__dirname, '../');
 module.exports = {
   context: CONTEXT,
   entry: {
-   app: './src/index.js'
+   app: $ENTRY
+    //app: './src/index.js'
    // app: './src/canvas.js'
   },
   output: {
