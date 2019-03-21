@@ -12,7 +12,7 @@ const SRC = `${CONTEXT}/src`
 /***___SOURCE_MAP____***/
 // const JS_SOURCE_MAP = { enforce: "pre", test: /\.js$/, loader: "source-map-loader" };
 const JS_SOURCE_MAP = {
-  test: /\.(js|mjs|jsx)$/,
+  test: /\.(js|jsx)$/,
   enforce: 'pre',
   use: [
     {
@@ -32,13 +32,14 @@ const JS_SOURCE_MAP = {
 /***___SCSS_SOURCE_MAP__ ***/
 const SCSS_SOURCE_MAP = {
   test: /\.scss$/,
-  exclude: /node_modules/,
+  // exclude: /node_modules/,
   use: [
     { loader: 'style-loader',   options: { sourceMap: true } },
     { loader: 'css-loader',     options: { sourceMap: true } },
     { loader: 'postcss-loader', options: { sourceMap: true, 
         ident: 'postcss',
         plugins: () => [
+          require('postcss-flexbugs-fixes')(),
           require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] } ),
         ]
       }
@@ -50,7 +51,7 @@ const SCSS_SOURCE_MAP = {
 /***___CSS_LOADER___***/
 const CSS_SOURCE_MAP = {
   test: /\.css$/,
-  exclude: /node_modules/,
+  // exclude: /node_modules/,
   use: [
     { loader: 'style-loader',   options: { sourceMap: true } },
     { loader: 'css-loader',     options: { sourceMap: true, importLoaders: 1 } },

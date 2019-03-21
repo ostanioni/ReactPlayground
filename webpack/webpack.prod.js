@@ -6,27 +6,30 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const safePostCssParser = require('postcss-safe-parser');
 const TerserPlugin = require('terser-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 /***___SCSS_LOADER_WITHOUT_SOURCE_MAP__ ***/
 const SCSS = {
   test: /\.scss$/,
-  exclude: /node_modules/,
+  // exclude: /node_modules/,
   use: [
+    // { loader: 'style-loader', options: { attrs: { id: 'id' }, sourceMap: false } },
     { loader: MiniCssExtractPlugin.loader },
     { loader: 'css-loader',     options: { sourceMap: false } },
-    { loader: 'postcss-loader', options: { sourceMap: false, 
+    /*{ loader: 'postcss-loader', options: { sourceMap: false, 
         ident: 'postcss',
         plugins: [ require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] } ), ]
       }
-    },
+    },*/
     { loader: 'sass-loader',    options: { sourceMap: false } }
   ]
 }
 /***___CSS_LOADER_WITHOUT_SOURCE_MAP___***/
 const CSS = {
   test: /\.css$/,
-  exclude: /node_modules/,
+  // exclude: /node_modules/,
   use: [
+    {loader: 'style-loader'},
     { loader: MiniCssExtractPlugin.loader },
     { loader: 'css-loader',     options: { sourceMap: false, importLoaders: 1 } },
     { loader: 'postcss-loader', options: { sourceMap: false,
@@ -41,6 +44,7 @@ const CSS = {
             'color-mod-function': { unresolved: 'warn' }
             }
           }),
+          require('postcss-flexbugs-fixes')(),
           require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] } ),
         ]
       } 
@@ -83,8 +87,11 @@ module.exports = merge(common, {
           parser: safePostCssParser,
           map: false,
         },
-      filename: 'css/[name].[contenthash:8].css',
-      chunkFilename: 'css/[name].[contenthash:8].chunk.css',
+      filename: '[contenthash].css',
+      // chunkFilename: '[contenthash].chunk.css',
+    }),
+    new CompressionPlugin({
+      algorithm: 'gzip'
     })
   ],
   optimization: {

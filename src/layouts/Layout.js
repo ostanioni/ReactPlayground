@@ -13,8 +13,6 @@ import 'css/App.scss'
 
 import 'css/normalize.css'
 
-
-// import Prism from 'prismjs';
 const GridStyled = styled.div.attrs(props=>({
   id:"grid",
 }))`
