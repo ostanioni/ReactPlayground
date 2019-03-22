@@ -48,6 +48,7 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "http-server": "^0.11.1",
+    "imports-loader": "^0.8.0",
     "lodash": "^4.17.11",
     "markdown-loader": "^5.0.0",
     "markdown-to-jsx": "^6.9.3",
@@ -82,7 +83,9 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.4.0",
+    "@svgdotjs/svg.js": "^3.0.12",
     "animate.css": "^3.7.0",
+    "axios": "^0.18.0",
     "intersection-observer": "^0.5.1",
     "katex": "^0.10.1",
     "mobx": "^5.9.0",
@@ -94,11 +97,9 @@
     "react-katex": "^2.0.2",
     "react-router-dom": "^5.0.0",
     "react-transition-group": "^2.6.1",
+    "snapsvg": "^0.5.1",
     "styled-components": "^4.1.3",
-    "three": "^0.102.1",
-    "axios": "^0.18.0",
-    "@svgdotjs/svg.js": "^3.0.12"
-
+    "three": "^0.102.1"
   },
   "browserslist": [
     ">0.2%",

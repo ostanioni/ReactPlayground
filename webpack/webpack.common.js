@@ -31,6 +31,11 @@ const RAW = { test: /\.txt$/i, use: 'raw-loader'};
 // const HTML = { test: /\.(html)$/, use: { loader: 'html-loader', options: { attrs: [':data-src'] } }};
 /***__ESLINT_LOADER___***/
 const ESLINT = { test: /\.(js|mjs|jsx)$/, enforce: 'pre', use: [ { options: { formatter: require.resolve('react-dev-utils/eslintFormatter'), eslintPath: require.resolve('eslint'), }, loader: require.resolve('eslint-loader'), }, ] }; //, include: paths.appSrc };
+/**___SVG_SNAP____****/
+SVG_SNAP = {
+  test: require.resolve('snapsvg/dist/snap.svg.js'),
+  use: 'imports-loader?this=>window,fix=>module.exports=0',
+}
   
 const path = require('path');
 const webpack = require('webpack');
@@ -70,10 +75,11 @@ module.exports = {
       polyfills:  `${CONTEXT}/src/polyfills`,
       resources:  `${CONTEXT}/src/public/resources`,
       workers:    `${CONTEXT}/src/public/workers`,
+      snapsvg:    'snapsvg/dist/snap.svg.js',
     },
   },
   module: {
-    rules: [ BABEL, FONT, TS, TSX, IMAGES, WORKER_LOADER, MD, RAW, ESLINT]
+    rules: [ BABEL, FONT, TS, TSX, IMAGES, WORKER_LOADER, MD, RAW, ESLINT, SVG_SNAP]
   },
   plugins: [
     new CleanWebpackPlugin(),

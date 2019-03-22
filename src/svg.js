@@ -2,67 +2,10 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import styled, { css, keyframes } from 'styled-components'
-// import console = require('console');
+
 import Snap from 'snapsvg';
 
 
-/* var s = Snap("#svg");
-
-var bigCircle = s.circle(150, 150, 100);
-bigCircle.attr({
-  fill: "#bada55",
-  stroke: "#000",
-  strokeWidth: 5
-});
-*/
-
-const pulse = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`
-const stroke = keyframes`
-  from {
-    stroke: green;
-  }
-  to {
-    stroke: orange;
-  }
-`
-const animation = props => css`
-    ${pulse} ${props.animation_length} infinite alternate;
-`
-const animation_stroke = props => css`
-    ${stroke} ${props.animation_length} infinite alternate;
-`
-const SvgStyled = styled.svg.attrs(props=>({
-  version:"1.1", 
-  xmlns:"http://www.w3.org/2000/svg",
-  viewBox: props.viewBox,
-}))`
-border: 2px solid cyan;
-animation: ${animation};
-&>g.red { 
-    font: 1.2rem sans-serif; 
-    /* fill: green;*/
-    /* stroke: "grey"; */
-    /* stroke-width: 1;*/
-  }
-&>g {
-  animation: ${animation_stroke};
-}
-`
-const StyledWrapper = styled.div.attrs(props=>({
-id: props.id,
-}))`
-width: 100%;
-height: 100vh;
-background-color: white;
-border: 2px solid red;
-`
 const circle = [0,1,2,3,4,5,6,7,8,9]
 
 export default class Svg extends Component {
@@ -80,7 +23,7 @@ bigCircle.attr({
   }
   render() {
     return (
-      <svg id="svg" viewBox="0 0 500 500"></svg>
+      <svg id="svg" viewBox="0 0 500 500" style></svg>
     )
   }
 }
