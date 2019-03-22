@@ -3,6 +3,18 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import styled, { css, keyframes } from 'styled-components'
 // import console = require('console');
+import Snap from 'snapsvg';
+
+
+/* var s = Snap("#svg");
+
+var bigCircle = s.circle(150, 150, 100);
+bigCircle.attr({
+  fill: "#bada55",
+  stroke: "#000",
+  strokeWidth: 5
+});
+*/
 
 const pulse = keyframes`
   0% {
@@ -55,28 +67,20 @@ const circle = [0,1,2,3,4,5,6,7,8,9]
 
 export default class Svg extends Component {
   componentDidMount(){
-   console.log( document.querySelector('#row0').childNodes[3] )
+   // console.log( document.querySelector('#row0').childNodes[3] )
+   // 
+   var s = Snap("#svg");
+   console.log(Snap("#svg"))
+var bigCircle = s.circle(150, 150, 100);
+bigCircle.attr({
+  fill: "#bada55",
+  stroke: "#000",
+  strokeWidth: 5
+});
   }
   render() {
     return (
-      <StyledWrapper id="drawing">
-        <SvgStyled viewBox="0 0 510 500" animation_length="3s" >
-          {
-            circle.map( (idxRow)=> (
-              <g className="red" key={idxRow} id={`row${idxRow}`}>
-                {
-                circle.map( (idxCollumn) => (
-                  <g key={idxCollumn} animation_length="3s">
-                    <circle cx={30+50*idxCollumn} cy={40+40*idxRow} r="18"  fill="white"></circle>
-                    <text x={25+50*idxCollumn} y={47+40*idxRow} className="red">{idxCollumn}</text>
-                  </g>
-                ) )
-                }
-              </g>
-            ))    
-          }        
-        </SvgStyled>
-      </StyledWrapper>   
+      <svg id="svg" viewBox="0 0 500 500"></svg>
     )
   }
 }
