@@ -85,7 +85,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
-      template: `${CONTEXT}/src/public/index.html`,
+      template: `${CONTEXT}/public/index.html`,
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -102,7 +102,7 @@ module.exports = {
     new CopyWebpackPlugin(
       [
         { 
-          from: 'src/public/css',
+          from: 'public/css',
           to: '../dist/css',
           toType: 'dir',
           ignore: [ '*.js' ],
@@ -110,7 +110,7 @@ module.exports = {
           context: `${CONTEXT}`
         },
         { 
-          from: 'src/public/imgs',
+          from: 'public/imgs',
           to: '../dist/imgs',  
           // [name].[ext]',
           toType: 'dir',
@@ -119,7 +119,7 @@ module.exports = {
           context: `${CONTEXT}`
         },
         { 
-          from: 'src/public/workers',
+          from: 'public/workers',
           to: '../dist/workers',  
           // [name].[ext]',
           toType: 'dir',
@@ -127,7 +127,7 @@ module.exports = {
           context: `${CONTEXT}`
         },
         { 
-          from: 'src/public/resources',
+          from: 'public/resources',
           to: '../dist/resources',  
           // [name].[ext]',
           toType: 'dir',
