@@ -1,6 +1,6 @@
 /* eslint-disable */ 
 /* __________ENTRY__POINT_____________*/
-const $ENTRY = './src/svg.js'
+const $ENTRY = './src/index.js'
 /*****************************__COMMON_LOADERS__*****************************************/
 /***___BABEL_LOADER___ ***/
 const BABEL = { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" };
@@ -68,13 +68,13 @@ module.exports = {
       stores:     `${CONTEXT}/src/stores`,
       styled:     `${CONTEXT}/src/styled`,
       ts:         `${CONTEXT}/src/typescript`,
-      css:        `${CONTEXT}/src/public/css`,
-      imgs:       `${CONTEXT}/src/public/imgs`,
       algs:       `${CONTEXT}/src/typescript/algorithms`,
       webgl:      `${CONTEXT}/src/webgl`,
       polyfills:  `${CONTEXT}/src/polyfills`,
-      resources:  `${CONTEXT}/src/public/resources`,
-      workers:    `${CONTEXT}/src/public/workers`,
+      resources:  `${CONTEXT}/public/resources`,
+      workers:    `${CONTEXT}/public/workers`,
+      css:        `${CONTEXT}/public/css`,
+      imgs:       `${CONTEXT}/public/imgs`,
       snapsvg:    'snapsvg/dist/snap.svg.js',
     },
   },

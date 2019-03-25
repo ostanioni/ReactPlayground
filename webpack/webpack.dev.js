@@ -1,13 +1,12 @@
 /* eslint-disable */
 /*tslint:disabled*/
-const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
+const merge   = require('webpack-merge');
+const common  = require('./webpack.common.js');
 const webpack = require('webpack');
-const path = require('path');
+const path    = require('path');
 
 const CONTEXT = path.resolve(__dirname, '../');
 const SRC = `${CONTEXT}/src`
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 /***___SOURCE_MAP____***/
 // const JS_SOURCE_MAP = { enforce: "pre", test: /\.js$/, loader: "source-map-loader" };
@@ -35,15 +34,7 @@ const SCSS_SOURCE_MAP = {
   // exclude: /node_modules/,
   use: [
     { loader: 'style-loader',   options: { sourceMap: true } },
-    { loader: 'css-loader',     options: { sourceMap: true } },
-    { loader: 'postcss-loader', options: { sourceMap: true, 
-        ident: 'postcss',
-        plugins: () => [
-          require('postcss-flexbugs-fixes')(),
-          require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] } ),
-        ]
-      }
-    },
+    { loader: 'css-loader',     options: { sourceMap: true, importLoaders: 1, minimize: true, } },
     { loader: 'sass-loader',    options: { sourceMap: true } }
   ],
   sideEffects: true,
@@ -54,7 +45,7 @@ const CSS_SOURCE_MAP = {
   // exclude: /node_modules/,
   use: [
     { loader: 'style-loader',   options: { sourceMap: true } },
-    { loader: 'css-loader',     options: { sourceMap: true, importLoaders: 1 } },
+    { loader: 'css-loader',     options: { sourceMap: true, importLoaders: 1, minimize: true, } },
     { loader: 'postcss-loader', options: { sourceMap: true,
         ident: 'postcss',
         plugins: [

@@ -15,14 +15,14 @@ const SCSS = {
   test: /\.scss$/,
   // exclude: /node_modules/,
   use: [
-    { loader: 'style-loader', options: { attrs: { id: 'id' }, sourceMap: $SOURCE_MAP } },
-    // { loader: MiniCssExtractPlugin.loader },
-    { loader: 'css-loader',     options: { sourceMap: $SOURCE_MAP } },
-    /*{ loader: 'postcss-loader', options: { sourceMap: $SOURCE_MAP, 
+    // { loader: 'style-loader', options: { attrs: { id: 'id' }, sourceMap: $SOURCE_MAP } },
+    { loader: MiniCssExtractPlugin.loader },
+    { loader: 'css-loader',     options: { sourceMap: $SOURCE_MAP, importLoaders: 1, minimize: true, } },
+    { loader: 'postcss-loader', options: { sourceMap: $SOURCE_MAP, 
         ident: 'postcss',
         plugins: [ require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] } ), ]
       }
-    },*/
+    },
     { loader: 'sass-loader',    options: { sourceMap: $SOURCE_MAP } }
   ]
 }
@@ -31,9 +31,9 @@ const CSS = {
   test: /\.css$/,
   // exclude: /node_modules/,
   use: [
-    {loader: 'style-loader'},
-    // { loader: MiniCssExtractPlugin.loader },
-    { loader: 'css-loader',     options: { sourceMap: $SOURCE_MAP, importLoaders: 1 } },
+    // {loader: 'style-loader'},
+    { loader: MiniCssExtractPlugin.loader },
+    { loader: 'css-loader',     options: { sourceMap: $SOURCE_MAP, importLoaders: 1, minimize: true, } },
     { loader: 'postcss-loader', options: { sourceMap: $SOURCE_MAP,
         ident: 'postcss',
         plugins: [
@@ -87,10 +87,12 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
         cssProcessorOptions: {
           parser: safePostCssParser,
-          map: false,
+          map: $SOURCE_MAP,
         },
-      filename: '[contenthash].css',
-      // chunkFilename: '[contenthash].chunk.css',
+        // filename: "[name].css",
+        // chunkFilename: "[id].css"
+        filename: '[contenthash].css',
+        chunkFilename: '[contenthash].chunk.css',
     }),
     $SOURCE_MAP?'':
     new CompressionPlugin({
