@@ -23,6 +23,10 @@ const GlobalStyle = createGlobalStyle`
   h3 {
     font-size: 1.2rem;
   }
+  /*
+  svg {
+  filter: blur(0.04rem);}
+  */
   
   @media (max-width: 576px) {
     html {
