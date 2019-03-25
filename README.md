@@ -2,7 +2,7 @@
 
 + React 16.8
 + React-router 5.0
-+ Styled-components 4.1
++ Styled-components 4.2
 + MobX-React 5.4
 + MobX 5.9
 + ESLint 5.15
