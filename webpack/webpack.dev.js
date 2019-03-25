@@ -45,7 +45,7 @@ const CSS_SOURCE_MAP = {
   // exclude: /node_modules/,
   use: [
     { loader: 'style-loader',   options: { sourceMap: true } },
-    { loader: 'css-loader',     options: { sourceMap: true, importLoaders: 1, minimize: true, } },
+    { loader: 'css-loader',     options: { sourceMap: true, importLoaders: 1, /* minimize: true,*/ } },
     { loader: 'postcss-loader', options: { sourceMap: true,
         ident: 'postcss',
         plugins: [

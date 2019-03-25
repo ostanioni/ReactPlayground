@@ -45,6 +45,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 /** CONTEXT */
 const CONTEXT = path.resolve(__dirname, '../');
+const ASSET_PATH = process.env.ASSET_PATH || '/';
 
 module.exports = {
   context: CONTEXT,
@@ -55,7 +56,8 @@ module.exports = {
   },
   output: {
     filename: '[hash].js',
-    path: `${CONTEXT}/dist`
+    path: `${CONTEXT}/dist`,
+    publicPath: ASSET_PATH,
   },
   resolve: {
     extensions: [ '.jsx', '.js', '.json', "ts", "tsx" ],
