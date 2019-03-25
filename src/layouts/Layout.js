@@ -1,3 +1,4 @@
+/*tslint:disabled*/
 import React from 'react'
 import { observer, inject } from "mobx-react"
 
@@ -36,7 +37,7 @@ const HeaderStyled = styled.header.attrs(props=>({
   background-color: ${props=>props.theme.bgHeader};
   color: ${props=>props.textColor};
   &.header-is-hide {
-    transform: translateY(-4.5rem);
+    transform: translateY(-5.5rem);
   }
   transition: all 0.5s;
 `
@@ -72,6 +73,7 @@ const CodeStyled = styled.div`
 @inject('themesStore', 'settingsStore', 'langStore')
 @observer
 class LayoutStyled extends React.Component {
+  
   prevOffset = 0
   hideElements = () => {
     const header = document.getElementById('header')
@@ -88,26 +90,28 @@ class LayoutStyled extends React.Component {
   componentDidMount(){
     document.addEventListener('DOMContentLoaded', this.init );
   }
-  render () { return (
-    <ThemeProvider theme={this.props.themesStore[this.props.settingsStore.theme]}>
-      <GridStyled>
-        <GlobalStyle />
-          <HeaderStyled id="header">
-            <Nav />
-          </HeaderStyled>
-          <Drawer />
-          <MainStyled>
-            <MainContent />        
-          </MainStyled>
-          <AsideStyled>
-          
-          </AsideStyled>
-          <FooterStyled>
-            FOOTER
-          </FooterStyled>
-          <BackToTop />
-      </GridStyled>
-    </ThemeProvider>
+  render () { 
+    const { themesStore, settingsStore } = this.props;
+    return (
+      <ThemeProvider theme={themesStore[settingsStore.theme]}>
+        <GridStyled>
+          <GlobalStyle />
+            <HeaderStyled id="header">
+              <Nav />
+            </HeaderStyled>
+            <Drawer />
+            <MainStyled>
+              <MainContent />        
+            </MainStyled>
+            <AsideStyled>
+            
+            </AsideStyled>
+            <FooterStyled>
+              FOOTER
+            </FooterStyled>
+            <BackToTop />
+        </GridStyled>
+      </ThemeProvider>
   )}
 }
 export default LayoutStyled
