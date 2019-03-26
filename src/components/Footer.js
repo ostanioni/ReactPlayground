@@ -11,7 +11,7 @@ const FooterStyled = styled.footer.attrs(props=>({
 class Footer extends React.Component {
   render(){
     return (
-      <FooterStyled>
+      <FooterStyled id={this.props.id}>
         {this.props.children}
       </FooterStyled>
     )

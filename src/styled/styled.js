@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     color: ${props => (props.whiteColor ? 'white' : 'black')};
   }
-`;
+`
 const GlobalStyle = createGlobalStyle`
   body {
     color: ${props => (props.whiteColor ? 'white' : 'black')};
