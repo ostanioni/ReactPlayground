@@ -33,9 +33,9 @@ const SCSS_SOURCE_MAP = {
   test: /\.scss$/,
   // exclude: /node_modules/,
   use: [
-    { loader: 'style-loader',   options: { sourceMap: true } },
-    { loader: 'css-loader',     options: { sourceMap: true, importLoaders: 1, minimize: true, } },
-    { loader: 'sass-loader',    options: { sourceMap: true } }
+    { loader: 'style-loader',   options: { sourceMap: true, } },
+    { loader: 'css-loader',     options: { sourceMap: true, importLoaders: 1, } },
+    { loader: 'sass-loader',    options: { sourceMap: true, } }
   ],
   sideEffects: true,
 }
@@ -44,8 +44,8 @@ const CSS_SOURCE_MAP = {
   test: /\.css$/,
   // exclude: /node_modules/,
   use: [
-    { loader: 'style-loader',   options: { sourceMap: true } },
-    { loader: 'css-loader',     options: { sourceMap: true, importLoaders: 1, /* minimize: true,*/ } },
+    { loader: 'style-loader',   options: { sourceMap: true, } },
+    { loader: 'css-loader',     options: { sourceMap: true, importLoaders: 1, } },
     { loader: 'postcss-loader', options: { sourceMap: true,
         ident: 'postcss',
         plugins: [
@@ -53,13 +53,13 @@ const CSS_SOURCE_MAP = {
           require('postcss-flexbugs-fixes')(),
           require('postcss-preset-env')({
             stage: 3,
-            autoprefixer: { flexbox: 'no-2009', grid: true },
+            autoprefixer: { flexbox: 'no-2009', grid: true, },
             features: {
             'nesting-rules': true,
-            'color-mod-function': { unresolved: 'warn' }
+            'color-mod-function': { unresolved: 'warn', }
             }
           }),
-          require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] } ),
+          require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true,} }], } ),
         ]
       } 
     }

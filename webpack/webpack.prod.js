@@ -17,7 +17,7 @@ const SCSS = {
   use: [
     // { loader: 'style-loader', options: { attrs: { id: 'id' }, sourceMap: $SOURCE_MAP } },
     { loader: MiniCssExtractPlugin.loader },
-    { loader: 'css-loader',     options: { sourceMap: $SOURCE_MAP, importLoaders: 1, /* minimize: true, */ } },
+    { loader: 'css-loader',     options: { sourceMap: $SOURCE_MAP, importLoaders: 1, } },
     { loader: 'postcss-loader', options: { sourceMap: $SOURCE_MAP, 
         ident: 'postcss',
         plugins: [ require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] } ), ]
@@ -33,7 +33,7 @@ const CSS = {
   use: [
     // {loader: 'style-loader'},
     { loader: MiniCssExtractPlugin.loader },
-    { loader: 'css-loader',     options: { sourceMap: $SOURCE_MAP, importLoaders: 1, minimize: true, } },
+    { loader: 'css-loader',     options: { sourceMap: $SOURCE_MAP, importLoaders: 1, } },
     { loader: 'postcss-loader', options: { sourceMap: $SOURCE_MAP,
         ident: 'postcss',
         plugins: [
