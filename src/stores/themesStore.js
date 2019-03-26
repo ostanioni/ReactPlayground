@@ -14,8 +14,8 @@ const dark = {
   "themeToggler": "rgb(62,166,255)",
   "iconTheme": "#1bb",
   "bsLink": "rgb(97,218,251)",
-  "IconsBarsColor": "#e10050", // rgb(255,0,80)
-  "IconsLightbulbColor": "#bebebe", // rgb(190,190,190)
+  "IconBarsColor": "#e10050", // rgb(255,0,80)
+  "IconLightbulbColor": "#bebebe", // rgb(190,190,190)
   "IconSearchColor": "rgb(62,166,255)",
 };
 const light = {
@@ -31,8 +31,8 @@ const light = {
   "themeToggler": "#fff",
   "iconTheme": "#e10050",
   "bsLink": "rgb(97,218,251)",
-  "IconsBarsColor": "#e10050", // rgb(255,0,80),
-  "IconsLightbulbColor": "#2188c6", // rgb(33,139,198),
+  "IconBarsColor": "#e10050", // rgb(255,0,80),
+  "IconLightbulbColor": "#2188c6", // rgb(33,139,198),
   "IconSearchColor": "#fff",
 };
 // bootstrapLinkBlue #61dafb rgb(97,218,251)

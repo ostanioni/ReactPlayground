@@ -21,6 +21,7 @@ color: ${props=>props.theme.textColor};
 background-color: ${props=>props.theme.bgSideBar};
 font-family: Monospace;
 transition: all 0.5s;
+z-index: 1007;
 
 & ul {
   list-style: none;
@@ -152,14 +153,16 @@ class Drawer extends Component {
     this.part    = settingsStore.lang === 'en' ? 'Part': 'Часть'
     this.chapter = settingsStore.lang === 'en' ? 'Chapter': 'Глава'
     return (
+      <>
       <DivStyled className="wrapper-is-hide" id="drawerWrapper" onClick={settingsStore.toggleDrawer}>
-      <DivBack onClick={settingsStore.toggleDrawer}>Назад </DivBack>
+        <DivBack onClick={settingsStore.toggleDrawer}>Назад </DivBack>
+      </DivStyled>
       <DrawerStyled id="drawer">
           <ul>
-            {this.content(Content[this.props.settingsStore.lang])}
+            { this.content( Content[settingsStore.lang] ) }
           </ul>
-        </DrawerStyled>
-      </DivStyled>
+      </DrawerStyled>
+      </>
     )
   }
 }
