@@ -5,12 +5,13 @@ import { observer, inject } from "mobx-react"
 import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyle from 'styled/GlobalStyle'
 
-import Header from 'components/Header'
-import Nav from 'components/Nav'
-import Main from 'components/Main'
-import Drawer from 'components/Drawer'
-import Content from 'components/Content'
-import BackToTop from 'components/BackToTop'
+import Header     from 'components/Header'
+import Nav        from 'components/Nav'
+import Main       from 'components/Main'
+import Drawer     from 'components/Drawer'
+import Content    from 'components/Content'
+import Footer     from 'components/Footer'
+import BackToTop  from 'components/BackToTop'
 
 import 'css/App.scss'
 
@@ -29,12 +30,7 @@ const AsideStyled = styled.aside`
     cursor: pointer;
   }
 `
-const FooterStyled = styled.footer.attrs(props=>({
-  id: 'footer',
-}))`
-  background-color: ${props=>props.theme.bgColor};
-  color: ${props=>props.theme.textColor};
-`
+
 
 const CodeStyled = styled.div`
   display: inline-block;
@@ -60,9 +56,9 @@ class LayoutStyled extends React.Component {
             <AsideStyled>
             
             </AsideStyled>
-            <FooterStyled>
+            <Footer>
               FOOTER
-            </FooterStyled>
+            </Footer>
             <BackToTop />
         </GridStyled>
       </ThemeProvider>
