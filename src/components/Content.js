@@ -13,6 +13,7 @@ const uuidv4 = require('uuid/v4')
 
 const MainContentStyled = styled.div.attrs(props=>({
   onClick: props.OnClick,
+  id: props.id,
 }))`
 display: block;
 width: 100%;
@@ -45,10 +46,10 @@ color: ${props=>props.theme.textColor};
 
 @inject('settingsStore')
 @observer
-class MainContent extends React.Component {
+class Content extends React.Component {
   render(){
     return (
-      <MainContentStyled>
+      <MainContentStyled id={this.props.id}>
         <TransitionGroup>
                 <CSSTransition
                   key={uuidv4()}
@@ -83,4 +84,4 @@ class MainContent extends React.Component {
     )
   }
 }
-export default MainContent
+export default Content

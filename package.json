@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack/webpack.prod.js",
     "dev": "webpack-dev-server --config webpack/webpack.dev.js --open --color --inline ",
-    "serve": "http-server -p3001 -a127.0.0.1  ./dist"
+    "serve": "http-server -p3001 -a127.0.0.7  ./dist"
   },
   "author": "Ostanin Sergey",
   "license": "BSD-3",

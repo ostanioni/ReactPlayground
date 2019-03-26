@@ -89,13 +89,14 @@ class Nav extends React.Component {
     alert('click')
   }
   render() { 
+    const { themesStore, settingsStore } = this.props;
     return (
-    <ThemeProvider theme={this.props.themesStore[this.props.settingsStore.theme]}>
+    <ThemeProvider theme={themesStore[settingsStore.theme]}>
       <NavStyled>
-        <IconSvg id="bars" src="imgs/nav/bars.svg" width="2rem" alt="LANG" onClick={this.props.settingsStore.toggleDrawer}/>
+        <IconSvg id="bars" src="imgs/nav/bars.svg" width="2rem" alt="MENU" onClick={this.props.settingsStore.toggleDrawer}/>
         <IconSvg src="imgs/nav/globe.svg" width="2rem" alt="LANG" onClick={this.props.settingsStore.toggleLang}/>
-        <IconSvg src="imgs/nav/lightbulb.svg" width="1.5rem" alt="LANG" onClick={this.props.settingsStore.toggleTheme} />
-        <IconSvg src="imgs/nav/search.svg" width="2rem" alt="LANG" />
+        <IconSvg src="imgs/nav/lightbulb.svg" width="1.5rem" alt="THEME" onClick={this.props.settingsStore.toggleTheme} />
+        <IconSvg src="imgs/nav/search.svg" width="2rem" alt="SEARCH" />
       
         <ul style={{ font: 'Monospace',}}>
           <li id="t-intro"><NavLinkStyled to="/about">About Me</NavLinkStyled></li>

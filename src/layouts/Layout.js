@@ -7,8 +7,9 @@ import GlobalStyle from 'styled/GlobalStyle'
 
 import Header from 'components/Header'
 import Nav from 'components/Nav'
+import Main from 'components/Main'
 import Drawer from 'components/Drawer'
-import MainContent from 'components/MainContent'
+import Content from 'components/Content'
 import BackToTop from 'components/BackToTop'
 
 import 'css/App.scss'
@@ -22,18 +23,6 @@ const GridStyled = styled.div.attrs(props=>({
   color: ${props=>props.theme.textColor};
 `
 
-const MainStyled = styled.main.attrs(props=>({
-  id: 'main',
-}))`
-  background-color: ${props=>props.theme.bgColor};
-  color: ${props=>props.theme.textColor};
-  /*position: relative;
-  top: 3.9rem;*/
-  box-sizing: border-box;
-  margin: 0;
-  transition: color 0.5s;
-  /*border: 1px solid red;*/
-`
 const AsideStyled = styled.aside`
   & #icon:hover {
     fill: #0f0;
@@ -65,9 +54,9 @@ class LayoutStyled extends React.Component {
               <Nav />
             </Header>
             <Drawer />
-            <MainStyled>
-              <MainContent />        
-            </MainStyled>
+            <Main id="main">
+              <Content id="content" />        
+            </Main>
             <AsideStyled>
             
             </AsideStyled>

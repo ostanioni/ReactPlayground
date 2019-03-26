@@ -26,7 +26,7 @@ class AlgInC extends Component {
   getData = (path)=>{
     this.loading = true
     const axiosInstance = axios.create({
-      baseURL: 'http://127.0.0.1:3001',
+      baseURL: 'http://127.0.0.7:3001',
       timeout: 2000,
       // headers: {'X-Custom-Header': 'foobar'}
     });
