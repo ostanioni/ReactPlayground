@@ -91,7 +91,7 @@ const GlobalStyle = createGlobalStyle`
     #grid {
       display: grid;
       grid-gap: 8 px;
-      grid-template-columns: 1fr 7fr 1fr;
+      grid-template-columns: 1fr 8fr 1fr;
       grid-template-rows: 5rem 100vh;
       background-color: ${props=>props.theme.bgColor};
       color: ${props=>props.theme.textColor};
@@ -119,7 +119,7 @@ const GlobalStyle = createGlobalStyle`
     #grid {
       display: grid;
       grid-gap: 8 px;
-      grid-template-columns: 1fr 5fr 1fr;
+      grid-template-columns: 1fr 7fr 1fr;
       grid-template-rows: 5rem 100vh;
       background-color: ${props=>props.theme.bgColor};
       color: ${props=>props.theme.textColor};
@@ -147,7 +147,7 @@ const GlobalStyle = createGlobalStyle`
     #grid {
       display: grid;
       grid-gap: 10 px;
-      grid-template-columns: 1fr 4fr 1fr;
+      grid-template-columns: 1fr 5fr 1fr;
       grid-template-rows: 5rem 100vh;
       background-color: ${props=>props.theme.bgColor};
       color: ${props=>props.theme.textColor};

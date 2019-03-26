@@ -3,6 +3,7 @@ class Settings {
   @observable theme = 'dark'
   @observable themePrism = ''
   @observable lang = 'ru'
+  @observable searchIsActive = 'false'
   // @observable langTogglerIsActive = 'false'
   // this.langTogglerColor = this.langTogglerColor.bind(this)
   @action toggleTheme = ( )=>{
@@ -23,6 +24,9 @@ class Settings {
     
     const f = () => wrapper.classList.toggle('wrapper-is-hide')
     setTimeout(f,500)
+  }
+  @action searchActivate = ()=>{
+    this.searchIsActive = true
   }
   @computed get langTogglerColor() {
     if ( this.lang === 'en' ) { 

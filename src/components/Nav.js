@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 // import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { observer, inject } from 'mobx-react'
 // import Icon from 'components/Icon'
-import IconSvg from 'components/IconSvg'
+import NavIcon from 'components/NavIcon'
 
 import SearchStyled from 'components/SearchInput'
 
@@ -90,13 +90,20 @@ class Nav extends React.Component {
   }
   render() { 
     const { themesStore, settingsStore } = this.props;
+    const  theme = themesStore[settingsStore.theme]
     return (
-    <ThemeProvider theme={themesStore[settingsStore.theme]}>
+    <ThemeProvider theme={ theme }>
       <NavStyled>
-        <IconSvg id="bars" src="imgs/nav/bars.svg" width="2rem" alt="MENU" onClick={this.props.settingsStore.toggleDrawer}/>
-        <IconSvg src="imgs/nav/globe.svg" width="2rem" alt="LANG" onClick={this.props.settingsStore.toggleLang}/>
-        <IconSvg src="imgs/nav/lightbulb.svg" width="1.5rem" alt="THEME" onClick={this.props.settingsStore.toggleTheme} />
-        <IconSvg src="imgs/nav/search.svg" width="2rem" alt="SEARCH" />
+        {/*
+        <IconSvg src="imgs/nav/bars.svg"      width="2rem"   alt="MENU"    onClick={settingsStore.toggleDrawer}/>
+        <IconSvg src="imgs/nav/globe.svg"     width="2rem"   alt="LANG"    onClick={settingsStore.toggleLang}/>
+        <IconSvg src="imgs/nav/lightbulb.svg" width="1.5rem" alt="THEME"   onClick={settingsStore.toggleTheme} />
+        <IconSvg src="imgs/nav/search.svg"    width="2rem"   alt="SEARCH" />
+        */}
+        <NavIcon type="bars"      width="2rem"   onClick={settingsStore.toggleDrawer}   fill={theme.IconbarsColor} />
+        <NavIcon type="globe"     width="2rem"   onClick={settingsStore.toggleLang}     fill={settingsStore.langTogglerColor}/>
+        <NavIcon type="lightbulb" width="1.5rem" onClick={settingsStore.toggleTheme}    fill={theme.IconLightbulbColor}/>
+        <NavIcon type="search"    width="2rem"   onClick={settingsStore.searchActivate} fill={theme.IconSearchColor}/>
       
         <ul style={{ font: 'Monospace',}}>
           <li id="t-intro"><NavLinkStyled to="/about">About Me</NavLinkStyled></li>

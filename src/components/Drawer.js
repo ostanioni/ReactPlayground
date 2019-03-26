@@ -56,6 +56,7 @@ ul>li>ul>li>ul>li:hover{
 
 const DivStyled = styled.div.attrs(props=>({
  id: props.id,
+ onClick: props.onClick,
 }))`
 position: fixed;
 top: 0;
@@ -146,12 +147,13 @@ class Drawer extends Component {
     return items
   }
   render() {
+    const { settingsStore } = this.props
     this.currentChapter = 0
-    this.part = this.props.settingsStore.lang === 'en' ? 'Part': 'Часть'
-    this.chapter = this.props.settingsStore.lang === 'en' ? 'Chapter': 'Глава'
+    this.part    = settingsStore.lang === 'en' ? 'Part': 'Часть'
+    this.chapter = settingsStore.lang === 'en' ? 'Chapter': 'Глава'
     return (
-      <DivStyled className="wrapper-is-hide" id="drawerWrapper">
-      <DivBack onClick={this.props.settingsStore.toggleDrawer}>Назад </DivBack>
+      <DivStyled className="wrapper-is-hide" id="drawerWrapper" onClick={settingsStore.toggleDrawer}>
+      <DivBack onClick={settingsStore.toggleDrawer}>Назад </DivBack>
       <DrawerStyled id="drawer">
           <ul>
             {this.content(Content[this.props.settingsStore.lang])}
