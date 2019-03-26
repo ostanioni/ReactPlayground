@@ -5,6 +5,7 @@ import { observer, inject } from "mobx-react"
 import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyle from 'styled/GlobalStyle'
 
+import Header from 'components/Header'
 import Nav from 'components/Nav'
 import Drawer from 'components/Drawer'
 import MainContent from 'components/MainContent'
@@ -20,27 +21,7 @@ const GridStyled = styled.div.attrs(props=>({
   background-color: ${props=>props.theme.bgColor};
   color: ${props=>props.theme.textColor};
 `
-const HeaderStyled = styled.header.attrs(props=>({
-  id: props.id,
-}))`
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  height: 4rem;
-  width: 100%;
-  margin: 0;
-  padding: 0px;
-  border: none;
-  box-shadow: ${props=>props.theme.headerShadow};
-  box-sizing: border-box;
-  z-index: 1000;
-  background-color: ${props=>props.theme.bgHeader};
-  color: ${props=>props.textColor};
-  &.header-is-hide {
-    transform: translateY(-5.5rem);
-  }
-  transition: all 0.5s;
-`
+
 const MainStyled = styled.main.attrs(props=>({
   id: 'main',
 }))`
@@ -74,31 +55,15 @@ const CodeStyled = styled.div`
 @observer
 class LayoutStyled extends React.Component {
   
-  prevOffset = 0
-  hideElements = () => {
-    const header = document.getElementById('header')
-    if (window.pageYOffset > 50) {
-      header.classList.add('header-is-hide')
-    }
-    if (window.pageYOffset < 50) {
-      header.classList.remove('header-is-hide')
-    }
-  }
-  init = ()=>{
-    window.addEventListener('scroll', this.hideElements)
-  }
-  componentDidMount(){
-    document.addEventListener('DOMContentLoaded', this.init );
-  }
   render () { 
     const { themesStore, settingsStore } = this.props;
     return (
       <ThemeProvider theme={themesStore[settingsStore.theme]}>
         <GridStyled>
           <GlobalStyle />
-            <HeaderStyled id="header">
+            <Header id="header">
               <Nav />
-            </HeaderStyled>
+            </Header>
             <Drawer />
             <MainStyled>
               <MainContent />        
