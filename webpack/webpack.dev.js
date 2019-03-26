@@ -54,8 +54,10 @@ const CSS_SOURCE_MAP = {
 module.exports = merge(common, {
   mode: 'development',
   devServer: {
+    historyApiFallback: true,
     contentBase: './dist',
     hot: true,
+    host: '127.0.0.7',
     port: 3001
   },
   devtool: 'source-map',
