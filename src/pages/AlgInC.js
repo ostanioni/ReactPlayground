@@ -5,10 +5,10 @@ import { observable, /* computed */ } from "mobx"
 import axios from 'axios'
 
 // import * as _SVG from '@svgdotjs/svg.js'
-import SVG from '@svgdotjs/svg.js/src/svg.js'
+// import SVG from '@svgdotjs/svg.js/src/svg.js'
 import 'prismjs/themes/prism-tomorrow.css'
 import Prism from 'prismjs';
-Prism.highlightAll();
+// Prism.highlightAll();
 
 @inject('settingsStore', 'dataStore')
 @observer
@@ -26,7 +26,7 @@ class AlgInC extends Component {
   getData = (path)=>{
     this.loading = true
     const axiosInstance = axios.create({
-      baseURL: 'http://localhost:3001',
+      baseURL: 'http://127.0.0.1:3001',
       timeout: 2000,
       // headers: {'X-Custom-Header': 'foobar'}
     });

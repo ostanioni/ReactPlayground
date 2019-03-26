@@ -15,8 +15,8 @@ const SCSS = {
   test: /\.scss$/,
   // exclude: /node_modules/,
   use: [
-    // { loader: 'style-loader', options: { attrs: { id: 'id' }, sourceMap: $SOURCE_MAP } },
-    { loader: MiniCssExtractPlugin.loader },
+     { loader: 'style-loader', options: { attrs: { id: 'id' }, sourceMap: $SOURCE_MAP } },
+    // MiniCssExtractPlugin.loader,
     { loader: 'css-loader',     options: { sourceMap: $SOURCE_MAP, importLoaders: 1, } },
     { loader: 'postcss-loader', options: { sourceMap: $SOURCE_MAP, 
         ident: 'postcss',
@@ -31,26 +31,10 @@ const CSS = {
   test: /\.css$/,
   // exclude: /node_modules/,
   use: [
-    // {loader: 'style-loader'},
-    { loader: MiniCssExtractPlugin.loader },
-    { loader: 'css-loader',     options: { sourceMap: $SOURCE_MAP, importLoaders: 1, } },
-    { loader: 'postcss-loader', options: { sourceMap: $SOURCE_MAP,
-        ident: 'postcss',
-        plugins: [
-          require('postcss-import')(),
-          require('postcss-preset-env')({ 
-            stage: 3,
-            autoprefixer: { grid: true },
-            features: {
-            'nesting-rules': true,
-            'color-mod-function': { unresolved: 'warn' }
-            }
-          }),
-          require('postcss-flexbugs-fixes')(),
-          require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] } ),
-        ]
-      } 
-    }
+    {loader: 'style-loader'},
+     // MiniCssExtractPlugin.loader,
+    { loader: 'css-loader', options: { sourceMap: $SOURCE_MAP, importLoaders: 1, } },
+    'postcss-loader'
   ]
 }
 

@@ -46,23 +46,7 @@ const CSS_SOURCE_MAP = {
   use: [
     { loader: 'style-loader',   options: { sourceMap: true, } },
     { loader: 'css-loader',     options: { sourceMap: true, importLoaders: 1, } },
-    { loader: 'postcss-loader', options: { sourceMap: true,
-        ident: 'postcss',
-        plugins: [
-          require('postcss-import')(),
-          require('postcss-flexbugs-fixes')(),
-          require('postcss-preset-env')({
-            stage: 3,
-            autoprefixer: { flexbox: 'no-2009', grid: true, },
-            features: {
-            'nesting-rules': true,
-            'color-mod-function': { unresolved: 'warn', }
-            }
-          }),
-          require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true,} }], } ),
-        ]
-      } 
-    }
+    { loader: 'postcss-loader' },
   ],
   sideEffects: true,
 }
