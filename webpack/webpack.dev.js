@@ -31,22 +31,20 @@ const JS_SOURCE_MAP = {
 /***___SCSS_SOURCE_MAP__ ***/
 const SCSS_SOURCE_MAP = {
   test: /\.scss$/,
-  // exclude: /node_modules/,
   use: [
     { loader: 'style-loader',   options: { sourceMap: true, } },
     { loader: 'css-loader',     options: { sourceMap: true, importLoaders: 1, } },
-    { loader: 'sass-loader',    options: { sourceMap: true, } }
+    { loader: 'sass-loader',    options: { sourceMap: true, importLoaders: 2, } }
   ],
   sideEffects: true,
 }
 /***___CSS_LOADER___***/
 const CSS_SOURCE_MAP = {
   test: /\.css$/,
-  // exclude: /node_modules/,
   use: [
     { loader: 'style-loader',   options: { sourceMap: true, } },
     { loader: 'css-loader',     options: { sourceMap: true, importLoaders: 1, } },
-    { loader: 'postcss-loader' },
+    'postcss-loader',
   ],
   sideEffects: true,
 }

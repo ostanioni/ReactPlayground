@@ -1,4 +1,5 @@
 /* eslint-disable */ 
+/*tslint:disabled*/
 /* __________ENTRY__POINT_____________*/
 const $ENTRY = './src/index.js'
 /*****************************__COMMON_LOADERS__*****************************************/
@@ -9,13 +10,9 @@ const TSX = { test: /\.tsx$/, loader: "awesome-typescript-loader" };
 /***___TS_LOADER___***/
 const TS = { test: /\.ts$/, loader: "ts-loader" };
 /***___IMAGES_LOADER___***/
-const IMAGES = { test: /\.(png|svg|jpg|gif)$/,  use: [ { loader: 'file-loader', options: { name(file) { if (process.env.NODE_ENV === 'development') { return '[path][name].[ext]'; } return '[hash].[ext]';},},},]};
+const IMAGES = { test: /\.(png|svg|jpg|gif)$/,  use: [ { loader: 'file-loader', /*exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],*/ options: { name(file) { if (process.env.NODE_ENV === 'development') { return 'imgs/[path][name].[ext]'; } return 'imgs/[hash].[ext]';},},},]};
 /***___WORKER_LOADER___***/
 const WORKER_LOADER = { test: /\.worker\.js$/,  use: { loader: 'worker-loader' } };
-/***___CSS_LOADER___
-const CSS = { test: /\.css$/, use: [ 'style-loader', { loader: 'css-loader', options: { importLoaders: 1 } }, 'postcss-loader' ]};
-CSS_LOADER configuration is located in webpack.dev.js and webpack.prod.js
-***/
 /***__FONT_LOADER___***/
 const FONT = { test: /\.(woff|woff2|eot|ttf|otf)$/, use: [ 'file-loader' ] };
 /***__XML_LOADER___***/
@@ -103,14 +100,6 @@ module.exports = {
     }),
     new CopyWebpackPlugin(
       [
-        { 
-          from: 'public/css',
-          to: '../dist/css',
-          toType: 'dir',
-          ignore: [ '*.js' ],
-          force: true,
-          context: `${CONTEXT}`
-        },
         { 
           from: 'public/imgs',
           to: '../dist/imgs',  

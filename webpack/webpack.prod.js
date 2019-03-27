@@ -7,33 +7,35 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const safePostCssParser = require('postcss-safe-parser');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const path = require('path');
 
 const $SOURCE_MAP = true
+const CONTEXT = path.resolve(__dirname, '../');
+//const MINI_CSS_EXTRACT = {
+ // loader: MiniCssExtractPlugin.loader,
+  // options: { publicPath: '..//' },
+//}
 
 /***___SCSS_LOADER_WITHOUT_SOURCE_MAP__ ***/
 const SCSS = {
   test: /\.scss$/,
-  // exclude: /node_modules/,
   use: [
-     { loader: 'style-loader', options: { attrs: { id: 'id' }, sourceMap: $SOURCE_MAP } },
-    // MiniCssExtractPlugin.loader,
+    //{ loader: 'style-loader', options: { attrs: { id: 'id' }, sourceMap: $SOURCE_MAP } },
+     MiniCssExtractPlugin.loader,
     { loader: 'css-loader',     options: { sourceMap: $SOURCE_MAP, importLoaders: 1, } },
-    { loader: 'postcss-loader', options: { sourceMap: $SOURCE_MAP, 
-        ident: 'postcss',
-        plugins: [ require('cssnano')( {"preset": ["advanced", { "discardComments": {"removeAll": true} }] } ), ]
-      }
-    },
-    { loader: 'sass-loader',    options: { sourceMap: $SOURCE_MAP } }
-  ]
+    'postcss-loader',
+    { loader: 'sass-loader',    options: { sourceMap: $SOURCE_MAP, importLoaders: 2, }, }
+  ],
+  sideEffects: true,
 }
 /***___CSS_LOADER_WITHOUT_SOURCE_MAP___***/
+
 const CSS = {
   test: /\.css$/,
-  // exclude: /node_modules/,
   use: [
-    {loader: 'style-loader'},
-     // MiniCssExtractPlugin.loader,
-    { loader: 'css-loader', options: { sourceMap: $SOURCE_MAP, importLoaders: 1, } },
+    // {loader: 'style-loader', options: { attrs: { id: 'id' }, sourceMap: $SOURCE_MAP }},
+    MiniCssExtractPlugin.loader,
+    { loader: 'css-loader', options: { sourceMap: false, importLoaders: 1, } },
     'postcss-loader'
   ]
 }
@@ -43,7 +45,7 @@ module.exports = merge(common, {
   module: {
     rules: [ SCSS, CSS ]
   },
-  plugins: $SOURCE_MAP? []: [
+  plugins: [
     new TerserPlugin({
       terserOptions: {
         parse: {
@@ -69,21 +71,20 @@ module.exports = merge(common, {
       sourceMap: $SOURCE_MAP,
     }),
     new MiniCssExtractPlugin({
-        cssProcessorOptions: {
-          parser: safePostCssParser,
-          map: $SOURCE_MAP,
-        },
+        //cssProcessorOptions: {
+          //parser: safePostCssParser,
+          //map: $SOURCE_MAP,
+        // },
         // filename: "[name].css",
         // chunkFilename: "[id].css"
-        filename: '[contenthash].css',
-        chunkFilename: '[contenthash].chunk.css',
+        filename: 'css/[contenthash].css',
+        chunkFilename: 'css/[contenthash].chunk.css',
     }),
-    $SOURCE_MAP?'':
     new CompressionPlugin({
       algorithm: 'gzip'
     })
   ],
-  optimization: $SOURCE_MAP?{}:{
+  optimization: {
     minimizer: [
       new OptimizeCSSAssetsPlugin({})
     ],
