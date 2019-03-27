@@ -10,7 +10,7 @@
     "dev": "webpack-dev-server --config webpack/webpack.dev.js --open --color --inline ",
     "serve": "http-server -p3001 -a127.0.0.7  ./dist"
   },
-  "author": "Ostanin Sergey",
+  "author": "Ostanioni Sergio",
   "license": "BSD-3",
   "devDependencies": {
     "@babel/core": "^7.4.0",
