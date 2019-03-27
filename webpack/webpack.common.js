@@ -1,7 +1,5 @@
 /* eslint-disable */ 
 /*tslint:disabled*/
-/* __________ENTRY__POINT_____________*/
-const $ENTRY = './src/index.js'
 /*****************************__COMMON_LOADERS__*****************************************/
 /***___BABEL_LOADER___ ***/
 const BABEL = { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" };
@@ -40,16 +38,16 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-/** CONTEXT */
+/*_____________CONTEXT_______________ */
 const CONTEXT = path.resolve(__dirname, '../');
 const ASSET_PATH = process.env.ASSET_PATH || '/';
+/* __________ENTRY__POINT_____________*/
+const $ENTRY = './src/index.js'
 
 module.exports = {
   context: CONTEXT,
   entry: {
    app: $ENTRY
-    //app: './src/index.js'
-   // app: './src/canvas.js'
   },
   output: {
     filename: '[hash].js',

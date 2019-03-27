@@ -33,8 +33,9 @@ const SCSS_SOURCE_MAP = {
   test: /\.scss$/,
   use: [
     { loader: 'style-loader',   options: { sourceMap: true, } },
-    { loader: 'css-loader',     options: { sourceMap: true, importLoaders: 1, } },
-    { loader: 'sass-loader',    options: { sourceMap: true, importLoaders: 2, } }
+    { loader: 'css-loader',     options: { sourceMap: true, importLoaders: 2, } },
+    'postcss-loader',
+    { loader: 'sass-loader',    options: { sourceMap: true, importLoaders: 0, } }
   ],
   sideEffects: true,
 }

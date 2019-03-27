@@ -9,35 +9,30 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const path = require('path');
 
-const $SOURCE_MAP = true
+const $SOURCE_MAP = false
 const CONTEXT = path.resolve(__dirname, '../');
-//const MINI_CSS_EXTRACT = {
- // loader: MiniCssExtractPlugin.loader,
-  // options: { publicPath: '..//' },
-//}
 
 /***___SCSS_LOADER_WITHOUT_SOURCE_MAP__ ***/
 const SCSS = {
   test: /\.scss$/,
   use: [
-    //{ loader: 'style-loader', options: { attrs: { id: 'id' }, sourceMap: $SOURCE_MAP } },
-     MiniCssExtractPlugin.loader,
-    { loader: 'css-loader',     options: { sourceMap: $SOURCE_MAP, importLoaders: 1, } },
+    MiniCssExtractPlugin.loader,
+    { loader: 'css-loader',     options: { sourceMap: $SOURCE_MAP, importLoaders: 2, } },
     'postcss-loader',
-    { loader: 'sass-loader',    options: { sourceMap: $SOURCE_MAP, importLoaders: 2, }, }
+    { loader: 'sass-loader',    options: { sourceMap: $SOURCE_MAP, importLoaders: 0, }, }
   ],
   sideEffects: true,
 }
-/***___CSS_LOADER_WITHOUT_SOURCE_MAP___***/
 
+/***___CSS_LOADER_WITHOUT_SOURCE_MAP___***/
 const CSS = {
   test: /\.css$/,
   use: [
-    // {loader: 'style-loader', options: { attrs: { id: 'id' }, sourceMap: $SOURCE_MAP }},
-    MiniCssExtractPlugin.loader,
-    { loader: 'css-loader', options: { sourceMap: false, importLoaders: 1, } },
+     MiniCssExtractPlugin.loader,
+    { loader: 'css-loader', options: { sourceMap: $SOURCE_MAP, importLoaders: 1, } },
     'postcss-loader'
-  ]
+  ],
+  sideEffects: true,
 }
 
 module.exports = merge(common, {
@@ -71,14 +66,12 @@ module.exports = merge(common, {
       sourceMap: $SOURCE_MAP,
     }),
     new MiniCssExtractPlugin({
-        //cssProcessorOptions: {
-          //parser: safePostCssParser,
-          //map: $SOURCE_MAP,
-        // },
-        // filename: "[name].css",
-        // chunkFilename: "[id].css"
+        cssProcessorOptions: {
+          parser: safePostCssParser,
+          map: $SOURCE_MAP,
+        },
         filename: 'css/[contenthash].css',
-        chunkFilename: 'css/[contenthash].chunk.css',
+        chunkFilename: 'css/[contenthash].[id].css',
     }),
     new CompressionPlugin({
       algorithm: 'gzip'
