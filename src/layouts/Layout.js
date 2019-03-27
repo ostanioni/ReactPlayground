@@ -15,7 +15,6 @@ import Footer     from 'components/Footer'
 import BackToTop  from 'components/BackToTop'
 
 import 'css/App.scss'
-
 import 'css/normalize.css'
 
 const GridStyled = styled.div.attrs(props=>({
