@@ -1,14 +1,14 @@
-import React from 'react'
+import React  from 'react'
 import styled from 'styled-components'
 import { Switch, Route } from 'react-router'
 import { observer, inject } from "mobx-react"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
-// import uuidv4 from 'uuid/v4'
-// import Introduction from 'resources/en1'
-import About        from 'pages/About'
-import Home         from 'pages/Home'
-import NoMatch      from 'pages/NoMatch'
-import AlgInC       from 'pages/AlgInC'
+
+import About   from 'pages/About'
+import Home    from 'pages/Home'
+import NoMatch from 'pages/NoMatch'
+import AlgInC  from 'pages/AlgInC'
+
 const uuidv4 = require('uuid/v4')
 
 const MainContentStyled = styled.div.attrs(props=>({
@@ -80,6 +80,7 @@ class Content extends React.Component {
               
           )
         }*/}
+        
       </MainContentStyled>
     )
   }

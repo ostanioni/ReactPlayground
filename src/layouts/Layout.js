@@ -24,7 +24,6 @@ const GridStyled = styled.div.attrs(props=>({
   color: ${props=>props.theme.textColor};
 `
 
-
 @inject('themesStore', 'settingsStore', 'langStore')
 @observer
 class LayoutStyled extends React.Component {

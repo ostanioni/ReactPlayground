@@ -15,9 +15,10 @@ const MainStyled = styled.main.attrs(props=>({
 `
 export default class Main extends Component {
   render() {
+    const { children, id } = this.props
     return (
-      <MainStyled id={this.props.id}>
-        { this.props.children }
+      <MainStyled id={id}>
+        { children }
       </MainStyled>
     )
   }
