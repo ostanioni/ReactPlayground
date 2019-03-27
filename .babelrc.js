@@ -6,7 +6,7 @@ const RUNTIME =  [
     "regenerator": true,
     "useESModules": false
   }
-];
+]
 const DECORATOR = ["@babel/plugin-proposal-decorators", { "legacy": true }];
 const PROPOSAL = ["@babel/plugin-proposal-class-properties", { "loose" : true }];
 const PRISM = [
@@ -17,7 +17,7 @@ const PRISM = [
       "theme": "tomorrow",
       "css": true
   }
-];
+]
 const TRANSFORM_LITERALS = [
   "@babel/plugin-transform-template-literals", 
   {
@@ -34,9 +34,9 @@ const STYLED = [
     "pure": true,
     "transpileTemplateLiterals": true
   } 
-];
+]
 module.exports = {
   "presets": [ "@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript", ],
   "plugins": [ DECORATOR, PROPOSAL, RUNTIME, PRISM, TRANSFORM_LITERALS, STYLED ],
-};
+}
  
