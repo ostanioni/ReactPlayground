@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
-import { observer, inject } from "mobx-react"
+// import { observer, inject } from "mobx-react"
 
 const paths = [
   "M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z",
@@ -9,15 +10,19 @@ const paths = [
   "M464 256H48a48 48 0 0 0 0 96h416a48 48 0 0 0 0-96zm16 128H32a16 16 0 0 0-16 16v16a64 64 0 0 0 64 64h352a64 64 0 0 0 64-64v-16a16 16 0 0 0-16-16zM58.64 224h394.72c34.57 0 54.62-43.9 34.82-75.88C448 83.2 359.55 32.1 256 32c-103.54.1-192 51.2-232.18 116.11C4 180.09 24.07 224 58.64 224zM384 112a16 16 0 1 1-16 16 16 16 0 0 1 16-16zM256 80a16 16 0 1 1-16 16 16 16 0 0 1 16-16zm-128 32a16 16 0 1 1-16 16 16 16 0 0 1 16-16z",
   "M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z",
   "M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z",
+  "M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z",
+
 ]
 const viewBoxes = [
   "0 0 448 512",
   "0 0 496 512",
   "0 0 512 512",
   "0 0 352 512",
-  "0 0 512 512"
+  "0 0 512 512",
+  "0 0 192 512",
+
 ]
-const Wrapper = styled.div.attrs(props=>({
+const WrapperStyled = styled.div.attrs(props=>({
   id: props.id,
   fill: props.fill,
 }))`
@@ -51,37 +56,41 @@ let PathStyled = styled.path.attrs(props=>({
 transition: fill 0.5s easy-in-out;
 `
 
-@inject('themesStore', 'settingsStore', 'langStore')
-@observer
+// @inject('themesStore', 'settingsStore', 'langStore')
+// @observer
 class NavIcon extends React.Component {
   render() {
     const { type, fill, width, onClick } = this.props
-    let id = 0
+    let idx = 0
     switch (type) {
-      case 'bars':      id = 0; break;
-      case 'globe':     id = 1; break;
-      case 'hamburger': id = 2; break;
-      case 'lightbulb': id = 3; break;
-      case 'search':    id = 4; break;
-      default: id = 0;
+      case 'bars':       idx = 0; break;
+      case 'globe':      idx = 1; break;
+      case 'hamburger':  idx = 2; break;
+      case 'lightbulb':  idx = 3; break;
+      case 'search':     idx = 4; break;
+      case 'ellipsis-v': idx = 5; break;
+      default: idx = 0;
     }
     return (
-      <Wrapper onClick={onClick} fill={fill}>
-        <SvgStyled viewBox={ viewBoxes[id] }  fill={fill} width={ width }>
-          <PathStyled d={ paths[id] } fill={ fill } filter="url(#NavIconShadow)" />
-          <defs>
-            <filter id="NavIconShadow" x="0" y="0" width="200%" height="200%">
-              <feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
-              <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
-              <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
-            </filter>
-          </defs>
+      <WrapperStyled onClick={onClick} fill={fill}>
+        <SvgStyled viewBox={ viewBoxes[idx] }  fill={fill} width={ width }>
+          <PathStyled d={ paths[idx] } fill={ fill } />
         </SvgStyled>
-      </Wrapper>
+      </WrapperStyled>
     )
   }
 }
+
+NavIcon.propTypes = {
+  type: PropTypes.string.isRequired,
+  width: PropTypes.string.isRequired,
+  fill: PropTypes.string,
+  onClick: PropTypes.func,
+}
+
 export default NavIcon
+
+
 /** _____bars____________ 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
 <path fill="#fff" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>

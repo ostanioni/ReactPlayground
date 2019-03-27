@@ -100,10 +100,11 @@ class Nav extends React.Component {
         <IconSvg src="imgs/nav/lightbulb.svg" width="1.5rem" alt="THEME"   onClick={settingsStore.toggleTheme} />
         <IconSvg src="imgs/nav/search.svg"    width="2rem"   alt="SEARCH" />
         */}
-        <NavIcon type="bars"      width="2rem"   onClick={settingsStore.toggleDrawer}   fill={theme.IconBarsColor} />
-        <NavIcon type="globe"     width="2rem"   onClick={settingsStore.toggleLang}     fill={settingsStore.langTogglerColor}/>
-        <NavIcon type="lightbulb" width="1.5rem" onClick={settingsStore.toggleTheme}    fill={theme.IconLightbulbColor}/>
-        <NavIcon type="search"    width="2rem"   onClick={settingsStore.searchActivate} fill={theme.IconSearchColor}/>
+        <NavIcon type="bars"       width="2rem"   onClick={settingsStore.toggleDrawer}   fill={theme.IconBarsColor} />
+        <NavIcon type="globe"      width="2rem"   onClick={settingsStore.toggleLang}     fill={settingsStore.langTogglerColor}/>
+        <NavIcon type="lightbulb"  width="1.5rem" onClick={settingsStore.toggleTheme}    fill={theme.IconLightbulbColor}/>
+        <NavIcon type="search"     width="2rem"   onClick={settingsStore.searchActivate} fill={theme.IconSearchColor}/>
+        <NavIcon type="ellipsis-v" width="0.8rem"   onClick={settingsStore.searchActivate} fill={theme.IconSearchColor}/>
       
         <ul style={{ font: 'Monospace',}}>
           <li id="t-intro"><NavLinkStyled to="/about">About Me</NavLinkStyled></li>
