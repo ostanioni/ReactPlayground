@@ -18,19 +18,25 @@ const PRISM = [
       "css": true
   }
 ];
+const TRANSFORM_LITERALS = [
+  "@babel/plugin-transform-template-literals", 
+  {
+    "loose": true,
+  }
+]
 const STYLED = [ 
   "babel-plugin-styled-components", 
   { 
-    "fileName": false,
-    "displayName": false,
+    "fileName": true,
+    "displayName": true,
     "ssr": false,
-    "minify": false,
+    "minify": true,
     "pure": true,
     "transpileTemplateLiterals": true
   } 
 ];
 module.exports = {
   "presets": [ "@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript", ],
-  "plugins": [ DECORATOR, PROPOSAL, RUNTIME, PRISM, STYLED ],
+  "plugins": [ DECORATOR, PROPOSAL, RUNTIME, PRISM, TRANSFORM_LITERALS, STYLED ],
 };
  
