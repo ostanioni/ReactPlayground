@@ -1,11 +1,11 @@
+/*tslint:disabled*/
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
+
 import { observer, inject } from "mobx-react"
 import styled from 'styled-components'
 
 import Content from 'resources/content'
-
-// import uuidv4 from 'uuid/v4'
 
 let DrawerStyled = styled.nav.attrs(props=>({
   id: props.id,
@@ -152,6 +152,7 @@ class Drawer extends Component {
     this.currentChapter = 0
     this.part    = settingsStore.lang === 'en' ? 'Part': 'Часть'
     this.chapter = settingsStore.lang === 'en' ? 'Chapter': 'Глава'
+    console.log('Type of SS is ', typeof settingsStore)
     return (
       <>
       <DivStyled className="wrapper-is-hide" id="drawerWrapper" onClick={settingsStore.toggleDrawer}>
@@ -166,5 +167,8 @@ class Drawer extends Component {
     )
   }
 }
+Drawer.propTypes = {
+  settingsStore: PropTypes.object.isRequired,
+} 
 
 export default Drawer

@@ -104,7 +104,7 @@ class Nav extends React.Component {
         <NavIcon type="globe"      width="2rem"   onClick={settingsStore.toggleLang}     fill={settingsStore.langTogglerColor}/>
         <NavIcon type="lightbulb"  width="1.5rem" onClick={settingsStore.toggleTheme}    fill={theme.IconLightbulbColor}/>
         <NavIcon type="search"     width="2rem"   onClick={settingsStore.searchActivate} fill={theme.IconSearchColor}/>
-        <NavIcon type="ellipsis-v" width="0.8rem"   onClick={settingsStore.searchActivate} fill={theme.IconSearchColor}/>
+        <NavIcon type="ellipsis-v" width="0.7rem"   onClick={settingsStore.searchActivate} fill={theme.IconSearchColor}/>
       
         <ul style={{ font: 'Monospace',}}>
           <li id="t-intro"><NavLinkStyled to="/about">About Me</NavLinkStyled></li>
