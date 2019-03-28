@@ -7,8 +7,9 @@ const RUNTIME =  [
     "useESModules": false
   }
 ]
-const DECORATOR = ["@babel/plugin-proposal-decorators", { "legacy": true }];
-const PROPOSAL = ["@babel/plugin-proposal-class-properties", { "loose" : true }];
+const DECORATOR = ["@babel/plugin-proposal-decorators", { "legacy": true }]
+const PROPOSAL = ["@babel/plugin-proposal-class-properties", { "loose" : true }]
+const TRANSFORM_LITERALS = [ "@babel/plugin-transform-template-literals", { "loose": true, } ]
 const PRISM = [
   "prismjs", 
   {
@@ -16,12 +17,6 @@ const PRISM = [
       "plugins": ["line-numbers"],
       "theme": "tomorrow",
       "css": true
-  }
-]
-const TRANSFORM_LITERALS = [
-  "@babel/plugin-transform-template-literals", 
-  {
-    "loose": true,
   }
 ]
 const STYLED = [ 
