@@ -6,6 +6,7 @@ import { observer, inject } from "mobx-react"
 import styled from 'styled-components'
 
 import Content from 'resources/content'
+import NavIcon from 'components/NavIcon'
 
 let DrawerStyled = styled.nav.attrs(props=>({
   id: props.id,
@@ -75,11 +76,14 @@ const DivBack = styled.div.attrs(props=>({
 
 }))`
 position: fixed;
-height: 4rem;
+height: 3rem;
+top: 0;
+left: 0.5rem;
 background-color: ${props=>props.theme.bgColor};
 color: ${props=>props.theme.textColor};
 cursor: pointer;
 border: 1px solid ${props=>props.theme.textColor};
+width: 100%;
 `
 
 @inject('themesStore', 'settingsStore', 'langStore')
@@ -148,7 +152,10 @@ class Drawer extends Component {
     return items
   }
   render() {
-    const { settingsStore } = this.props
+    const { settingsStore, themesStore } = this.props
+    const LANG  = settingsStore.lang
+    const THEME_ = settingsStore.theme
+    const THEME  = themesStore[THEME_]
     this.currentChapter = 0
     this.part    = settingsStore.lang === 'en' ? 'Part': 'Часть'
     this.chapter = settingsStore.lang === 'en' ? 'Chapter': 'Глава'
@@ -156,13 +163,17 @@ class Drawer extends Component {
     return (
       <>
       <DivStyled className="wrapper-is-hide" id="drawerWrapper" onClick={settingsStore.toggleDrawer}>
-        <DivBack onClick={settingsStore.toggleDrawer}>Назад </DivBack>
       </DivStyled>
+      
       <DrawerStyled id="drawer">
+      <DivBack onClick={settingsStore.toggleDrawer}>
+            <NavIcon type="times" width="2rem" onClick={settingsStore.toggleDrawer} fill={THEME.IconTimesColor} />
+          </DivBack>
           <ul>
             { this.content( Content[settingsStore.lang] ) }
           </ul>
       </DrawerStyled>
+      
       </>
     )
   }

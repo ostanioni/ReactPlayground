@@ -17,6 +17,7 @@ const dark = {
   "IconBarsColor": "#e10050", // rgb(255,0,80)
   "IconLightbulbColor": "#bebebe", // rgb(190,190,190)
   "IconSearchColor": "rgb(62,166,255)",
+  "IconTimesColor": "#fff",
 };
 const light = {
   ...common,
@@ -34,6 +35,7 @@ const light = {
   "IconBarsColor": "#e10050", // rgb(255,0,80),
   "IconLightbulbColor": "#2188c6", // rgb(33,139,198),
   "IconSearchColor": "#fff",
+  "IconTimesColor": "#000",
 };
 // bootstrapLinkBlue #61dafb rgb(97,218,251)
 // googleLinkBlue rgb(62,166,255)
