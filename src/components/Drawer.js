@@ -153,7 +153,7 @@ class Drawer extends Component {
   }
   render() {
     const { settingsStore, themesStore } = this.props
-    const LANG  = settingsStore.lang
+    // const LANG  = settingsStore.lang
     const THEME_ = settingsStore.theme
     const THEME  = themesStore[THEME_]
     this.currentChapter = 0
@@ -166,9 +166,11 @@ class Drawer extends Component {
       </DivStyled>
       
       <DrawerStyled id="drawer">
+      { /*}
       <DivBack onClick={settingsStore.toggleDrawer}>
             <NavIcon type="times" width="2rem" onClick={settingsStore.toggleDrawer} fill={THEME.IconTimesColor} />
           </DivBack>
+    */}
           <ul>
             { this.content( Content[settingsStore.lang] ) }
           </ul>
