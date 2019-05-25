@@ -59,7 +59,7 @@ module.exports = merge(common, {
     host: '127.0.0.7',
     port: 3001
   },
-  devtool: 'source-map',
+  devtool: 'cheap-module-source-map', // 'source-map',
   module: {
     rules: [ JS_SOURCE_MAP, SCSS_SOURCE_MAP, CSS_SOURCE_MAP ]
   },
