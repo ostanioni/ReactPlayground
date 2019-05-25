@@ -37,6 +37,7 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 
 /*_____________CONTEXT_______________ */
 const CONTEXT = path.resolve(__dirname, '../');
@@ -80,6 +81,34 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    
+    // new ForkTsCheckerWebpackPlugin({
+    //   typescript: resolve.sync('typescript', {
+    //     basedir: paths.appNodeModules,
+    //   }),
+    //   async: isEnvDevelopment,
+    //   useTypescriptIncrementalApi: true,
+    //   checkSyntacticErrors: true,
+    //   resolveModuleNameModule: process.versions.pnp
+    //     ? `${__dirname}/pnpTs.js`
+    //     : undefined,
+    //   resolveTypeReferenceDirectiveModule: process.versions.pnp
+    //     ? `${__dirname}/pnpTs.js`
+    //     : undefined,
+    //   tsconfig: paths.appTsConfig,
+    //   reportFiles: [
+    //     '**',
+    //     '!**/__tests__/**',
+    //     '!**/?(*.)(spec|test).*',
+    //     '!**/src/setupProxy.*',
+    //     '!**/src/setupTests.*',
+    //   ],
+    //   watch: paths.appSrc,
+    //   silent: true,
+    //   // The formatter is invoked directly in WebpackDevServerUtils during development
+    //   formatter: isEnvProduction ? typescriptFormatter : undefined,
+    // }),
+
     new HtmlWebpackPlugin({
       inject: true,
       template: `${CONTEXT}/public/index.html`,
