@@ -8,6 +8,7 @@ import About   from 'pages/About'
 import Home    from 'pages/Home'
 import NoMatch from 'pages/NoMatch'
 import AlgInC  from 'pages/AlgInC'
+import 'css/abc.css'
 
 const uuidv4 = require('uuid/v4')
 
@@ -43,7 +44,7 @@ color: ${props=>props.theme.textColor};
   line-height: 0.8;
 }
 `
-
+const contentTransitionKey = "contentTransition"
 @inject('settingsStore')
 @observer
 class Content extends React.Component {
@@ -52,7 +53,7 @@ class Content extends React.Component {
       <MainContentStyled id={this.props.id}>
         <TransitionGroup>
                 <CSSTransition
-                  key={uuidv4()}
+                  key={contentTransitionKey}
                   classNames="fade"
                   timeout={1300}
                 >
