@@ -58,6 +58,7 @@ module.exports = {
   resolve: {
     extensions: [ '.jsx', '.js', '.json', "ts", "tsx" ],
     alias: {
+     'react-dom': '@hot-loader/react-dom',
       pages:      `${CONTEXT}/src/pages`,
       layouts:    `${CONTEXT}/src/layouts`,
       components: `${CONTEXT}/src/components`,
