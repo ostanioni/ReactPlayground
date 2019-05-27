@@ -8,7 +8,7 @@ const dark = {
   "bgSideBar": "#212121",
   "wg": "#212121", // rgb(33,33,33)
   "link": "#e10050", // rgb(255,0,80)
-  "textColor": "#fff", // rgb(255,255,255)
+  "textColor": "#bebebe", // rgb(255,255,255)
   "subText": "#bebebe", // rgb(190,190,190)
   "headerShadow": "0 0 1.5rem rgb(62,166,255,0.5)",
   "themeToggler": "rgb(62,166,255)",

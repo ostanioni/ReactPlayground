@@ -2,17 +2,19 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   html {
-    font-family: Monospace,'Times New Roman','Roboto', sans-serif;
+    font-family: Monospace, 'Roboto', 'Times New Roman', sans-serif;
   }
   * {
     box-sizing: border-box;
+    & * {transition: color 0.5s;
+        transition: background-color 0.5s;
+    }
    /* transition: background-color, color 0.1s;*/
   }
   body {
     padding: 0;
     margin: 0;
     background-color: ${props=>props.theme.bgColor};
-    transition: color 1.5s;
   }
   h1 {
     font-size: 1.5rem;

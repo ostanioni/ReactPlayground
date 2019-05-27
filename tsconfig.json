@@ -23,7 +23,7 @@
     "noEmit": true,
     "jsx": "preserve",
     "noImplicitAny": false,
-    "allowJs": true,
+    "allowJs": false,
     "sourceMap": true,
     "removeComments": true,
     "preserveConstEnums": true,

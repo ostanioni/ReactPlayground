@@ -16,7 +16,7 @@ position: relative;
 height: auto;
 margin: 0;
 padding: 0;
-overflow: scroll;
+overflow: none;
 border: 1px solid ${props=>props.theme.textColor};
 color: ${props=>props.theme.textColor};
 background-color: ${props=>props.theme.bgSideBar};
