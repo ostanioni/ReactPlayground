@@ -7,6 +7,7 @@ const RUNTIME =  [
     "useESModules": false
   }
 ]
+const TS = ["@babel/plugin-transform-typescript", { "isTSX": true, "allExtensions": true }]
 const HOT_LOADER = ["react-hot-loader/babel"]
 const DECORATOR = ["@babel/plugin-proposal-decorators", { "legacy": true }]
 const PROPOSAL = ["@babel/plugin-proposal-class-properties", { "loose" : true }]
@@ -33,7 +34,7 @@ const STYLED = [
 ]
 module.exports = {
   "presets": [ "@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript", ],
-  "plugins": [ DECORATOR, PROPOSAL, RUNTIME, PRISM, TRANSFORM_LITERALS, STYLED, HOT_LOADER ],
+  "plugins": [ TS, DECORATOR, PROPOSAL, RUNTIME, PRISM, TRANSFORM_LITERALS, STYLED, HOT_LOADER ],
   env: {
     production: {
       only: ['app'],
