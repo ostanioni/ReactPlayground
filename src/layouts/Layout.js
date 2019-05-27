@@ -1,4 +1,5 @@
 /*tslint:disabled*/
+import { hot } from 'react-hot-loader/root'
 import React from 'react'
 import { observer, inject } from "mobx-react"
 
@@ -52,4 +53,4 @@ class LayoutStyled extends React.Component {
       </ThemeProvider>
   )}
 }
-export default LayoutStyled
+export default hot(LayoutStyled)

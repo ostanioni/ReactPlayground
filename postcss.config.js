@@ -1,8 +1,8 @@
 /* eslint-disable */
 /*tslint:disabled*/
-const postcssNormalize = require('postcss-normalize');
- const devMode = process.env.NODE_ENV !== 'production'
- let $SOURCEMAP = devMode ? true : false
+// const postcssNormalize = require('postcss-normalize');
+const devMode = process.env.NODE_ENV !== 'production'
+let $SOURCEMAP = devMode ? true : false
   
 module.exports = {
   sourceMap: $SOURCEMAP,
