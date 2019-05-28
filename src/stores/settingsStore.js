@@ -4,6 +4,8 @@ class Settings {
   @observable themePrism = ''
   @observable lang = 'ru'
   @observable searchIsActive = 'false'
+  @observable currentPage = 0
+  @observable totalPages = 2
   // @observable langTogglerIsActive = 'false'
   // this.langTogglerColor = this.langTogglerColor.bind(this)
   @action toggleTheme = ( )=>{
