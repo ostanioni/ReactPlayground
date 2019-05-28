@@ -14,6 +14,7 @@ import Content    from 'components/Content'
 import Aside      from 'components/Aside'
 import Footer     from 'components/Footer'
 import BackToTop  from 'components/BackToTop'
+import InfScroll  from 'components/InfiniteScroll'
 
 import 'css/App.scss'
 import 'css/abc.css'
@@ -41,7 +42,8 @@ class LayoutStyled extends React.Component {
           </Header>
           <Drawer />
           <Main id="main">
-            <Content id="content" />        
+            <Content id="content" />
+            <InfScroll />       
           </Main>
           <Aside id="aside">
             ASIDE 

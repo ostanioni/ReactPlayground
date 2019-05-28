@@ -57,7 +57,7 @@ class Content extends React.Component {
                   classNames="fade"
                   timeout={1300}
                 >
-        <Switch>
+        <Switch> 
           
         <Route exact path="/home" component={Home}/>
         <Route exact path="/about" component={About}/>
