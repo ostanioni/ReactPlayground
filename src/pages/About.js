@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Prism from 'prismjs'
+import Table from 'components/Table'
 
 
 export default class About extends Component {
@@ -12,6 +13,7 @@ export default class About extends Component {
         <div> 
         <h2>MAIN</h2>
            MAIN CONTENT
+           <Table />
 <pre><code className="language-css">{`p { color: red }`}</code></pre>
             <pre>
 <code className="language-js ">

@@ -62,10 +62,12 @@ class Content extends React.Component {
         <Route exact path="/home" component={Home}/>
         <Route exact path="/about" component={About}/>
         <Route path="/alginc/c/:part/:chapter/:paragraph" component={AlgInC}/>
+        <Route component={AlgInC}/>
         {/*
           <Route path="/books/c/:part/:chapter/:paragraph" component={AlgInC}/>
-        */}
           <Route component={NoMatch}/>
+        */}
+          
         </Switch>
         </CSSTransition>
        </TransitionGroup>
